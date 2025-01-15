@@ -35,7 +35,7 @@
     padding: 0;
 }
 
-.change-section-menu__items li {
+.change-section-menu__items a li {
     border: 1px solid rgba(255, 255, 255, 0.35);
     border-radius: 10px;
     width: 270px;
@@ -46,17 +46,17 @@
     justify-content: center;
 }
 
-.change-section-menu__items li:hover {
+.change-section-menu__items a li:hover {
     border: 1px solid rgba(255, 255, 255, 0.9);
     background-color: rgb(44, 21, 82);
     transition: 0.1s;
 }
 
-.change-section-menu__items li:active {
+.change-section-menu__items a li:active {
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.change-section-menu__items li a {
+.change-section-menu__items a {
     text-decoration: none;
     color: white;
     font-size: 1.1em;

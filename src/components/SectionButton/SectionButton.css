@@ -16,6 +16,10 @@
 }
 
 .section-button:hover {
-    background-color: rgba(47, 22, 86, 0.9);
-    transition: 0.2s;
+    background-color: rgb(44, 21, 82);
+    transition: 0.1s;
+}
+
+.section-button:active {
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }

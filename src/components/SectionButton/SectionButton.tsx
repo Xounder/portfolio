@@ -1,6 +1,6 @@
 import './SectionButton.css';
 
-type SectionButtonProps = {
+export type SectionButtonProps = {
     icon: string;
     alt: string;
     onClick: () => void;

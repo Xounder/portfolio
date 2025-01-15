@@ -7,6 +7,8 @@ import { ProjectCard } from './components/ProjectCard/ProjectCard.tsx'
 import { SectionButton } from './components/SectionButton/SectionButton.tsx'
 import fonesDeOuvidoIcon from './assets/fones-de-ouvido.svg';
 
+import { ChangeSectionMenu } from './components/ChangeSectionMenu/ChangeSectionMenu.tsx'
+
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -28,5 +30,10 @@ createRoot(document.getElementById('root')!).render(
       onClick={() => console.log('clicked')}
     />
 
+  <ChangeSectionMenu 
+      icon={fonesDeOuvidoIcon} 
+      alt="Ícone de um fone de ouvido" 
+      onClick={() => console.log('clicked')}
+    />
   </StrictMode>,
 )

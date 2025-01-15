@@ -4,6 +4,10 @@ import './index.css'
 import { Button } from './components/Button/Button.tsx'
 import { ProjectCard } from './components/ProjectCard/ProjectCard.tsx'
 
+import { SectionButton } from './components/SectionButton/SectionButton.tsx'
+import fonesDeOuvidoIcon from './assets/fones-de-ouvido.svg';
+
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Button 
@@ -18,5 +22,11 @@ createRoot(document.getElementById('root')!).render(
       tecnologies={['React', 'TypeScript', 'Vite', 'Tailwind', 'Angular']} 
       link="https://github.com/AndresLopezDev"
     />
+    <SectionButton 
+      icon={fonesDeOuvidoIcon} 
+      alt="Ícone de um fone de ouvido" 
+      onClick={() => console.log('clicked')}
+    />
+
   </StrictMode>,
 )

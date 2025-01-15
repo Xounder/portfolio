@@ -1,0 +1,21 @@
+.section-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2E1656;
+    width: 125px;
+    height: 60px;
+    border: none;
+    cursor: pointer;
+}
+
+.section-button img {
+    width: 40px;
+    height: 40px;
+    color: white;
+}
+
+.section-button:hover {
+    background-color: rgba(47, 22, 86, 0.9);
+    transition: 0.2s;
+}

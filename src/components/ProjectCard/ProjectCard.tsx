@@ -15,11 +15,11 @@ export const ProjectCard = ({ image, title, description, tecnologies, link }: Pr
             <div className='project-card__content'>
                 <img src={image} alt={title} />
                 <h3>{title}</h3>
-                <p>{description.length > 100 ? description.substring(0, 130) + '...' : description}</p>
+                <p>{description.length > 120 ? description.substring(0, 120) + '...' : description}</p>
             </div>
             <ul className='project-card__tecnologies'>
                 {tecnologies.map((tecnology, index) => (
-                    <li key={index}><Button text={tecnology} size={[0.5, 2.2]} fontSize={0.7} onClick={() => {}}></Button></li>
+                    <li key={index}><Button text={tecnology} size={[0.6, 1.3]} fontSize={0.7} onClick={() => {}}></Button></li>
                 ))}
             </ul>
         </a>

@@ -4,7 +4,7 @@ import { SectionButtonProps } from '../SectionButton/SectionButton';
 
 export const ChangeSectionMenu = ({ icon, alt, onClick }: SectionButtonProps) => {
     return (
-        <div className="change-section-menu">
+        <div className='change-section-menu'>
             <ul className='change-section-menu__items'>
                 <a href=""><li>About Me</li></a>
                 <a href=""><li>Projects</li></a>

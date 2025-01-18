@@ -11,21 +11,6 @@
     max-width: 350px;
 }
 
-.change-section-menu__button {
-    padding: 10px 0 0 0;
-    position: relative;
-}
-
-.change-section-menu__button::after {
-    background-color: rgba(255, 255, 255, 0.35);
-    content: ' ';
-    position: absolute;
-    bottom: -10px;
-    left: -40px;
-    width: 200px;
-    height: 1px;
-}
-
 .change-section-menu__items {
     display: flex;
     flex-direction: column;
@@ -61,4 +46,20 @@
     color: white;
     font-size: 1.1em;
     font-weight: 600;
+}
+
+.change-section-menu__button {
+    position: relative;
+    padding: 10px 0 0 0;
+    margin-bottom: 10px;
+}
+
+.change-section-menu__button::before {
+    background-color: rgba(255, 255, 255, 0.35);
+    content: ' ';
+    position: absolute;
+    top: 0px;
+    left: -40px;
+    width: 200px;
+    height: 1px;
 }

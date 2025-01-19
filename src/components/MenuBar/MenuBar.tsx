@@ -1,19 +1,30 @@
 import './MenuBar.css';
 
-export const MenuBar = () => {
+import logo from '../../assets/logo.png';
+
+type MenuBarProps = {
+    icons: Icons[]
+};
+
+type Icons = {
+    icon:string;
+    alt:string;
+}
+
+export const MenuBar = ({icons}: MenuBarProps) => {
     return (
         <>
-            <header>
-                <div className='atual-section'>
-                    <img src="" alt="" />
-                    <span>About Me</span>
+            <div className='atual-section'>
+                <div className='atual-section__name'>
+                    <img src={logo} alt="" />
+                    <h2>About Me</h2>
                 </div>
-                <ul>
-                    <li><a href="#">X</a></li>
-                    <li><a href="#">Y</a></li>
-                    <li><a href="#">Z</a></li>
+                <ul className='atual-section__icons'>
+                    {icons.map((icon, index) => (
+                        <li key={index}><img src={icon.icon} alt={icon.alt}/></li>
+                    ))}
                 </ul>
-            </header>
+            </div>
         </>
     )
 };

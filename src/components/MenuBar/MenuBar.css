@@ -1,0 +1,43 @@
+.atual-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5em;
+    background-color: #1D0C3A;
+    width: 100vw;
+    height: 100px;
+}
+
+.atual-section__name {
+    padding-left: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    color: white;
+}
+
+.atual-section__name h2 {
+    font-size: 1.6em;
+    font-weight: 600;
+}
+
+.atual-section__name img {
+    width: 70px;
+    height: 70px;
+}   
+
+.atual-section__icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    padding-right: 2em;
+}
+
+.atual-section__icons li img {  
+    width: 24px;
+    height: 24px;
+}
+
+

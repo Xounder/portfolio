@@ -14,8 +14,10 @@ export const ProjectCard = ({ image, title, description, tecnologies, link }: Pr
         <a className="project-card" href={link} target="_blank" rel="noopener noreferrer">
             <div className='project-card__content'>
                 <img src={image} alt={title} />
-                <h3>{title}</h3>
-                <p>{description.length > 120 ? description.substring(0, 120) + '...' : description}</p>
+                <div className='project-card__content__text'>
+                    <h3>{title}</h3>
+                    <p>{description.length > 120 ? description.substring(0, 120) + '...' : description}</p>
+                </div>
             </div>
             <ul className='project-card__tecnologies'>
                 {tecnologies.map((tecnology, index) => (

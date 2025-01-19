@@ -6,6 +6,7 @@ import { ProjectCard } from './components/ProjectCard/ProjectCard.tsx'
 
 import { SectionButton } from './components/SectionButton/SectionButton.tsx'
 import earphonesIcon from './assets/icons/fones-de-ouvido.svg';
+import menuIcon from './assets/icons/menu-hamburguer.svg';
 
 import { ChangeSectionMenu } from './components/ChangeSectionMenu/ChangeSectionMenu.tsx';
 
@@ -44,7 +45,7 @@ createRoot(document.getElementById('root')!).render(
     />
 
   <ChangeSectionMenu
-      icon={earphonesIcon}
+      icon={menuIcon}
       alt="Ícone de um fone de ouvido" 
       onClick={() => console.log('clicked')}
     />

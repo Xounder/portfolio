@@ -9,8 +9,7 @@
     cursor: pointer;
     transition: border-color 0.25s;
     color: white;
-    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
-}
+    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.45);}
 
 .button:hover {
     border-color: #646cff;

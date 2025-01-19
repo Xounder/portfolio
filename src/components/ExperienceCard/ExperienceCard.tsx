@@ -18,7 +18,7 @@ export const ExperienceCard = ({ image, title, description, info }: ExperienceCa
             </div>
             <div className='experience-card__info'>
                 <p>{info[0]}</p>
-                <Button text={info[1]} size={[0.5, 1.8]} fontSize={0.7} onClick={() => {}}></Button>
+                <Button text={info[1]} size={[0.5, 1.8]} fontSize={0.7} type='button' onClick={() => {}}></Button>
             </div>
         </div>
     );

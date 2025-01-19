@@ -19,7 +19,7 @@ export const ProjectCard = ({ image, title, description, tecnologies, link }: Pr
             </div>
             <ul className='project-card__tecnologies'>
                 {tecnologies.map((tecnology, index) => (
-                    <li key={index}><Button text={tecnology} size={[0.6, 1.3]} fontSize={0.7} onClick={() => {}}></Button></li>
+                    <li key={index}><Button text={tecnology} size={[0.6, 1.3]} fontSize={0.7} type='button' onClick={() => {}}></Button></li>
                 ))}
             </ul>
         </a>

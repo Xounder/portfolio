@@ -16,13 +16,17 @@
 
 .default-card__content__text p {    
     display: -webkit-box;
+    display: box;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
+    box-orient: vertical;
     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
     
     color: rgb(104, 99, 99);
     margin: 0.2em 0;
-    
 }
 
 .default-card__content img {

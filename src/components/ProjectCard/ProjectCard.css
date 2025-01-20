@@ -1,95 +1,49 @@
 .project-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
- 
+    position: relative; 
+    margin: auto;
+    margin-bottom: 10px;
     background-color: white;
     border-radius: 10px;
-}
-
-.project-card__content {
-    display: flex;
-}
-
-.project-card__content__text h3 {
-    color: black;
-    margin-top: 0.4em;
-    margin-bottom: 0.1em;
-}
-
-.project-card__content__text p {    
-    color: rgb(104, 99, 99);
-    margin: 0.2em 0;
 }
 
 .project-card__tecnologies {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     gap: 5px;
-    margin: 1em;
     padding: 0;
+    margin: 0;
     overflow: hidden;
 }
 
 @media screen and  (max-width: 400px) {
     .project-card {    
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        
         min-width: 360px;
         max-width: 360px;
-        min-height: 380px;
         max-height: 450px;
     }
-    
-    .project-card__content {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 25px 10px 10px 10px;
-    }
-    
-    .project-card__content img {
-        width: 320px;
-        height: 160px;
+
+    .project-card__tecnologies {
+        margin: 1em 0;
     }
 }
 
 @media screen and (min-width: 600px) {
-    .project-card {
-        position: relative;
-     
-        margin: auto;
-        width: 90%;
-        height: 200px;
-    }
-    
-    .project-card__content {
-        flex-direction: row;
-        padding: 20px 30px;
-    }
-
-    .project-card__content img {
-        width: 160px;
-        height: 160px;
-    }
-
-    .project-card__content__text {
-        margin-left: 1.5em;
+    .project-card {     
         display: flex;
-        flex-direction: column;
-    }
-
-    .project-card__content__text h3 {
-        margin-top: 0;
+        width: 80%;
     }
     
     .project-card__tecnologies {
         position: absolute;
-        bottom: 0;
-        left: 11em;
-        padding: 1em;
-    }
+        justify-content: start;
 
-    .project-card__tecnologies li {
-       font-size: 1em;
+        top: 9.2em;
+        left: 13em;
     }
 }

@@ -1,24 +1,22 @@
 import './ProjectCard.css';
+
 import { Button } from '../Button/Button';
+import { DefaultCard, DefaultCardProps } from '../DefaultCard/DefaultCard';
 
 interface ProjectCardProps {
-    image: string;
-    title: string;
-    description: string;
+    cardInfo: DefaultCardProps;
     tecnologies: string[];
     link: string;
 }
 
-export const ProjectCard = ({ image, title, description, tecnologies, link }: ProjectCardProps) => {
+export const ProjectCard = ({ cardInfo: { image, title, description }, tecnologies, link }: ProjectCardProps) => {
     return (
         <a className="project-card" href={link} target="_blank" rel="noopener noreferrer">
-            <div className='project-card__content'>
-                <img src={image} alt={title} />
-                <div className='project-card__content__text'>
-                    <h3>{title}</h3>
-                    <p>{description.length > 120 ? description.substring(0, 120) + '...' : description}</p>
-                </div>
-            </div>
+            <DefaultCard 
+                image={image}
+                title={title} 
+                description={description}
+            />
             <ul className='project-card__tecnologies'>
                 {tecnologies.map((tecnology, index) => (
                     <li key={index}><Button text={tecnology} size={[0.6, 1.3]} fontSize={0.7} type='button' onClick={() => {}}></Button></li>

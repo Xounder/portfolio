@@ -15,8 +15,14 @@
 }
 
 .default-card__content__text p {    
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    
     color: rgb(104, 99, 99);
     margin: 0.2em 0;
+    
 }
 
 .default-card__content img {

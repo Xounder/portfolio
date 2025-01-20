@@ -13,7 +13,7 @@ export const DefaultCard = ({ image, title, description }: DefaultCardProps) => 
                 <img src={image.img} alt={image.alt} />
                 <div className='default-card__content__text'>
                     <h3>{title}</h3>
-                    <p>{description.length > 120 ? description.substring(0, 120) + '...' : description}</p>
+                    <p>{description}</p>
                 </div>
             </div>
         </div>

@@ -2,9 +2,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #2E1656;
-    width: 125px;
-    height: 60px;
     border: none;
     cursor: pointer;
 }
@@ -12,14 +9,39 @@
 .section-button img {
     width: 40px;
     height: 40px;
-    color: white;
 }
 
 .section-button:hover {
     background-color: rgb(44, 21, 82);
-    transition: 0.1s;
+    transition: background-color 0.1s ease-in-out;
 }
 
 .section-button:active {
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
+
+@media screen and (max-width: 400px) {
+    .section-button {
+        width: 125px;
+        height: 60px;
+        background-color: #2E1656;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .section-button {
+        width: 70px;
+        height: 80vh;
+        background-color: unset;
+    }
+
+    .section-button img {
+        opacity: 20%;
+        transition: opacity 0.3s ease;
+    }
+
+    .section-button:hover img {
+        opacity: 100%;
+    }
+}
+

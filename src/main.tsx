@@ -34,13 +34,6 @@ createRoot(document.getElementById('root')!).render(
       onClick={() => console.log('clicked')} 
     />
 
-  
-    <SectionButton 
-      icon={earphonesIcon}
-      alt="Ícone de um fone de ouvido" 
-      onClick={() => console.log('clicked')}
-    />
-
     <ChangeSectionMenu
         icon={menuIcon}
         alt="Ícone de um fone de ouvido" 
@@ -101,6 +94,11 @@ createRoot(document.getElementById('root')!).render(
       link="https://github.com/Xounder"
     />
 
+    <SectionButton 
+      icon={earphonesIcon}
+      alt="Ícone de um fone de ouvido" 
+      onClick={() => console.log('clicked')}
+    />
 
 
   </StrictMode>,

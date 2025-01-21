@@ -1,4 +1,4 @@
-.change-section-menu__items {
+.menu-section__items {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,14 +8,14 @@
     background-color: #2E1656;
 }
 
-.change-section-menu__items a {
+.menu-section__items a {
     text-decoration: none;
     color: white;
     font-size: 1.1em;
     font-weight: 600;
 }
 
-.change-section-menu__items a li {
+.menu-section__items a li {
     border: 1px solid rgba(255, 255, 255, 0.35);
     border-radius: 10px;
     width: 270px;
@@ -26,22 +26,22 @@
     justify-content: center;
 }
 
-.change-section-menu__items a li:hover {
+.menu-section__items a li:hover {
     border: 1px solid rgba(255, 255, 255, 0.9);
     background-color: rgb(44, 21, 82);
     transition: 0.1s;
 }
 
-.change-section-menu__items a li:active {
+.menu-section__items a li:active {
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 @media screen and (max-width: 400px) {
-    .change-section-menu {
+    .menu-section {
         position: relative;
     }
 
-    .change-section-menu__items {
+    .menu-section__items {
         position: absolute;
         bottom: 60px;
         left: -113px;
@@ -53,7 +53,7 @@
         max-width: 350px;
     }
 
-    .change-section-menu__button::before {
+    .menu-section__button::before {
         position: absolute;
         top: 0;
         left: -50px;
@@ -66,7 +66,7 @@
 }
 
 @media screen and (min-width: 600px) {
-    .change-section-menu {
+    .menu-section {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -79,16 +79,16 @@
         box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.45);
     }
 
-    .change-section-menu__items {
+    .menu-section__items {
         position: relative;
         padding: 0;
     }
 
-    .change-section-menu__button {
+    .menu-section__button {
         position: relative;
     }
 
-    .change-section-menu__button::before {
+    .menu-section__button::before {
         background-color: rgba(255, 255, 255, 0.35);
         content: ' ';
         position: absolute;

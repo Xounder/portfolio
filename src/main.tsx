@@ -4,11 +4,11 @@ import './index.css'
 import { Button } from './components/Button/Button.tsx'
 import { ProjectCard } from './components/ProjectCard/ProjectCard.tsx'
 
-import { SectionButton } from './components/SectionButton/SectionButton.tsx'
+import { ArrowSectionButton } from './components/ArrowSectionButton/ArrowSectionButton.tsx'
 import earphonesIcon from './assets/icons/fones-de-ouvido.svg';
 import menuIcon from './assets/icons/menu-hamburguer.svg';
 
-import { ChangeSectionMenu } from './components/ChangeSectionMenu/ChangeSectionMenu.tsx';
+import { MenuSectionButton } from './components/MenuSectionButton/MenuSectionButton.tsx';
 
 import { ContactForm } from './components/ContactForm/ContactForm.tsx'
 
@@ -34,11 +34,7 @@ createRoot(document.getElementById('root')!).render(
       onClick={() => console.log('clicked')} 
     />
 
-    <ChangeSectionMenu
-        icon={menuIcon}
-        alt="Ícone de um fone de ouvido" 
-        onClick={() => console.log('clicked')}
-      />
+    
 
     <ContactForm/>
     
@@ -94,11 +90,18 @@ createRoot(document.getElementById('root')!).render(
       link="https://github.com/Xounder"
     />
 
-    <SectionButton 
+    <MenuSectionButton
+        icon={menuIcon}
+        alt="Ícone de um fone de ouvido" 
+        onClick={() => console.log('clicked')}
+    />
+    
+    <ArrowSectionButton 
       icon={earphonesIcon}
       alt="Ícone de um fone de ouvido" 
       onClick={() => console.log('clicked')}
     />
+
 
 
   </StrictMode>,

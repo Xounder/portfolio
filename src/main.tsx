@@ -75,6 +75,18 @@ createRoot(document.getElementById('root')!).render(
       }
     />
 
+    <MenuSectionButton
+        icon={menuIcon}
+        alt="Ícone de um fone de ouvido" 
+        onClick={() => console.log('clicked')}
+    />
+    
+    <ArrowSectionButton 
+      icon={earphonesIcon}
+      alt="Ícone de um fone de ouvido" 
+      onClick={() => console.log('clicked')}
+    />
+
   <ProjectCard 
       cardInfo={
         {
@@ -90,17 +102,7 @@ createRoot(document.getElementById('root')!).render(
       link="https://github.com/Xounder"
     />
 
-    <MenuSectionButton
-        icon={menuIcon}
-        alt="Ícone de um fone de ouvido" 
-        onClick={() => console.log('clicked')}
-    />
     
-    <ArrowSectionButton 
-      icon={earphonesIcon}
-      alt="Ícone de um fone de ouvido" 
-      onClick={() => console.log('clicked')}
-    />
 
 
 

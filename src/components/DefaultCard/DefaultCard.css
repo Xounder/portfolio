@@ -4,6 +4,12 @@
     flex-direction: column;
 }
 
+.default-card::after{
+    content:" ";
+    position: absolute;
+    border-top: 1px dashed rgba(0, 0, 0, 0.25);
+}
+
 .default-card__content {
     display: flex;
 }
@@ -37,6 +43,11 @@
     .default-card {    
         width: 360px;
     }
+
+    .default-card::after {
+        bottom: 0;
+        width: 100%;
+    }
     
     .default-card__content {
         flex-direction: column;
@@ -64,6 +75,23 @@
         margin: auto;
         height: 200px;
     }
+
+    .default-card::after {
+        bottom: 3.8em;
+        left: 13em;
+        width: 75%;
+    }
+
+    .default-card:hover {
+        height: 220px;
+        transition: 0.3s ease-in-out;
+    }
+
+    .default-card:hover::after {
+        left: 14em;
+        width: 74%;
+        transition: 0.3s ease-in-out;
+    }
     
     .default-card__content {
         flex-direction: row;
@@ -77,10 +105,21 @@
         display: block;
     }
 
+    .default-card:hover img {
+        width: 180px;
+        height: 180px;
+        transition: 0.3s ease-in-out;
+    }
+
     .default-card__content__text {
         margin-left: 1.5em;
         display: flex;
         flex-direction: column;
+    }
+
+    .default-card:hover .default-card__content__text p {
+        -webkit-line-clamp: 4;
+        line-clamp: 4;
     }
 
     .default-card__content__text h3 {

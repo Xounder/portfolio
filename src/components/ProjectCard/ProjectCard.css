@@ -4,6 +4,11 @@
     margin-bottom: 10px;
     background-color: white;
     border-radius: 10px;
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.45);
+}
+
+.project-card:hover {
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.7);
 }
 
 .project-card__tecnologies {
@@ -43,7 +48,12 @@
         position: absolute;
         justify-content: start;
 
-        top: 9.2em;
+        bottom: 1em;
         left: 13em;
+    }
+
+    .project-card:hover .project-card__tecnologies {
+        left: 14em;
+        transition: 0.3s ease-in-out;
     }
 }

@@ -1,22 +1,18 @@
-import './ProjectCard.css';
+import './ProjectCardInfo.css';
 
 import { Button } from '../Button/Button';
-import { DefaultCard, DefaultCardProps } from '../DefaultCard/DefaultCard';
 
-interface ProjectCardProps {
-    cardInfo: DefaultCardProps;
+type ProjectCardInfoProps = {
     tecnologies: string[];
-    link: string;
 }
 
-export const ProjectCard = ({ cardInfo: { image, title, description }, tecnologies, link }: ProjectCardProps) => {
+export const ProjectCardInfo = ({ tecnologies }: ProjectCardInfoProps) => {
     const VISIBLE_LIMIT = 6;
     const visibleTecnologies = tecnologies.slice(0, VISIBLE_LIMIT);
     const hiddenTecnologies = tecnologies.slice(VISIBLE_LIMIT);
 
     return (
-        <a className="project-card" href={link} target="_blank" rel="noopener noreferrer">
-            <DefaultCard image={image} title={title} description={description} />
+        <div className="project-card">
             <ul className="project-card__tecnologies">
                 {visibleTecnologies.map((tecnology, index) => (
                     <li key={index}>
@@ -41,6 +37,6 @@ export const ProjectCard = ({ cardInfo: { image, title, description }, tecnologi
                     </li>
                 )}
             </ul>
-        </a>
+        </div>
     );
 };

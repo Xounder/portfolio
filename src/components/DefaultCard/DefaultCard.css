@@ -2,6 +2,15 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    margin: auto;
+    margin-bottom: 10px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.45);
+}
+
+.default-card:hover {
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.7);
 }
 
 .default-card::after{
@@ -20,7 +29,7 @@
     margin-bottom: 0.1em;
 }
 
-.default-card__content__text p {    
+.default-card__content__text > p {    
     display: -webkit-box;
     display: box;
     -webkit-line-clamp: 3;
@@ -39,13 +48,20 @@
     border-radius: 10px;
 }
 
+.default-card__component {
+    margin-top: 1.2em;
+}
+
 @media screen and  (max-width: 400px) {
     .default-card {    
-        width: 360px;
+        min-width: 360px;
+        max-width: 360px;
+        min-height: 360px;
+        max-height: 450px;
     }
 
     .default-card::after {
-        bottom: 0;
+        top: 19.2em;
         width: 100%;
     }
     
@@ -71,15 +87,14 @@
 @media screen and (min-width: 600px) {
     .default-card {
         position: relative;
-     
-        margin: auto;
         height: 200px;
+        width: 80%;
     }
 
     .default-card::after {
         bottom: 3.8em;
         left: 13em;
-        width: 75%;
+        width: 80%;
     }
 
     .default-card:hover {
@@ -89,8 +104,17 @@
 
     .default-card:hover::after {
         left: 14em;
-        width: 74%;
+        width: 79%;
         transition: 0.3s ease-in-out;
+    }
+
+    @keyframes move {
+        0% { margin-top: 0em; }
+        100% { margin-top: 1.2em; }
+    }
+
+    .default-card:hover .default-card__component {
+        animation: move 0.3s ease-in-out;
     }
     
     .default-card__content {
@@ -117,10 +141,10 @@
         flex-direction: column;
     }
 
-    .default-card:hover .default-card__content__text p {
+    .default-card:hover .default-card__content__text > p {
         -webkit-line-clamp: 4;
         line-clamp: 4;
-    }
+    } 
 
     .default-card__content__text h3 {
         margin-top: 0;

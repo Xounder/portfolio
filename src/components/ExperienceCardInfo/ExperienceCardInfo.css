@@ -1,0 +1,13 @@
+.experience-card__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.experience-card__info p {
+    color: black;
+    font-size: 0.9em;
+    font-weight: 600;
+    margin: 0;
+}
+

@@ -16,6 +16,8 @@ import { ExperienceCardInfo } from './components/ExperienceCardInfo/ExperienceCa
 import { ProjectCardInfo } from './components/ProjectCardInfo/ProjectCardInfo.tsx'
 import { DefaultCard } from './components/DefaultCard/DefaultCard.tsx'
 
+import { AboutMe } from './components/AboutMe/AboutMe.tsx'
+
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -83,6 +85,20 @@ createRoot(document.getElementById('root')!).render(
       component={<ProjectCardInfo tecnologies={['React', 'TypeScript', 'Vite', 'Tailwind', 'Angular', 'React', 'TypeScript', 'Vite', 'Tailwind', 'Angular']}/>} 
     />   
 
+
+    <AboutMe 
+      image={
+        {
+          img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjo0lhwc7Zb7VmLQ1D1ES0K2YkvM5wFr0aAQ&s',
+          alt: 'FrontEnd Developer'
+        }
+      }
+      title='Renan Fellipe'
+      description={[
+        "Eu sou apaixonado pela área de tecnologia e jogos. Concluí o ensino médio técnico em Eletroeletrônica e atualmente curso Engenharia da Computação, ambos no Instituto Federal do Maranhão (IFMA).",
+        "Possuo habilidades em Python, Java, Angular, SQL, e conhecimentos em APIs REST, microsserviços, NoSQL, C#, Docker, Kubernetes, e Cloud (AWS e Azure).",
+      ]}
+    />
 
 
   </StrictMode>,

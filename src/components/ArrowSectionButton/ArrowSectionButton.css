@@ -1,8 +1,6 @@
-@media screen and (max-width: 400px) {
-    .arrow-section button {
-        width: 125px;
-        height: 60px;
-    }
+.arrow-section button {
+    width: 125px;
+    height: 60px;
 }
 
 @media screen and (min-width: 600px) {

@@ -21,12 +21,17 @@
 
 .default-card__content {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 10px 10px 10px;
 }
 
 .default-card__content__text h3 {
     color: black;
     margin-top: 0.4em;
     margin-bottom: 0.1em;
+    text-align: center;
 }
 
 .default-card__content__text > p {    
@@ -46,47 +51,18 @@
 
 .default-card__content img {
     border-radius: 10px;
+    width: 320px;
+    height: 160px;
+    object-fit: cover;
+    display: block;
 }
 
 .default-card__component {
     margin-top: 1.2em;
 }
 
-@media screen and  (max-width: 400px) {
-    .default-card {    
-        min-width: 360px;
-        max-width: 360px;
-        min-height: 360px;
-        max-height: 450px;
-    }
-
-    .default-card::after {
-        top: 19.2em;
-        width: 100%;
-    }
-    
-    .default-card__content {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 25px 10px 10px 10px;
-    }
-
-    .default-card__content__text h3 {
-        text-align: center;
-    }
-    
-    .default-card__content img {
-        width: 320px;
-        height: 160px;
-        object-fit: cover;
-        display: block;
-    }
-}
-
 @media screen and (min-width: 600px) {
     .default-card {
-        position: relative;
         height: 200px;
         width: 80%;
     }
@@ -116,7 +92,7 @@
     .default-card:hover .default-card__component {
         animation: move 0.3s ease-in-out;
     }
-    
+
     .default-card__content {
         flex-direction: row;
         padding: 20px 30px;
@@ -144,9 +120,27 @@
     .default-card:hover .default-card__content__text > p {
         -webkit-line-clamp: 4;
         line-clamp: 4;
-    } 
+    }
 
     .default-card__content__text h3 {
         margin-top: 0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .default-card {    
+        min-width: 360px;
+        max-width: 360px;
+        min-height: 360px;
+        max-height: 450px;
+    }
+
+    .default-card::after {
+        top: 19em;
+        width: 100%;
+    }
+
+    .default-card__content__text h3 {
+        text-align: center;
     }
 }

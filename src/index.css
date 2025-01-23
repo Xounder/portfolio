@@ -24,3 +24,44 @@ a {
 li {
   list-style: none;
 }   
+
+main {
+  padding-top: 6.3em;
+  padding-bottom: 0;
+  margin-bottom: 0.5em;
+}
+
+.section-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 60px;
+  background-color: #1D0C3A;
+}
+
+@media screen and (min-width: 600px) {  
+  .section-buttons {
+    position: relative;
+    height: 10vh;
+    margin-top: 0.9em;
+  }
+
+  .section-buttons__left-arrow {
+    position: absolute;
+    left: -1px;
+    bottom: 16em;
+  }
+
+  .section_buttons__right-arrow {
+    position: absolute;
+    right: -1px;
+    bottom: 16em;
+  }
+}
+
+@media screen and (max-width: 400px) {
+    main {
+      margin-bottom: 0.9em
+    }
+}

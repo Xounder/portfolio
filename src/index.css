@@ -53,6 +53,14 @@ main {
     bottom: 16em;
   }
 
+  .section-buttons__menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2E1656;
+    width: 21.85em;
+  }
+
   .section_buttons__right-arrow {
     position: absolute;
     right: -1px;

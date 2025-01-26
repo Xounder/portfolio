@@ -14,9 +14,9 @@ import menuIcon from '../../assets/icons/menu-hamburguer.svg';
 import leftArrow from '../../assets/icons/seta-pequena-esquerda.svg';
 import rightArrow from '../../assets/icons/seta-pequena-direita.svg';
 import { iconsData } from '../../data/iconsData.ts';
+import { sections } from '../../data/sections.ts';
 
 export const HomePage = () => {
-    const sections: string[] = ['About Me', 'Projects', 'Experiences', 'Recognitions', 'Contact'];
     const [currentSection, setCurrentSection] = useState<string>(sections[0]);
 
     const componentsMap: Record<string, JSX.Element> = {
@@ -60,6 +60,7 @@ export const HomePage = () => {
                     <MenuSectionButton
                         icon={menuIcon}
                         alt="Ícone de um fone de ouvido" 
+                        currentSection={currentSection}
                         setCurrentSection={setCurrentSection}
                     />
                 </div>

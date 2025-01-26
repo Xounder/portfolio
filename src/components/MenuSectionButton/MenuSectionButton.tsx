@@ -2,8 +2,16 @@ import './MenuSectionButton.css';
 
 import { DefaultSectionButton } from '../DefaultSectionButton/DefaultSectionButton';
 import { useState } from 'react';
+import { sections } from '../../data/sections';
 
-export const MenuSectionButton = ({ icon, alt, setCurrentSection }: { icon: string, alt: string, setCurrentSection: React.Dispatch<React.SetStateAction<string>> }) => {
+type MenuSectionButtonProps = {
+    icon: string;
+    alt: string;
+    currentSection: string;
+    setCurrentSection: React.Dispatch<React.SetStateAction<string>>;
+};
+
+export const MenuSectionButton = ({ icon, alt, currentSection, setCurrentSection }: MenuSectionButtonProps) => {
     const [isActive, setIsActive] = useState(false);
 
     const changeCurrentSection = (sectionName: string) => {
@@ -13,14 +21,22 @@ export const MenuSectionButton = ({ icon, alt, setCurrentSection }: { icon: stri
 
     return (
         <div className='menu-section'>
-            {isActive && (<ul className='menu-section__items'>
-                <button onClick={() => changeCurrentSection('About Me')}><li>About Me</li></button>
-                <button onClick={() => changeCurrentSection('Projects')}><li>Projects</li></button>
-                <button onClick={() => changeCurrentSection('Experiences')}><li>Experiences</li></button>
-                <button onClick={() => changeCurrentSection('Recognitions')}><li>Certificates/Awards</li></button>
-                <button onClick={() => changeCurrentSection('Contact')}><li>Contact</li></button>
-                <button onClick={() => setIsActive(!isActive)}><li>Close</li></button>
-            </ul>)}
+            {isActive && (
+                <ul className='menu-section__items'>
+                    {sections.map((section) => {
+                        // Não renderiza o botão da seção ativa
+                        if (section === currentSection) return null;
+                        return (
+                            <button key={section} onClick={() => changeCurrentSection(section)}>
+                                <li>{section}</li>
+                            </button>
+                        );
+                    })}
+                    <button onClick={() => setIsActive(!isActive)}>
+                        <li>Close</li>
+                    </button>
+                </ul>
+            )}
             <div className='menu-section__button'>
                 <DefaultSectionButton icon={icon} alt={alt} onClick={() => setIsActive(!isActive)} />
             </div>

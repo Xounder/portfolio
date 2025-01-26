@@ -24,7 +24,6 @@ export const MenuSectionButton = ({ icon, alt, currentSection, setCurrentSection
             {isActive && (
                 <ul className='menu-section__items'>
                     {sections.map((section) => {
-                        // Não renderiza o botão da seção ativa
                         if (section === currentSection) return null;
                         return (
                             <button key={section} onClick={() => changeCurrentSection(section)}>

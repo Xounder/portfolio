@@ -14,6 +14,7 @@ import notesIcon from '../assets/icons/caderno.svg';
 
 import closedBookIcon from '../assets/icons/marcador-de-livro.svg';
 import achievementIcon from '../assets/icons/distintivo.svg';
+import annotateIcon from '../assets/icons/editar.svg';
 
 import youtubeIcon from '../assets/icons/youtube.svg';
 import githubIcon from '../assets/icons/github.svg';
@@ -37,7 +38,7 @@ export const iconsData: Icon[][] = [
   [
     { icon: openBookIcon, alt: 'Ícone de livro aberto' },
     { icon: suitCaseIcon, alt: 'Ícone de maleta' },
-    { icon: notesIcon, alt: 'Ícone de notas' },
+    { icon: annotateIcon, alt: 'Ícone de notas' },
   ],
   // Recognitions
   [

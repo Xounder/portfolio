@@ -22,14 +22,17 @@
     background-color: #2E1656;
 }
 
-.menu-section__items a {
+.menu-section__items button {
+    all: unset;
     text-decoration: none;
     color: white;
     font-size: 1.1em;
     font-weight: 600;
+    cursor: pointer;
 }
 
-.menu-section__items a li {
+.menu-section__items button li {
+    color: white;
     border: 1px solid rgba(255, 255, 255, 0.35);
     border-radius: 10px;
     width: 270px;
@@ -40,13 +43,13 @@
     justify-content: center;
 }
 
-.menu-section__items a li:hover {
+.menu-section__items button li:hover {
     border: 1px solid rgba(255, 255, 255, 0.9);
     background-color: rgb(44, 21, 82);
     transition: 0.1s;
 }
 
-.menu-section__items a li:active {
+.menu-section__items button li:active {
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 

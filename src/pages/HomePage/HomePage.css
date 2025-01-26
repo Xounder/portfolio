@@ -6,6 +6,12 @@ header {
 main {
   min-height: 78vh;
   max-height: 78vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+main .content {
   overflow: hidden;
 }
   

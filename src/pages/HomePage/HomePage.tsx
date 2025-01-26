@@ -58,7 +58,7 @@ export const HomePage = () => {
             </header>
         
             <main>
-                <div>
+                <div className='content'>
                     {sections[currentSection] === 'About Me' && <AboutMePage/>}
                     {sections[currentSection] === 'Projects' && <ProjectsPage/>}
                     {sections[currentSection] === 'Experiences' && <ExperiencesPage/>}

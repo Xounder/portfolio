@@ -1,16 +1,16 @@
 .contact-form {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     background-color: white;
     border-radius: 10px;
     margin: auto;
-    margin-bottom: 1em;
 }
 
 .contact-form h2 {
     text-align: center;
+    margin: 0.4em 0;
 }
 
 .contact-form h2 span {
@@ -59,9 +59,8 @@
 
 @media screen and (min-width: 600px) {
     .contact-form {    
-        justify-content: space-around;
-        width: 90%;
-        height: 80vh;
+        width: 60%;
+        height: 72vh;
     }
 
     .contact-form h2 {
@@ -81,8 +80,12 @@
     .contact-form {    
         min-width: 360px;
         max-width: 360px;
-        min-height: 380px;
-        max-height: 450px;
+        min-height: 75vh;
+        max-height: 75vh;
     } 
+
+    .contact-form h2 {
+        font-size: 2em;
+    }
 }
 

@@ -22,19 +22,21 @@ export const MenuSectionButton = ({ icon, alt, currentSection, setCurrentSection
     return (
         <div className='menu-section'>
             {isActive && (
-                <ul className='menu-section__items'>
-                    {sections.map((section) => {
-                        if (section === currentSection) return null;
-                        return (
-                            <button key={section} onClick={() => changeCurrentSection(section)}>
-                                <li>{section}</li>
-                            </button>
-                        );
-                    })}
-                    <button onClick={() => setIsActive(!isActive)}>
-                        <li>Close</li>
-                    </button>
-                </ul>
+                <nav>
+                    <ul className='menu-section__items'>
+                        {sections.map((section) => {
+                            if (section === currentSection) return null;
+                            return (
+                                <button key={section} onClick={() => changeCurrentSection(section)}>
+                                    <li>{section}</li>
+                                </button>
+                            );
+                        })}
+                        <button onClick={() => setIsActive(!isActive)}>
+                            <li>Close</li>
+                        </button>
+                    </ul>
+                </nav>
             )}
             <div className='menu-section__button'>
                 <DefaultSectionButton icon={icon} alt={alt} onClick={() => setIsActive(!isActive)} />

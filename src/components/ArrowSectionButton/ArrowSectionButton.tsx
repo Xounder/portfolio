@@ -4,8 +4,8 @@ import { DefaultSectionButton, DefaultSectionButtonProps } from '../DefaultSecti
 
 export const ArrowSectionButton = ({ icon, alt, onClick }: DefaultSectionButtonProps) => {
     return (
-        <div className='arrow-section'>
+        <nav className='arrow-section'>
             <DefaultSectionButton icon={icon} alt={alt} onClick={onClick} />
-        </div>
+        </nav>
     );
 };

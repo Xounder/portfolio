@@ -7,7 +7,7 @@ export interface DefaultCardProps {
     title: string;
     description: string;
     link: string;
-    component: ReactElement
+    component?: ReactElement
 }
 export const DefaultCard = ({ image, title, description, component}: DefaultCardProps) => {
     return (

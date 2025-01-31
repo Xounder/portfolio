@@ -2,7 +2,7 @@ import './ExperienceCardInfo.css';
 
 import { Button } from '../Button/Button';
 
-interface ExperienceCardInfoProps {
+export interface ExperienceCardInfoProps {
     info: { type: string, yearPeriod: string };
 }
 

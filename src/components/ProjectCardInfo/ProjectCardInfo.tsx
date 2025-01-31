@@ -2,7 +2,7 @@ import './ProjectCardInfo.css';
 
 import { Button } from '../Button/Button';
 
-type ProjectCardInfoProps = {
+export type ProjectCardInfoProps = {
     tecnologies: string[];
 }
 

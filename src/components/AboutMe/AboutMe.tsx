@@ -1,7 +1,7 @@
 import React from "react";
 import "./AboutMe.css";
 
-type AboutMeProps = {
+export type AboutMeProps = {
     image: {
         img: string, 
         alt: string

@@ -1,12 +1,12 @@
-.menu-bar .atual-section__name h2,
-.menu-bar .atual-section__icons {
+header .atual-section__name h2,
+header .atual-section__icons {
     opacity: 0.5;
     transform: translateY(-10px);
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.menu-bar h2.visible,
-.menu-bar .atual-section__icons.visible {
+header .atual-section__name h2.visible,
+header .atual-section__icons.visible {
     opacity: 1;
     transform: translateY(0);
 }
@@ -17,7 +17,7 @@ main {
     justify-content: center;
     align-items: center;
     gap: 2em 0;
-    padding-top: 3em;
+    padding-top: 7em;
     margin-bottom: 2em;
 }
 

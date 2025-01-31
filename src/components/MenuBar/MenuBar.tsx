@@ -1,6 +1,7 @@
 import './MenuBar.css';
 
 import logo from '../../assets/logo.png';
+import { useEffect, useState } from 'react';
 
 type MenuBarProps = {
     sectionName: string;
@@ -14,6 +15,7 @@ export type Icon = {
 }
 
 export const MenuBar = ({sectionName, icons}: MenuBarProps) => {
+    const [isVisible, setIsVisible] = useState(false);
     const renderIcons = () => {
         return icons.map((icon, index) => {
             const content = icon.link ? (
@@ -28,16 +30,21 @@ export const MenuBar = ({sectionName, icons}: MenuBarProps) => {
         });
     };
 
+    useEffect(() => {
+        setIsVisible(false);
+        setTimeout(() => setIsVisible(true), 200);
+    }, [sectionName]);
+
     return (
         <>
             <div className='atual-section'>
-                <div className='atual-section__name'>
-                    <img src={logo} alt="" />
-                    <h2>{sectionName}</h2>
+                <img src={logo} alt="" />
+                <div className='atual-section__content'>
+                    <h2 className={isVisible ? 'visible' : ''}>{sectionName}</h2>
+                    <ul className={`atual-section__content__icons ${isVisible ? 'visible' : ''}`}>
+                        {renderIcons()}
+                    </ul>
                 </div>
-                <ul className='atual-section__icons'>
-                    {renderIcons()}
-                </ul>
             </div>
 
             <aside className='change-view'>

@@ -4,7 +4,6 @@
 
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 0.5em;
 
     background-color: #1D0C3A;
@@ -13,43 +12,58 @@
     height: 90px;
 }
 
-.atual-section__name {
+.atual-section > img {
     padding-left: 1em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1em;
-    color: white;
-}
-
-.atual-section__name img {
     width: 70px;
     height: 70px;
 }   
 
-.atual-section__name h2 {
+.atual-section__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1em;
+    width: 70%;
+    padding-left: 0.5em;
+    color: white;
+}
+
+.atual-section__content h2 {
     font-size: 1.6em;
     font-weight: 600;
     transition: opacity 0.5s ease-in-out, transform 0.5s ease;
 }
 
-.atual-section__icons {
+.atual-section__content__icons {
     display: flex;
-    padding: 0 1em 0 0;
+    padding: 0 0em 0 0;
     gap: 0.8em;
 }
 
-.atual-section__icons li {  
+.atual-section__content h2,
+.atual-section__content__icons {
+    opacity: 0.5;
+    transform: translateY(-10px);
+    transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+}
+
+.atual-section__content h2.visible,
+.atual-section__content__icons.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.atual-section__content__icons li {  
     width: 26px;
     height: 26px;
 }
 
-.atual-section__icons li a:hover img {
+.atual-section__content__icons li a:hover img {
     width: 26px;
     height: 26px;
 }
 
-.atual-section__icons li img {  
+.atual-section__content__icons li img {  
     width: 22px;
     height: 22px;
 }
@@ -83,30 +97,32 @@
 }
 
 @media screen and (min-width: 600px) {
-    .atual-section__name {
+    .atual-section__content {
         gap: 2em;
+        width: 100%;
+        padding-left: 1em;
     }
     
-    .atual-section__name h2 {
+    .atual-section__content h2 {
         font-size: 2.4em;
     }
 
-    .atual-section__icons {
+    .atual-section__content__icons {
         gap: 2em;
         padding-right: 10em;
     }
 
-    .atual-section__icons li {  
+    .atual-section__content__icons li {  
         width: 36px;
         height: 36px;
     }
 
-    .atual-section__icons li a:hover img {
+    .atual-section__content__icons li a:hover img {
         width: 36px;
         height: 36px;
     }
 
-    .atual-section__icons li img {  
+    .atual-section__content__icons li img {  
         width: 32px;
         height: 32px;
     }

@@ -7,6 +7,6 @@ import { HomePageScroll } from './pages/HomePageScroll/HomePageScroll'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <HomePage/>
+    <HomePageScroll/>
   </StrictMode>,
 )

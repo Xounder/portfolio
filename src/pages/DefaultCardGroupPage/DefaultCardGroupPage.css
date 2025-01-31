@@ -1,0 +1,21 @@
+.group-cards {
+    overflow-y: auto;
+    max-height: 80vh;
+    width: 100%;
+    border : 1px solid #ddd;
+    border-radius: 0.3em 1.2em 0.3em 1.2em;
+    padding: 0.8em 0.3em;
+    background: #fff;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.group-cards::-webkit-scrollbar {
+    display: none;
+}
+
+@media screen and (min-width: 600px) {
+    .group-cards {
+        padding: 1em 0.8em;
+    }
+}

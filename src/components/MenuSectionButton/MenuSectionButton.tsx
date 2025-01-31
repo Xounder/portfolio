@@ -7,11 +7,10 @@ import { sections } from '../../data/sections';
 type MenuSectionButtonProps = {
     icon: string;
     alt: string;
-    currentSection: string;
     setCurrentSection: React.Dispatch<React.SetStateAction<string>>;
 };
 
-export const MenuSectionButton = ({ icon, alt, currentSection, setCurrentSection }: MenuSectionButtonProps) => {
+export const MenuSectionButton = ({ icon, alt, setCurrentSection }: MenuSectionButtonProps) => {
     const [isActive, setIsActive] = useState(false);
 
     const changeCurrentSection = (sectionName: string) => {
@@ -25,16 +24,12 @@ export const MenuSectionButton = ({ icon, alt, currentSection, setCurrentSection
                 <nav>
                     <ul className='menu-section__items'>
                         {sections.map((section) => {
-                            if (section === currentSection) return null;
                             return (
                                 <button key={section} onClick={() => changeCurrentSection(section)}>
                                     <li>{section}</li>
                                 </button>
                             );
                         })}
-                        <button onClick={() => setIsActive(!isActive)}>
-                            <li>Close</li>
-                        </button>
                     </ul>
                 </nav>
             )}

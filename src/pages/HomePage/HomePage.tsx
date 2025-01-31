@@ -60,7 +60,6 @@ export const HomePage = () => {
                     <MenuSectionButton
                         icon={menuIcon}
                         alt="Ícone de um fone de ouvido" 
-                        currentSection={currentSection}
                         setCurrentSection={setCurrentSection}
                     />
                 </div>

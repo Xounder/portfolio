@@ -22,30 +22,29 @@
     color: white;
 }
 
-.atual-section__name h2 {
-    font-weight: 600;
-}
-
 .atual-section__name img {
     width: 70px;
     height: 70px;
 }   
 
-.atual-section__icons {
-    display: flex;
-    padding: 0;
-}
-
 .atual-section__name h2 {
     font-size: 1.6em;
+    font-weight: 600;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease;
 }
 
 .atual-section__icons {
+    display: flex;
+    padding: 0 1em 0 0;
     gap: 0.8em;
-    padding-right: 1em;
 }
 
 .atual-section__icons li {  
+    width: 26px;
+    height: 26px;
+}
+
+.atual-section__icons li a:hover img {
     width: 26px;
     height: 26px;
 }
@@ -54,12 +53,6 @@
     width: 22px;
     height: 22px;
 }
-
-.atual-section__icons li a:hover img {
-    width: 26px;
-    height: 26px;
-}
-
 
 @media screen and (min-width: 600px) {
     .atual-section__name {
@@ -80,13 +73,13 @@
         height: 36px;
     }
 
-    .atual-section__icons li img {  
-        width: 32px;
-        height: 32px;
-    }
-
     .atual-section__icons li a:hover img {
         width: 36px;
         height: 36px;
+    }
+
+    .atual-section__icons li img {  
+        width: 32px;
+        height: 32px;
     }
 }

@@ -1,0 +1,19 @@
+.info-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 30%;
+    height: 4em;
+    padding: 0px;
+    border-radius: 10px;
+    background-color: #2E1656;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.25);
+}
+
+.info-card h3 {
+    text-align: center;
+}

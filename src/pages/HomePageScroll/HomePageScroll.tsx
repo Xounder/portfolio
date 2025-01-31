@@ -4,13 +4,11 @@ import './HomePageScroll.css';
 import { MenuBar } from '../../components/MenuBar/MenuBar';
 import { AboutMePage } from '../AboutMePage/AboutMePage';
 import { ContactFormPage } from '../ContactFormPage/ContactFormPage';
-import { ExperiencesPage } from '../ExperiencesPage/ExperiencesPage';
-import { ProjectsPage } from '../ProjectsPage/ProjectsPage';
-import { RecognitionsPage } from '../RecognitionsPage/RecognitionsPage';
 import { InfoCard } from '../../components/InfoCard/InfoCard.tsx';
 
 import { iconsData } from '../../data/iconsData.ts';
 import { sections } from '../../data/sections.ts';
+import { DefaultCardGroupPage } from '../DefaultCardGroupPage/DefaultCardGroupPage.tsx';
 
 export const HomePageScroll = () => {
     const [currentSection, setCurrentSection] = useState<string>('About Me');    
@@ -71,17 +69,17 @@ export const HomePageScroll = () => {
                 
                 <section className='projects' data-section="Projects">
                     <InfoCard info="Projects"></InfoCard>
-                    <ProjectsPage/>
+                    <DefaultCardGroupPage cardType="Projects"/>
                 </section>
                 
                 <section className='experiences' data-section="Experiences">
                     <InfoCard info="Experiences"></InfoCard>
-                    <ExperiencesPage/>
+                    <DefaultCardGroupPage cardType="Experiences"/>
                 </section>
                 
                 <section className='recognitions' data-section="Recognitions">
                     <InfoCard info="Recognitions"></InfoCard>
-                    <RecognitionsPage/>
+                    <DefaultCardGroupPage cardType="Recognitions"/>
                 </section>
                 
                 <section className='contact' data-section="Contact">

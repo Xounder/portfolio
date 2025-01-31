@@ -64,7 +64,7 @@
 @media screen and (min-width: 600px) {
     .default-card {
         height: 200px;
-        width: 80%;
+        width: 100%;
     }
 
     .default-card::after {

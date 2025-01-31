@@ -3,10 +3,8 @@ import { useState } from 'react';
 
 import { MenuBar } from '../../components/MenuBar/MenuBar.tsx'
 import { AboutMePage } from '../AboutMePage/AboutMePage.tsx'
-import { ProjectsPage } from '../ProjectsPage/ProjectsPage.tsx';
-import { ExperiencesPage } from '../ExperiencesPage/ExperiencesPage.tsx';
-import { RecognitionsPage } from '../RecognitionsPage/RecognitionsPage.tsx';
 import { ContactFormPage } from '../ContactFormPage/ContactFormPage.tsx';
+import { DefaultCardGroupPage } from '../DefaultCardGroupPage/DefaultCardGroupPage.tsx';
 import { MenuSectionButton } from '../../components/MenuSectionButton/MenuSectionButton.tsx';
 import { ArrowSectionButton } from '../../components/ArrowSectionButton/ArrowSectionButton.tsx'
 
@@ -21,9 +19,9 @@ export const HomePage = () => {
 
     const componentsMap: Record<string, JSX.Element> = {
         'About Me': <AboutMePage />,
-        'Projects': <ProjectsPage />,
-        'Experiences': <ExperiencesPage />,
-        'Recognitions': <RecognitionsPage />,
+        'Projects': <DefaultCardGroupPage cardType="Projects" />,
+        'Experiences': <DefaultCardGroupPage cardType="Experiences" />,
+        'Recognitions': <DefaultCardGroupPage cardType="Recognitions" />,
         'Contact': <ContactFormPage />
     };
 

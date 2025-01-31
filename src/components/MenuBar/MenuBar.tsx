@@ -39,6 +39,10 @@ export const MenuBar = ({sectionName, icons}: MenuBarProps) => {
                     {renderIcons()}
                 </ul>
             </div>
+
+            <aside className='change-view'>
+                <button>Change View</button>
+            </aside>
         </>
     )
 };

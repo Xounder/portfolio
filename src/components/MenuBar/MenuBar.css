@@ -54,6 +54,34 @@
     height: 22px;
 }
 
+.change-view {
+    display: relative;
+}
+
+.change-view button {
+    position: fixed;
+    z-index: 101;
+    top: 6.2em;
+    right: 32%;
+    width: 10em;
+    height: 2em;
+
+    background-color: #1D0C3A;
+    border:5px solid #1D0C3A;
+    box-shadow: 2px 5px 8px 0px rgba(255, 255, 255, 0.04);
+    border-radius: 0px 0px 60px 60px;
+
+    color: white;
+    font-size: 0.8em;
+    font-weight: 600;
+    transition: 0.1s ease;
+}
+
+.change-view button:hover:active {
+    background-color: white;
+    color: #1D0C3A;
+}
+
 @media screen and (min-width: 600px) {
     .atual-section__name {
         gap: 2em;
@@ -81,5 +109,15 @@
     .atual-section__icons li img {  
         width: 32px;
         height: 32px;
+    }
+
+    .change-view button {
+        top: 6.2em;
+        right: 45%;
+    }
+
+    .change-view button:hover {
+        background-color: #2E1656;
+        color: white;
     }
 }

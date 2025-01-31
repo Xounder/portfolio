@@ -17,5 +17,6 @@
 @media screen and (min-width: 600px) {
     .group-cards {
         padding: 1em 0.8em;
+        max-height: 85vh;
     }
 }

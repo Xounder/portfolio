@@ -19,6 +19,13 @@ import { motion } from "framer-motion";
 export const HomePage = () => {
   const [currentSection, setCurrentSection] = useState<string>(sections[0]);
   const [mainMotionValue, setMainMotionValue] = useState<number>(200);
+  const [changeMotionOrientation, setChangeMotionOrientation] = useState(false);
+
+  const menuSetCurrentSection = (sectionName: string) => {
+    setCurrentSection(sectionName);
+    setMainMotionValue(200);
+    setChangeMotionOrientation(true);
+  };
 
   const componentsMap: Record<string, JSX.Element> = {
     "About Me": <AboutMePage />,
@@ -47,9 +54,19 @@ export const HomePage = () => {
 
       <motion.div
         key={currentSection}
-        initial={{ opacity: 0, x: mainMotionValue * -1 }}
-        animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: mainMotionValue }}
+        initial={{
+          opacity: 0,
+          ...(changeMotionOrientation
+            ? { y: mainMotionValue }
+            : { x: mainMotionValue * -1 }),
+        }}
+        animate={{ opacity: 1, x: 0, y: 0 }}
+        exit={{
+          opacity: 0,
+          ...(changeMotionOrientation
+            ? { y: mainMotionValue * -1 }
+            : { x: mainMotionValue }),
+        }}
         transition={{ duration: 0.6 }}
       >
         <main className="home-main">
@@ -74,6 +91,7 @@ export const HomePage = () => {
                 if (nextIndex < 0) nextIndex = sections.length - 1;
                 setCurrentSection(sections[nextIndex]);
                 setMainMotionValue(-200);
+                setChangeMotionOrientation(false);
               }}
             />
           </aside>
@@ -82,7 +100,7 @@ export const HomePage = () => {
             <MenuSectionButton
               icon={menuIcon}
               alt="Ícone de um fone de ouvido"
-              setCurrentSection={setCurrentSection}
+              menuSetCurrentSection={menuSetCurrentSection}
             />
           </div>
 
@@ -96,6 +114,7 @@ export const HomePage = () => {
                 if (nextIndex === sections.length) nextIndex = 0;
                 setCurrentSection(sections[nextIndex]);
                 setMainMotionValue(200);
+                setChangeMotionOrientation(false);
               }}
             />
           </aside>

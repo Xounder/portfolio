@@ -2,10 +2,13 @@ import './MenuBar.css';
 
 import logo from '../../assets/logo.png';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+
 
 type MenuBarProps = {
     sectionName: string;
-    icons: Icon[]
+    icons: Icon[];
+    atualPage: string;
 };
 
 export type Icon = {
@@ -14,8 +17,10 @@ export type Icon = {
     link?:string;
 }
 
-export const MenuBar = ({sectionName, icons}: MenuBarProps) => {
+
+export const MenuBar = ({sectionName, icons, atualPage}: MenuBarProps) => {
     const [isVisible, setIsVisible] = useState(false);
+
     const renderIcons = () => {
         return icons.map((icon, index) => {
             const content = icon.link ? (
@@ -48,7 +53,7 @@ export const MenuBar = ({sectionName, icons}: MenuBarProps) => {
             </div>
 
             <aside className='change-view'>
-                <button>Change View</button>
+                <Link to={atualPage == '/' ? "/scroll" : "/"}><button>Change View</button></Link>;
             </aside>
         </>
     )

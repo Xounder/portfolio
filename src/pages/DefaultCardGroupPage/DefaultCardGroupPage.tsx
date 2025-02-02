@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import "./DefaultCardGroupPage.css";
 
 import { DefaultCard } from "../../components/DefaultCard/DefaultCard";
@@ -34,18 +33,10 @@ const cardDataMap = {
 };
 
 export const DefaultCardGroupPage = ({ cardType }: { cardType: string }) => {
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  const handleScroll = (event: React.WheelEvent) => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop += event.deltaY;
-    }
-  };
-
   const selectedData = cardDataMap[cardType as keyof typeof cardDataMap];
 
   return (
-    <div className="group-cards" ref={scrollRef} onWheel={handleScroll}>
+    <div className="group-cards">
       {selectedData &&
         selectedData.cards.map((card, index) => (
           <DefaultCard

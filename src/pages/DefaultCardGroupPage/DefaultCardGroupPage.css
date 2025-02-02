@@ -2,31 +2,32 @@
     display: flex;
     overflow: hidden;
     overflow-x: scroll;
+    overflow-y: hidden;
     gap: 0 1em;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
+    padding: 0.6em 0;
 }
 
 @media screen and (min-width: 600px) {
     .group-cards {
         flex-direction: column;
         gap: 0.2em 0;
-        overflow-y: scroll;
-        overflow-x: hidden;
         width: 100%;
         max-width: 100%;
-        padding: 0.8em 0.3em;
-        scroll-behavior: smooth;
-        scrollbar-width: thin;
-        scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
+        overflow-y: scroll;
+        overflow-x: hidden;
         padding: 0 0.5em;
         max-height: 38.5em;
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 400px) {
     .group-cards {    
         min-width: 22.5em;
         max-width: 22.5em;
         min-height: 22.5em;
-        max-height: 28.1em;
+        max-height: 25.1em;
     }
 }

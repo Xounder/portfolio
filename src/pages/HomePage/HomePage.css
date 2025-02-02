@@ -12,6 +12,8 @@
 }
 
 .home-main .content .group-cards {
+  display: flex;
+  align-items: center;
   box-sizing: border-box;
   height: 75vh;
 }
@@ -55,7 +57,7 @@
 
   .section-buttons__left-arrow {
     position: absolute;
-    left: -1px;
+    left: -0.06em;
     bottom: 16em;
   }
 
@@ -69,7 +71,7 @@
 
   .section_buttons__right-arrow {
     position: absolute;
-    right: -1px;
+    right: -0.06em;
     bottom: 16em;
   }
 }

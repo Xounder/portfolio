@@ -59,7 +59,7 @@
 
 @media screen and (min-width: 600px) {
     .contact-form {    
-        width: 60%;
+        width: 80%;
         height: 72vh;
     }
 
@@ -88,4 +88,3 @@
         font-size: 2em;
     }
 }
-

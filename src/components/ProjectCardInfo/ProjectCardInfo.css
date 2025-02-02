@@ -1,5 +1,7 @@
 .project-card {
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .project-card__tecnologies {
@@ -7,8 +9,15 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 5px;
+    gap: 0.3em;
     padding: 0;
     margin: 0;
     overflow: hidden;
+}
+
+@media screen and (min-width: 600px) { 
+    .project-card {
+        align-items: center;
+        justify-content: start;
+    }
 }

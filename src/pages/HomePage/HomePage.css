@@ -1,22 +1,32 @@
-header {
+.home-header {
   min-height: 14vh;
   max-height: 14vh;
 }
 
-main {
-  min-height: 78vh;
-  max-height: 78vh;
+.home-main {
+  height: 78vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: 0;
 }
 
-main .content {
+.home-main .content .group-cards {
+  box-sizing: border-box;
+  height: 75vh;
+}
+
+.home-main .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
 }
   
 .section-buttons {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -24,9 +34,16 @@ main .content {
 }
 
 @media screen and (min-width: 600px) {  
-  main {
+  .home-main {
+    width: 85%;
+    margin: auto;
     min-height: 74vh;
     max-height: 74vh;
+  }
+
+  .home-main .content .group-cards {
+    box-sizing: border-box;
+    height: 75vh;
   }
 
   .section-buttons {

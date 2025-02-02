@@ -18,6 +18,7 @@ import { motion } from "framer-motion";
 
 export const HomePage = () => {
   const [currentSection, setCurrentSection] = useState<string>(sections[0]);
+  const [mainMotionValue, setMainMotionValue] = useState<number>(200);
 
   const componentsMap: Record<string, JSX.Element> = {
     "About Me": <AboutMePage />,
@@ -29,24 +30,39 @@ export const HomePage = () => {
 
   return (
     <>
-      <motion.div
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: 50 }} 
-        transition={{ duration: 0.5 }}
-      >
-        <header>
+      <header className="home-header">
+        <motion.div
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 100 }}
+          transition={{ duration: 0.6 }}
+        >
           <MenuBar
             sectionName={currentSection}
             icons={iconsData[sections.indexOf(currentSection)]}
             atualPage="/"
           />
-        </header>
+        </motion.div>
+      </header>
 
-        <main>
+      <motion.div
+        key={currentSection}
+        initial={{ opacity: 0, x: mainMotionValue * -1 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: mainMotionValue }}
+        transition={{ duration: 0.6 }}
+      >
+        <main className="home-main">
           <div className="content">{componentsMap[currentSection] || null}</div>
         </main>
+      </motion.div>
 
+      <motion.div
+        initial={{ opacity: 0, y: 100 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -100 }}
+        transition={{ duration: 0.6 }}
+      >
         <footer className="section-buttons">
           <aside className="section-buttons__left-arrow">
             <ArrowSectionButton
@@ -57,6 +73,7 @@ export const HomePage = () => {
                 let nextIndex = currentIndex - 1;
                 if (nextIndex < 0) nextIndex = sections.length - 1;
                 setCurrentSection(sections[nextIndex]);
+                setMainMotionValue(-200);
               }}
             />
           </aside>
@@ -78,6 +95,7 @@ export const HomePage = () => {
                 let nextIndex = currentIndex + 1;
                 if (nextIndex === sections.length) nextIndex = 0;
                 setCurrentSection(sections[nextIndex]);
+                setMainMotionValue(200);
               }}
             />
           </aside>

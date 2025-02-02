@@ -1,14 +1,19 @@
-main {
+.home-scroll-header{
+    min-height: 6em;
+    max-height: 6em;
+}
+
+.home-scroll-main {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 2em 0;
-    padding-top: 7em;
+    padding-top: 2em;
     margin-bottom: 2em;
 }
 
-main section {
+.home-scroll-main section {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -17,7 +22,7 @@ main section {
     margin: auto;
 }
 
-footer {
+.home-scroll-footer {
     width: 100%;
     height: 60px;
     display: flex;
@@ -29,20 +34,20 @@ footer {
     color: white;
 }
 
-footer h4, footer p{
+.home-scroll-footer h4, .home-scroll-footer p{
     margin: 0;
 }
 
-footer p {
+.home-scroll-footer p {
     font-size: 0.8em;
 }
 
 @media screen and (min-width: 600px) { 
-    main {
+    .home-scroll-main {
         gap: 4em 0;
     }
 
-    main section {
+    .home-scroll-main section {
         gap: 2em;
         width: 80%;
     }

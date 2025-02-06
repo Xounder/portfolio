@@ -1,6 +1,6 @@
 .button {
-    padding: 0.6em 1.2em;
-    font-size: 1em;
+    padding: 0.6em 6em;
+    font-size: 0.9em;
     font-weight: 500;
     font-family: inherit;
     background-color: #2E1656;
@@ -19,4 +19,3 @@
 .button:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;
 }
-

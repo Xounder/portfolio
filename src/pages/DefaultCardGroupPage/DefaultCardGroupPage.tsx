@@ -35,8 +35,10 @@ const cardDataMap = {
 export const DefaultCardGroupPage = ({ cardType }: { cardType: string }) => {
   const selectedData = cardDataMap[cardType as keyof typeof cardDataMap];
 
+  const justifyContent = selectedData.cards.length === 1 ? "center" : "start";
+
   return (
-    <div className="group-cards">
+    <div className="group-cards" style={{ justifyContent: justifyContent }}>
       {selectedData &&
         selectedData.cards.map((card, index) => (
           <DefaultCard

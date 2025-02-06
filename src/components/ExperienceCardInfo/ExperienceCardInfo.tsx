@@ -12,8 +12,6 @@ export const ExperienceCardInfo = ({ info }: ExperienceCardInfoProps) => {
             <p>{info.type}</p>
             <Button 
                 text={info.yearPeriod} 
-                size={[0.5, 1.8]} 
-                fontSize={0.7} 
                 type="button"
                 onClick={() => {}}
             />

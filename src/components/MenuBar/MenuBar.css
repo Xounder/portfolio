@@ -9,13 +9,13 @@
     background-color: #1D0C3A;
     box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.55);
     width: 100%;
-    height: 90px;
+    height: 5.6em;
 }
 
 .atual-section > img {
     padding-left: 1em;
-    width: 70px;
-    height: 70px;
+    width: 4.3em;
+    height: 4.3em;
 }   
 
 .atual-section__content {
@@ -53,19 +53,15 @@
     transform: translateY(0);
 }
 
-.atual-section__content__icons li {  
-    width: 26px;
-    height: 26px;
-}
-
-.atual-section__content__icons li a:hover img {
-    width: 26px;
-    height: 26px;
+.atual-section__content__icons li,
+.atual-section__content__icons li a:hover img  {  
+    width: 1.6em;
+    height: 1.6em;
 }
 
 .atual-section__content__icons li img {  
-    width: 22px;
-    height: 22px;
+    width: 1.3em;
+    height: 1.3em;
 }
 
 .change-view {
@@ -76,7 +72,7 @@
     position: fixed;
     z-index: 101;
     top: 6.2em;
-    right: 32%;
+    right:calc(50% - 5em);
     width: 10em;
     height: 2em;
 
@@ -91,12 +87,61 @@
     transition: 0.1s ease;
 }
 
+.change-view button:hover {
+    background-color: #2E1656;
+    color: white;
+}
+
 .change-view button:hover:active {
     background-color: white;
     color: #1D0C3A;
 }
 
 @media screen and (min-width: 600px) {
+    .atual-section {
+        height: 6.6em;
+    }
+
+    .atual-section__content h2 {
+        font-size: 2em;
+    }
+
+    .atual-section__content__icons li,
+    .atual-section__content__icons li a:hover img {  
+        width: 1.75em;
+        height: 1.75em;
+    }
+ 
+    .atual-section__content__icons li img {  
+        width: 1.5em;
+        height: 1.5em;
+    }
+
+    .change-view button {
+         top: 7.2em
+    }
+}
+
+@media screen and (max-width: 1000px) and (orientation: landscape) {
+    .atual-section {
+        height: 3.8em;
+    }
+
+    .atual-section > img {
+        width: 2.8em;
+        height: 2.8em;
+    }
+
+    .atual-section__content {
+        width: 80%;
+    }
+
+    .change-view button {
+        top: 3.6em;
+    }
+}
+
+@media screen and (min-width: 1024px) {
     .atual-section__content {
         gap: 2em;
         width: 100%;
@@ -112,28 +157,17 @@
         padding-right: 10em;
     }
 
-    .atual-section__content__icons li {  
-        width: 36px;
-        height: 36px;
+    .atual-section__content__icons li,
+    .atual-section__content__icons li a:hover img {  
+        width: 2.25em;
+        height: 2.25em;
     }
-
-    .atual-section__content__icons li a:hover img {
-        width: 36px;
-        height: 36px;
-    }
-
+ 
     .atual-section__content__icons li img {  
-        width: 32px;
-        height: 32px;
+        width: 2em;
+        height: 2em;
     }
+}
 
-    .change-view button {
-        top: 6.2em;
-        right: 45%;
-    }
-
-    .change-view button:hover {
-        background-color: #2E1656;
-        color: white;
-    }
+@media screen and (min-width: 1440px) {
 }

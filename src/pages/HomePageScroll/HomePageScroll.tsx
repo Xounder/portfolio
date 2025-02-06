@@ -109,7 +109,7 @@ export const HomePageScroll = () => {
             key={key}
             data-section={key}
             className={key.toLowerCase()}
-            initial={{ opacity: 0, y: 350 }}
+            initial={{ opacity: 0, y: 300 }}
             animate={visibleSections.has(key) ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, ease: "easeOut" }}
             ref={key === "Contact" ? lastSectionRef : null}

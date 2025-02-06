@@ -40,7 +40,7 @@
 @media screen and (max-width: 600px) {
     .about-me {
         max-width: 22.5em;
-        max-height: 75vh;
+        max-height: 70vh;
     }
 }
 
@@ -49,6 +49,7 @@
         height: 65vh;
         flex-direction: row;
         max-height: 20em;
+        max-width: 90em;
     }
 
     .about-me img {
@@ -93,10 +94,6 @@
 }
 
 @media screen and (min-width: 1440px) {
-    .about-me {
-        max-height: 32em;
-    }
-
     .about-me img {
         width: 20em;
         height: 20em;

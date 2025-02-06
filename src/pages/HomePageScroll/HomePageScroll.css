@@ -8,7 +8,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2em 0;
+    gap: 4em 0;
     padding-top: 2em;
     margin-bottom: 2em;
 }
@@ -18,9 +18,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1em;
+    gap: 2em;
     margin: auto;
-    max-height: 38.5em;
 }
 
 .home-scroll-footer {
@@ -46,11 +45,18 @@
 
 @media screen and (min-width: 600px) { 
     .home-scroll-main {
-        gap: 3em 0;
+        gap: 5em 0;
+        padding-top: 4em;
     }
 
     .home-scroll-main section {
         gap: 2em;
+        width: 90%;
+    }
+}
+
+@media screen and (min-width: 1024px) { 
+    .home-scroll-main  section {
         width: 80%;
     }
 }

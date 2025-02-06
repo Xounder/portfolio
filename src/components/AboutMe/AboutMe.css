@@ -94,6 +94,11 @@
 }
 
 @media screen and (min-width: 1440px) {
+    .about-me {
+        max-height: 35em;
+    }
+
+
     .about-me img {
         width: 20em;
         height: 20em;

@@ -131,6 +131,9 @@
 
 
 @media screen and (min-width: 1024px) {
+    .contact-form {
+        max-width: 55em;
+    }
     .contact-form form input, textarea {
         width: 30em;        
     }

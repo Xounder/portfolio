@@ -11,7 +11,7 @@ export const ContactForm = () => {
                 <input type="email" id="email" name="email" placeholder='Email*' required />
                 <input type="tel" id="phone" name="phone" placeholder='Contact Number*' title='Preencha este campo com: (99) 99999-9999 ou (99) 9999-9999' pattern="\(\d{2}\) \d{4,5}-\d{4}" required />
                 <textarea id="message" name="message" placeholder='Message*' required></textarea>
-                <Button text="Submit" size={[0.6, 6]} fontSize={0.9} type="submit"onClick={() => {}}></Button>
+                <Button text="Submit" type="submit"onClick={() => {}}></Button>
             </form>
         </div>
     );

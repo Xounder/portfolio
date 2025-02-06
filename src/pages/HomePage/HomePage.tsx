@@ -1,5 +1,5 @@
 import "./HomePage.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { MenuBar } from "../../components/MenuBar/MenuBar.tsx";
 import { AboutMePage } from "../AboutMePage/AboutMePage.tsx";
@@ -21,9 +21,11 @@ export const HomePage = () => {
   const [mainMotionValue, setMainMotionValue] = useState<number>(200);
   const [changeMotionOrientation, setChangeMotionOrientation] = useState(false);
 
+  const MOTION_VALUE = 100;
+
   const menuSetCurrentSection = (sectionName: string) => {
     setCurrentSection(sectionName);
-    setMainMotionValue(200);
+    setMainMotionValue(MOTION_VALUE);
     setChangeMotionOrientation(true);
   };
 
@@ -35,6 +37,17 @@ export const HomePage = () => {
     Contact: <ContactFormPage />,
   };
 
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+
+    
+    return () => {
+      document.body.style.overflow = "auto";
+      document.documentElement.style.overflow = "auto";
+    };
+  }, []);
+
   return (
     <>
       <header className="home-header">
@@ -42,7 +55,7 @@ export const HomePage = () => {
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 100 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
         >
           <MenuBar
             sectionName={currentSection}
@@ -67,7 +80,7 @@ export const HomePage = () => {
             ? { y: mainMotionValue * -1 }
             : { x: mainMotionValue }),
         }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.5 }}
       >
         <main className="home-main">
           <div className="content">{componentsMap[currentSection] || null}</div>
@@ -75,10 +88,10 @@ export const HomePage = () => {
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, y: 100 }}
+        initial={{ opacity: 0, y: 0 }}
         animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -100 }}
-        transition={{ duration: 0.6 }}
+        exit={{ opacity: 0, y: 0 }}
+        transition={{ duration: 0.5 }}
       >
         <footer className="section-buttons">
           <aside className="section-buttons__left-arrow">
@@ -90,7 +103,7 @@ export const HomePage = () => {
                 let nextIndex = currentIndex - 1;
                 if (nextIndex < 0) nextIndex = sections.length - 1;
                 setCurrentSection(sections[nextIndex]);
-                setMainMotionValue(-200);
+                setMainMotionValue(-MOTION_VALUE);
                 setChangeMotionOrientation(false);
               }}
             />
@@ -104,7 +117,7 @@ export const HomePage = () => {
             />
           </div>
 
-          <aside className="section_buttons__right-arrow">
+          <aside className="section-buttons__right-arrow">
             <ArrowSectionButton
               icon={rightArrow}
               alt="Ícone de uma flecha para a direita"
@@ -113,7 +126,7 @@ export const HomePage = () => {
                 let nextIndex = currentIndex + 1;
                 if (nextIndex === sections.length) nextIndex = 0;
                 setCurrentSection(sections[nextIndex]);
-                setMainMotionValue(200);
+                setMainMotionValue(MOTION_VALUE);
                 setChangeMotionOrientation(false);
               }}
             />

@@ -4,7 +4,8 @@
 }
 
 .home-main {
-  height: 78vh;
+  min-height: 80vh;
+  max-height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,7 +16,6 @@
   display: flex;
   align-items: center;
   box-sizing: border-box;
-  height: 75vh;
 }
 
 .home-main .content {
@@ -27,17 +27,87 @@
 }
   
 .section-buttons {
+  position: relative;
+  z-index: 100;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 60px;
+  height: 3.75em;
+  min-height: 6vh;
+  max-height: 6vh;
+  background-color: #2E1656;
+}
+  
+@media screen and (max-width: 600px) {
+  .section-buttons__left-arrow {
+    width: 33.33%;
+  }
+  
+  .section-buttons__right-arrow {
+    width: 33.33%;
+  }
+  
+  .section-buttons__menu {
+    width: 33.33%;
+  }
 }
 
-@media screen and (min-width: 600px) {  
+@media screen and (min-width: 600px) {
+  .home-header {
+    min-height: 14vh; 
+    max-height: 14vh; 
+  }
+
   .home-main {
-    width: 85%;
+    min-height: 81vh;
+    max-height: 81vh;
+  }
+
+  .section-buttons {
+    min-height: 5vh;
+    max-height: 5vh;
+  }
+  
+  .section-buttons__left-arrow {
+    width: 33.33%;
+  }
+  
+  .section-buttons__right-arrow {
+    width: 33.33%;
+  }
+  
+  .section-buttons__menu {
+    width: 33.33%;
+  }
+}
+
+@media screen and (max-width: 1000px) and (orientation: landscape) {
+  .home-header {
+    min-height: 13vh; 
+    max-height: 13vh; 
+  }
+
+  .home-main {
+    min-height: 77vh;
+    max-height: 77vh;
+  }
+
+  .section-buttons {
+    min-height: 10vh;
+    max-height: 10vh;
+  }
+}
+
+@media screen and (min-width: 1024px) {  
+  .home-header {
+    min-height: 16vh;
+    max-height: 16vh;
+  }
+
+  .home-main {
+    width: 80%;
     margin: auto;
     min-height: 74vh;
     max-height: 74vh;
@@ -45,33 +115,55 @@
 
   .home-main .content .group-cards {
     box-sizing: border-box;
-    height: 75vh;
   }
 
   .section-buttons {
-    position: relative;
     background-color: #1D0C3A;
     min-height: 10vh;
     max-height: 10vh;
   }
 
   .section-buttons__left-arrow {
-    position: absolute;
+    width: 60px;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .section-buttons__right-arrow {
+    width: 60px;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .section-buttons__left-arrow{
     left: -0.06em;
-    bottom: 16em;
+  }
+
+  .section-buttons__right-arrow {
+    right: 0.06em;
   }
 
   .section-buttons__menu {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #2E1656;
-    width: 21.85em;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .home-header {
+    min-height: 11vh;
+    max-height: 11vh;
   }
 
-  .section_buttons__right-arrow {
-    position: absolute;
-    right: -0.06em;
-    bottom: 16em;
+  .home-main {
+    min-height: 79vh;
+    max-height: 79vh;
+  }
+
+  .section-buttons {
+    min-height: 10vh;
+    max-height: 10vh;
   }
 }

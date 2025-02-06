@@ -62,6 +62,29 @@
     font-size: 0.9em;
 }
 
+.modal {
+    padding: 2em;
+    border-radius: 1em;
+    border: none;
+    text-align: center;
+    background: white;
+}
+
+.modal::backdrop {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.modal p {
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.modal button {
+    margin-top: 1em;
+    padding: 0.6em 3em;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 600px) {
     .contact-form {    
         min-width: 22.5em;

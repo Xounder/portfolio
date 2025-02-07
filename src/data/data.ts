@@ -255,14 +255,14 @@ export const ProjectsCards: DefaultCardProps[] = [
 
 export const ProjectsContent: ProjectCardInfoProps[] = [
     {
-        tecnologies: 
+        technologies: 
         [
             "Java",
             "Spring Boot"
         ]
     },
     {
-        tecnologies: 
+        technologies: 
         [
             "C#",
             ".NET",
@@ -270,14 +270,14 @@ export const ProjectsContent: ProjectCardInfoProps[] = [
         ]
     },
     {
-        tecnologies: 
+        technologies: 
         [
             "C#",
             ".NET"
         ]
     },
     {
-        tecnologies: 
+        technologies: 
         [
             "Angular",
             "TypeScript",
@@ -286,7 +286,7 @@ export const ProjectsContent: ProjectCardInfoProps[] = [
         ]
     },
     {
-        tecnologies: 
+        technologies: 
         [
             "Angular",
             "TypeScript",
@@ -295,7 +295,7 @@ export const ProjectsContent: ProjectCardInfoProps[] = [
         ]
     },
     {
-        tecnologies: 
+        technologies: 
         [
             "Angular",
             "TypeScript",
@@ -304,13 +304,13 @@ export const ProjectsContent: ProjectCardInfoProps[] = [
         ]
     },
     {
-        tecnologies: 
+        technologies: 
         [
             "Python"
         ]
     },
     {
-        tecnologies: 
+        technologies: 
         [
             "JavaScript",
             "HTML",

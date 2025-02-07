@@ -13,7 +13,7 @@ const cardDataMap = {
     cards: ProjectsCards,
     content: ProjectsContent,
     component: (index: number) => (
-      <ProjectCardInfo tecnologies={ProjectsContent[index].tecnologies} />
+      <ProjectCardInfo technologies={ProjectsContent[index].technologies} />
     ),
   },
   Experiences: {

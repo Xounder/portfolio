@@ -4,7 +4,7 @@
     justify-content: center;
 }
 
-.project-card__tecnologies {
+.project-card__technologies {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -15,7 +15,7 @@
     overflow: hidden;
 }
 
-.project-card__tecnologies li button {
+.project-card__technologies li button {
     padding: 0.6em 1.3em;
     font-size: 0.7em;
 }
@@ -26,13 +26,13 @@
         justify-content: start;
     }
 
-    .project-card__tecnologies {
+    .project-card__technologies {
         justify-content: start;
     }
 }
 
 @media screen and (min-width: 1440px) {
-    .project-card__tecnologies li button {
+    .project-card__technologies li button {
         font-size: 0.9em;
     }
 }

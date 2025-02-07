@@ -50,7 +50,7 @@ export const iconsData: Icon[][] = [
   [
     { icon: githubIcon, alt: 'Ícone de github', link: 'https://github.com/Xounder' },
     { icon: linkedinIcon, alt: 'Ícone de linkedin', link: 'https://www.linkedin.com/in/renan-fellipe/' },
-    { icon: youtubeIcon, alt: 'Ícone de youtube', link: 'https://www.youtube.com/@xounder' },
+    { icon: youtubeIcon, alt: 'Ícone de youtube', link: 'https://www.youtube.com/@Xounder_Tech' },
     { icon: instagramIcon, alt: 'Ícone de instagram', link: 'https://www.instagram.com/renan.llipe/' },
   ],
 ];

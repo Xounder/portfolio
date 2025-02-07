@@ -1,7 +1,7 @@
 .group-cards {
     display: flex;
     overflow: hidden;
-    overflow-x: scroll;
+    overflow-x: auto;
     overflow-y: hidden;
     gap: 0 1em;
     scroll-behavior: smooth;
@@ -10,10 +10,27 @@
     padding: 0 1em;
 }
 
-.group-cards::-webkit-scrollbar { 
-    opacity: 0; /* Deixa invisível */
+.group-cards {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
 }
 
+.group-cards::-webkit-scrollbar {
+    width: 0.5em;
+}
+
+.group-cards::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.group-cards::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 0.25em;
+}
+
+.group-cards::-webkit-scrollbar-button {
+    display: none;
+}
 
 @media screen and (max-width: 600px) {
     .group-cards {    
@@ -30,7 +47,7 @@
         gap: 0.8em 0;
         width: 100%;
         max-width: 100%;
-        overflow-y: scroll;
+        overflow-y: auto;
         overflow-x: hidden;
         padding: 1em 0.5em 1em 0.5em;
         min-height: 11em;

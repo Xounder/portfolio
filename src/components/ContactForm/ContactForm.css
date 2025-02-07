@@ -27,7 +27,7 @@
 
 .contact-form form input, textarea {
     border-radius: 1em;
-    border: 1px solid #2E1656;
+    border: 0.06em solid #2E1656;
     padding-left: 0.8em;
     font-size: 1em;
     color: #2E1656;

@@ -1,6 +1,6 @@
 @media screen and (min-width: 1024px) {
     .arrow-section button {
-        width: 60px;
+        width: 3.75em;
         height: 30vh;
         background-color: unset;
     }
@@ -8,8 +8,8 @@
     .arrow-section button > img {
         opacity: 20%;
         transition: opacity 0.3s ease;
-        width: 50px;
-        height: 50px;
+        width: 3.13em;
+        height: 3.13em;
     }
 
     .arrow-section button:hover img {

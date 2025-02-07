@@ -4,12 +4,12 @@
     font-weight: 500;
     font-family: inherit;
     background-color: #2E1656;
-    border: #2E1656 2px solid;
+    border: #2E1656 0.13em solid;
     border-radius: 1.2em;
     cursor: pointer;
     transition: border-color 0.25s;
     color: white;
-    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.45);}
+    box-shadow: 1.9em 1.9em 0.45em rgba(0, 0, 0, 0.45);}
 
 .button:hover {
     border-color: #646cff;
@@ -17,5 +17,5 @@
 
 .button:focus,
 .button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
+    outline: 0.25em auto -webkit-focus-ring-color;
 }

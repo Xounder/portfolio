@@ -2,11 +2,13 @@ import "./HomePage.css";
 import { useEffect, useState } from "react";
 
 import { MenuBar } from "../../components/MenuBar/MenuBar.tsx";
-import { AboutMePage } from "../AboutMePage/AboutMePage.tsx";
-import { ContactFormPage } from "../ContactFormPage/ContactFormPage.tsx";
-import { DefaultCardGroupPage } from "../DefaultCardGroupPage/DefaultCardGroupPage.tsx";
+import { AboutMe } from "../../components/AboutMe/AboutMe.tsx";
+import { ContactForm } from "../../components/ContactForm/ContactForm.tsx";
+import { DefaultCardGroup } from "../../components/DefaultCardGroup/DefaultCardGroup.tsx";
 import { MenuSectionButton } from "../../components/MenuSectionButton/MenuSectionButton.tsx";
 import { ArrowSectionButton } from "../../components/ArrowSectionButton/ArrowSectionButton.tsx";
+
+import { AboutMeContent } from "../../data/data";
 
 import menuIcon from "../../assets/icons/menu-hamburguer.svg";
 import leftArrow from "../../assets/icons/seta-pequena-esquerda.svg";
@@ -30,11 +32,15 @@ export const HomePage = () => {
   };
 
   const componentsMap: Record<string, JSX.Element> = {
-    "About Me": <AboutMePage />,
-    Projects: <DefaultCardGroupPage cardType="Projects" />,
-    Experiences: <DefaultCardGroupPage cardType="Experiences" />,
-    Recognitions: <DefaultCardGroupPage cardType="Recognitions" />,
-    Contact: <ContactFormPage />,
+    "About Me": <AboutMe 
+                  image={AboutMeContent.image}
+                  title={AboutMeContent.title}
+                  description={AboutMeContent.description}  
+                />,
+    Projects: <DefaultCardGroup cardType="Projects" />,
+    Experiences: <DefaultCardGroup cardType="Experiences" />,
+    Recognitions: <DefaultCardGroup cardType="Recognitions" />,
+    Contact: <ContactForm />,
   };
 
   useEffect(() => {

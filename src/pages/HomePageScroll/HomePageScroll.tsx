@@ -7,23 +7,25 @@ import { InfoCard } from "../../components/InfoCard/InfoCard.tsx";
 import { iconsData } from "../../data/iconsData.ts";
 import { sections } from "../../data/sections.ts";
 
+import { AboutMeContent } from "../../data/data.ts";
+
 import { motion } from "framer-motion";
 
-const AboutMePage = lazy(() =>
-  import("../AboutMePage/AboutMePage").then((module) => ({
-    default: module.AboutMePage,
+const AboutMe = lazy(() =>
+  import("../../components/AboutMe/AboutMe.tsx").then((module) => ({
+    default: module.AboutMe,
   }))
 );
 
-const ContactFormPage = lazy(() =>
-  import("../ContactFormPage/ContactFormPage").then((module) => ({
-    default: module.ContactFormPage,
+const ContactForm = lazy(() =>
+  import("../../components/ContactForm/ContactForm.tsx").then((module) => ({
+    default: module.ContactForm,
   }))
 );
 
-const DefaultCardGroupPage = lazy(() =>
-  import("../DefaultCardGroupPage/DefaultCardGroupPage").then((module) => ({
-    default: module.DefaultCardGroupPage,
+const DefaultCardGroup = lazy(() =>
+  import("../../components/DefaultCardGroup/DefaultCardGroup.tsx").then((module) => ({
+    default: module.DefaultCardGroup,
   }))
 );
 
@@ -99,11 +101,11 @@ export const HomePageScroll = () => {
 
       <main className="home-scroll-main">
         {[ 
-          { key: "About Me", Component: AboutMePage },
-          { key: "Projects", Component: DefaultCardGroupPage },
-          { key: "Experiences", Component: DefaultCardGroupPage },
-          { key: "Recognitions", Component: DefaultCardGroupPage },
-          { key: "Contact", Component: ContactFormPage },
+          { key: "About Me", Component: AboutMe },
+          { key: "Projects", Component: DefaultCardGroup },
+          { key: "Experiences", Component: DefaultCardGroup },
+          { key: "Recognitions", Component: DefaultCardGroup },
+          { key: "Contact", Component: ContactForm },
         ].map(({ key, Component }) => (
           <motion.section
             key={key}
@@ -114,9 +116,19 @@ export const HomePageScroll = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             ref={key === "Contact" ? lastSectionRef : null}
           >
+            <InfoCard info={key} />
             <Suspense fallback={<p>Carregando...</p>}>
-              <InfoCard info={key} />
-              {visibleSections.has(key) && <Component cardType={key} />}
+              {visibleSections.has(key) && 
+                <Component 
+                  cardType={key} 
+                  image={{
+                    img: AboutMeContent.image.img,
+                    alt: AboutMeContent.image.alt
+                  }} 
+                  title={ AboutMeContent.title } 
+                  description={ AboutMeContent.description } 
+                />
+              }
             </Suspense>
           </motion.section>
         ))}

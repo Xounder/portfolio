@@ -43,7 +43,7 @@ export const HomePage = () => {
 
     
     return () => {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = "visible";
       document.documentElement.style.overflow = "auto";
     };
   }, []);

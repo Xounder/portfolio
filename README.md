@@ -1,50 +1,70 @@
-# React + TypeScript + Vite
+# 📌 Portfólio 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my portfolio! Here, you'll find a collection of my projects, experiences, certifications, and achievements in the field of technology.
 
-Currently, two official plugins are available:
+## 🧑‍💻 About Me
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+I'm Renan Fellipe, a Computer Engineering student at IFMA, passionate about technology and software development. I have experience in backend and full-stack development, with a focus on .NET, Java, Spring Boot, C#, and Angular, as well as knowledge in Cloud Computing, Microservices, REST APIs, Docker, Kubernetes, and SQL/NoSQL databases.
 
-## Expanding the ESLint configuration
+I'm part of Class 10 of the University Ambassadors Program at DIO, where I share knowledge and support the tech community. I also competed in the SBC Programming Marathon, placing 3rd in the regional phase and securing a spot in the national phase.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 🏆 Achievements and Certifications
 
-- Configure the top-level `parserOptions` property like this:
+- 📜 Certifications in .NET, Spring Boot, Software Architecture, Cloud Computing, and Python through programs like Randstad, CI&T Next Gen, Microsoft Azure Essentials, Deal, Cognizant, and Claro.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- 💡 Research Project on Mapping and Localization for Mobile Robotics, using Python and Arduino.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- 📈 Participation in hackathons and technical challenges, always seeking innovation and scalable solutions.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## 🚀 Featured Projects
+Here you’ll find some of my most relevant projects, including:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- ✔️ RESTful APIs for user, task, and vehicle management, developed with .NET (Minimal API) and Spring Boot.
+
+- ✔️ Interactive Web Applications built with Angular and TypeScript.
+
+- ✔️ Personal Projects like a BuzzFeed clone and a fanmade Pokémon game.
+
+## 📬 Contact
+
+Want to connect or collaborate on a project? Feel free to reach out!
+
+📧 Email: 1renanfellipe5@gmail.com
+
+🔗 LinkedIn: https://www.linkedin.com/in/renan-fellipe/
+
+🐙 GitHub: https://github.com/Xounder
+
+
+# Web Portfólio
+
+## Home Page
+
+![About Me](screenshots/about-me.png)
+
+![Projects](screenshots/projects.png)
+
+![Experiences](screenshots/experiences.png)
+
+![Experiences](screenshots/recognitions.png)
+
+![Contact](screenshots/contact.png)
+
+
+## Scroll Page
+
+![About Me](screenshots/about-me-scroll.png)
+
+![Projects](screenshots/projects-scroll.png)
+
+![Experiences](screenshots/experiences_recognitions-scroll.png)
+
+![Contact](screenshots/contact-scroll.png)
+
+## How to Run
+
+Insert these comands in comand line
+
+- `npm install` -> _Installs the project dependencies_
+
+- `npm run dev` -> _Starts the React application in a development server_

@@ -9,7 +9,7 @@
     cursor: pointer;
     transition: border-color 0.25s;
     color: white;
-    box-shadow: 1.9em 1.9em 0.45em rgba(0, 0, 0, 0.45);}
+    box-shadow: 0.2em 0.2em 0.8em rgba(0, 0, 0, 0.45);}
 
 .button:hover {
     border-color: #646cff;

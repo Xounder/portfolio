@@ -4,30 +4,27 @@ import { DefaultCard } from "../DefaultCard/DefaultCard";
 import { ProjectCardInfo } from "../ProjectCardInfo/ProjectCardInfo";
 import { ExperienceCardInfo } from "../ExperienceCardInfo/ExperienceCardInfo";
 
-import { ProjectsCards, ProjectsContent } from "../../data/data";
-import { ExperiencesCards, ExperiencesContent } from "../../data/data";
-import { RecognitionsCards, RecognitionsContent } from "../../data/data";
+import { ProjectsCards } from "../../data/data";
+import { ExperiencesCards } from "../../data/data";
+import { RecognitionsCards } from "../../data/data";
 
 const cardDataMap = {
   Projects: {
     cards: ProjectsCards,
-    content: ProjectsContent,
     component: (index: number) => (
-      <ProjectCardInfo technologies={ProjectsContent[index].technologies} />
+      <ProjectCardInfo technologies={ProjectsCards[index].projectInfo.technologies} />
     ),
   },
   Experiences: {
     cards: ExperiencesCards,
-    content: ExperiencesContent,
     component: (index: number) => (
-      <ExperienceCardInfo info={ExperiencesContent[index].info} />
+      <ExperienceCardInfo info={ExperiencesCards[index].expInfo.info} />
     ),
   },
   Recognitions: {
     cards: RecognitionsCards,
-    content: RecognitionsContent,
     component: (index: number) => (
-      <ExperienceCardInfo info={RecognitionsContent[index].info} />
+      <ExperienceCardInfo info={RecognitionsCards[index].expInfo.info} />
     ),
   },
 };
@@ -43,13 +40,10 @@ export const DefaultCardGroup = ({ cardType }: { cardType: string }) => {
         selectedData.cards.map((card, index) => (
           <DefaultCard
             key={index}
-            image={{
-              img: card.image.img,
-              alt: card.image.alt,
-            }}
-            title={card.title}
-            description={card.description}
-            link={card.link}
+            image={card.cardInfo.image}
+            title={card.cardInfo.title}
+            description={card.cardInfo.description}
+            link={card.cardInfo.link}
             component={selectedData.component(index)}
           />
         ))}

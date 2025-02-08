@@ -38,6 +38,8 @@ Want to connect or collaborate on a project? Feel free to reach out!
 
 # Web Portfólio
 
+The draft of this web portfolio, made in ***Figma***, can be found [here](https://www.figma.com/design/ftce0BXRJQSJXE3HjsqYGD/Portfolio?node-id=0-1&t=FJNZjil7Wk8QCEn7-1).
+
 ## Home Page
 
 ![About Me](screenshots/about-me.png)

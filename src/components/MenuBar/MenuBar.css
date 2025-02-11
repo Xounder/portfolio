@@ -9,7 +9,7 @@
     background-color: #1D0C3A;
     box-shadow: 0 0.13em 0.44em 0 rgba(0, 0, 0, 0.55);
     width: 100%;
-    height: 5.6em;
+    height: 90px;
 }
 
 .atual-section > img {
@@ -99,7 +99,7 @@
 
 @media screen and (min-width: 600px) {
     .atual-section {
-        height: 6.6em;
+        height: 100px;
     }
 
     .atual-section__content h2 {
@@ -124,7 +124,7 @@
 
 @media screen and (max-width: 1000px) and (orientation: landscape) {
     .atual-section {
-        height: 3.8em;
+        height: 60px;
     }
 
     .atual-section > img {

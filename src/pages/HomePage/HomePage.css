@@ -1,14 +1,13 @@
 .home-header {
-  min-height: 14vh;
-  max-height: 14vh;
+  flex-shrink: 0;
+  height: 5.6em;
 }
 
 .home-main {
-  min-height: 80vh;
-  max-height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  flex-grow: 1;
   margin-bottom: 0;
 }
 
@@ -33,10 +32,9 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   width: 100%;
   height: 3.75em;
-  min-height: 6vh;
-  max-height: 6vh;
   background-color: #2E1656;
 }
   
@@ -54,20 +52,13 @@
   }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 600px) {  
   .home-header {
-    min-height: 14vh; 
-    max-height: 14vh; 
+    height: 6.6em;
   }
 
-  .home-main {
-    min-height: 81vh;
-    max-height: 81vh;
-  }
-
-  .section-buttons {
-    min-height: 5vh;
-    max-height: 5vh;
+  .home-main .content .group-cards {
+    max-height: calc(100vh - 6.6em - 3.75em);
   }
   
   .section-buttons__left-arrow {
@@ -85,32 +76,18 @@
 
 @media screen and (max-width: 1000px) and (orientation: landscape) {
   .home-header {
-    min-height: 13vh; 
-    max-height: 13vh; 
+    height: 3.8em;
   }
 
-  .home-main {
-    min-height: 77vh;
-    max-height: 77vh;
-  }
-
-  .section-buttons {
-    min-height: 10vh;
-    max-height: 10vh;
+  .home-main .content .group-cards {
+    max-height: calc(100vh - 3.8em - 3.75em);
   }
 }
 
 @media screen and (min-width: 1024px) {  
-  .home-header {
-    min-height: 16vh;
-    max-height: 16vh;
-  }
-
   .home-main {
     width: 80%;
     margin: auto;
-    min-height: 74vh;
-    max-height: 74vh;
   }
 
   .home-main .content .group-cards {
@@ -119,8 +96,6 @@
 
   .section-buttons {
     background-color: #1D0C3A;
-    min-height: 10vh;
-    max-height: 10vh;
   }
 
   .section-buttons__left-arrow {
@@ -151,19 +126,4 @@
   }
 }
 
-@media screen and (min-width: 1440px) {
-  .home-header {
-    min-height: 11vh;
-    max-height: 11vh;
-  }
-
-  .home-main {
-    min-height: 79vh;
-    max-height: 79vh;
-  }
-
-  .section-buttons {
-    min-height: 10vh;
-    max-height: 10vh;
-  }
-}
+@media screen and (min-width: 1440px) {}

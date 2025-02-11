@@ -30,7 +30,10 @@ export const HomePage = () => {
     setCurrentSection(sectionName);
     setMainMotionValue(MOTION_VALUE);
     setChangeMotionOrientation(true);
+    scrollToEndPage();
   };
+
+  const scrollToEndPage = () => window.scrollTo(0, document.body.scrollHeight);
 
   const componentsMap: Record<string, JSX.Element> = {
     "About Me": (
@@ -47,7 +50,7 @@ export const HomePage = () => {
   };
 
   useEffect(() => {
-    window.scrollTo(0, document.body.scrollHeight);
+    scrollToEndPage();
 
     document.body.style.overflow = "hidden";
     document.documentElement.style.overflow = "hidden";
@@ -125,6 +128,7 @@ export const HomePage = () => {
                 setCurrentSection(sections[nextIndex]);
                 setMainMotionValue(-MOTION_VALUE);
                 setChangeMotionOrientation(false);
+                scrollToEndPage();
               }}
             />
           </aside>
@@ -148,6 +152,7 @@ export const HomePage = () => {
                 setCurrentSection(sections[nextIndex]);
                 setMainMotionValue(MOTION_VALUE);
                 setChangeMotionOrientation(false);
+                scrollToEndPage();
               }}
             />
           </aside>

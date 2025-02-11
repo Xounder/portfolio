@@ -1,6 +1,5 @@
 .home-header {
   flex-shrink: 0;
-  height: 5.6em;
 }
 
 .home-main {
@@ -26,7 +25,8 @@
 }
   
 .section-buttons {
-  position: relative;
+  position: fixed;
+  bottom: 0;
   z-index: 100;
   display: flex;
   flex-direction: row;
@@ -34,11 +34,19 @@
   justify-content: center;
   flex-shrink: 0;
   width: 100%;
-  height: 3.75em;
+  height: 60px;
   background-color: #2E1656;
 }
   
 @media screen and (max-width: 600px) {
+  .home-header {
+    height: calc(90px - 60px);
+  }
+
+  .home-main {
+    height: calc(100vh - 60px - 90px);
+  }
+
   .section-buttons__left-arrow {
     width: 33.33%;
   }
@@ -54,11 +62,11 @@
 
 @media screen and (min-width: 600px) {  
   .home-header {
-    height: 6.6em;
+    height: calc(100px - 60px);
   }
 
   .home-main .content .group-cards {
-    max-height: calc(100vh - 6.6em - 3.75em);
+    max-height: calc(100vh - 100px - 60px);
   }
   
   .section-buttons__left-arrow {
@@ -76,11 +84,11 @@
 
 @media screen and (max-width: 1000px) and (orientation: landscape) {
   .home-header {
-    height: 3.8em;
+    height: calc(60px - 60px);
   }
 
   .home-main .content .group-cards {
-    max-height: calc(100vh - 3.8em - 3.75em);
+    max-height: calc(100vh - 60px - 60px);
   }
 }
 

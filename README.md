@@ -35,6 +35,7 @@ Want to connect or collaborate on a project? Feel free to reach out!
 
 🐙 GitHub: https://github.com/Xounder
 
+📺 YouTube: https://www.youtube.com/@Xounder_Tech
 
 # Web Portfólio
 

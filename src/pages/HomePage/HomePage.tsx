@@ -22,6 +22,7 @@ export const HomePage = () => {
   const [currentSection, setCurrentSection] = useState<string>(sections[0]);
   const [mainMotionValue, setMainMotionValue] = useState<number>(200);
   const [changeMotionOrientation, setChangeMotionOrientation] = useState(false);
+  const [isPageReady, setIsPageReady] = useState<boolean>(false);
 
   const MOTION_VALUE = 100;
 
@@ -46,14 +47,25 @@ export const HomePage = () => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, document.body.scrollHeight);
+
     document.body.style.overflow = "hidden";
     document.documentElement.style.overflow = "hidden";
+
+    const timer = setTimeout(() => {
+      setIsPageReady(true);
+    }, 100);
 
     return () => {
       document.body.style.overflow = "visible";
       document.documentElement.style.overflow = "auto";
+      clearTimeout(timer);
     };
   }, []);
+
+  if (!isPageReady) {
+    return null;
+  }
 
   return (
     <>

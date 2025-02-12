@@ -69,7 +69,7 @@
 .change-view button {
     position: fixed;
     z-index: 101;
-    top: 100px;
+    top: 75px;
     right: calc(50% - 80px);
     width: 160px;
     height: 32px;
@@ -116,7 +116,7 @@
     }
 
     .change-view button {
-         top: 115px;
+         top: 85px;
     }
 }
 
@@ -135,7 +135,7 @@
     }
 
     .change-view button {
-        top: 75px;
+        top: 45px;
     }
 }
 

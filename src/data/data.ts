@@ -3,19 +3,19 @@ import { ExperienceCardInfoProps } from "../components/ExperienceCardInfo/Experi
 import { ProjectCardInfoProps } from "../components/ProjectCardInfo/ProjectCardInfo";
 import { DefaultCardProps } from "../components/DefaultCard/DefaultCard";
 
-import myPhoto from "../assets/images/me.png";
-import logoIfma from "../assets/images/ifma.png";
-import logoSolyd from "../assets/images/solyd.jpg";
-import logoVoxy from "../assets/images/voxy-logo.png";
-import logoDio from "../assets/images/dio.png";
-import logoMarathonSBC from "../assets/images/maratona-logo.jpg";
+import myPhoto from "../assets/images/me.webp";
+import logoIfma from "../assets/images/ifma.webp";
+import logoSolyd from "../assets/images/solyd.webp";
+import logoVoxy from "../assets/images/voxy-logo.webp";
+import logoDio from "../assets/images/dio.webp";
+import logoMarathonSBC from "../assets/images/maratona-logo.webp";
 
-import logoAPI from "../assets/images/api logo.avif";
-import buletinBlogImage from "../assets/images/buletin-blog.png";
-import angularPstoreImage from "../assets/images/angular-pstore.png";
-import bokumonImage from "../assets/images/bokumon.png";
-import buzzFeedImage from "../assets/images/buzzfeed.png";
-import shoesEcommerceImage from "../assets/images/shoes-ecommerce.png";
+import logoAPI from "../assets/images/api-logo.webp";
+import buletinBlogImage from "../assets/images/buletin-blog.webp";
+import angularPstoreImage from "../assets/images/angular-pstore.webp";
+import bokumonImage from "../assets/images/bokumon.webp";
+import buzzFeedImage from "../assets/images/buzzfeed.webp";
+import shoesEcommerceImage from "../assets/images/shoes-ecommerce.webp";
 
 // About Me
 export const AboutMeContent: AboutMeProps = {

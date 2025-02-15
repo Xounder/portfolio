@@ -20,6 +20,13 @@
     padding: 1.57em 0.6em 0.6em 0.6em;
 }
 
+.default-card__content__ {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
 .default-card__content__image img {
     border-radius: 0.6em;
     width: 15em;
@@ -50,7 +57,6 @@
 }
 
 .default-card__content__component {
-    margin-top: 1.2em;
     border-top: 0.06em dashed rgba(0, 0, 0, 0.35);
     padding-top: 0.5em
 }
@@ -59,8 +65,15 @@
     .default-card {    
         min-width: 22.5em;
         max-width: 22.5em;
-        min-height: 22.5em;
+        min-height: 25em;
         max-height: 25em;
+    }
+
+    .default-card__content__component {
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+        width: 90%;
     }
 }
 

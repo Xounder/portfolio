@@ -195,7 +195,7 @@ export const ProjectsCards: ProjectCardsProps[] = [
         img: logoAPI,
         alt: "Logo API",
       },
-      title: "Vehicle and Administrator Management API",
+      title: "Vehicle Management API",
       description:
         "A minimalist API for vehicle and administrator management using Authentication and Authorization. This project is built with .NET and uses the Minimal API architecture to provide a simple and effective interface.",
       link: "https://github.com/Xounder/minimal-api",

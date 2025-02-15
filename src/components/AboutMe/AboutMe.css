@@ -41,7 +41,6 @@
 @media screen and (max-width: 600px) {
     .about-me {
         max-width: 22.5em;
-        height: 70vh;
         max-height: 34em;
     }
 }

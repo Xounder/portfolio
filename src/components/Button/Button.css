@@ -3,8 +3,8 @@
     font-size: 0.9em;
     font-weight: 500;
     font-family: inherit;
-    background-color: #2E1656;
-    border: #2E1656 0.13em solid;
+    background-color: var(--secondary-color);
+    border: var(--secondary-color) 0.13em solid;
     border-radius: 1.2em;
     cursor: pointer;
     transition: border-color 0.25s;

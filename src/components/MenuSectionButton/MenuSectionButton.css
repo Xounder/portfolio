@@ -20,7 +20,7 @@
     min-width: 21.85em;
     max-width: 21.85em;
 
-    background-color: #2E1656;
+    background-color: var(--secondary-color);
 }
 
 .menu-section__items li button {

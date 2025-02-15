@@ -17,7 +17,7 @@
 }
 
 .contact-form h2 span {
-    color: #2E1656;
+    color: var(--secondary-color);
 }
 
 .contact-form form {
@@ -29,10 +29,10 @@
 
 .contact-form form input, textarea {
     border-radius: 1em;
-    border: 0.06em solid #2E1656;
+    border: 0.06em solid var(--secondary-color);
     padding-left: 0.8em;
     font-size: 1em;
-    color: #2E1656;
+    color: var(--secondary-color);
 }
 
 .contact-form form textarea {

@@ -41,7 +41,7 @@
   justify-content: center;
   width: 100%;
   height: 60px;
-  background-color: #2E1656;
+  background-color: var(--secondary-color);
 }
   
 @media screen and (max-width: 600px) {
@@ -109,7 +109,7 @@
   }
 
   .section-buttons {
-    background-color: #1D0C3A;
+    background-color: var(--primary-color);
   }
 
   .section-buttons__left-arrow {

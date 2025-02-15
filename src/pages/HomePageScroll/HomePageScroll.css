@@ -30,7 +30,7 @@
     gap: 0.2em;
     justify-content: center;
     align-items: center;
-    background-color: #2E1656;
+    background-color: var(--secondary-color);
     color: white;
 }
 

@@ -86,7 +86,7 @@
 }
 
 .change-view button:hover {
-    background-color: var(--secondary-color);
+    background-color: var(--secondary-color-hover);
     color: white;
 }
 

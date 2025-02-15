@@ -46,7 +46,7 @@
 
 .menu-section__items li button:hover {
     border: 0.06em solid rgba(255, 255, 255, 0.9);
-    background-color: rgb(44, 21, 82);
+    background-color: var(--secondary-color-hover);
     transition: 0.1s;
 }
 

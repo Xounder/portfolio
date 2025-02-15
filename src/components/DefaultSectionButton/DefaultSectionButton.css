@@ -15,7 +15,7 @@
 }
 
 .default-section-button:hover {
-    background-color: rgb(44, 21, 82);
+    background-color: var(--secondary-color-hover);
     transition: background-color 0.1s ease-in-out;
 }
 

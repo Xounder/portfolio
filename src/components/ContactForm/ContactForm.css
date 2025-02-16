@@ -5,15 +5,16 @@
     align-items: center;
     background-color: white;
     border-radius: 0.6em;
+    padding: 10px;
     margin: auto;
-    height: 100%;
-    max-height: 40em;
-
+    width: 20rem;
+    max-width: 90%;
 }
 
 .contact-form h2 {
     text-align: center;
     margin: 0.4em 0;
+    font-size: clamp(1.5em, 2vh, 2em);
 }
 
 .contact-form h2 span {
@@ -25,38 +26,34 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    gap: clamp(0.1rem, 1.5vh, 0.8rem);
+    padding-bottom: 0.5em;
+    flex: 1;
 }
 
-.contact-form form input, textarea {
+.contact-form form input {
+    height: clamp(1.8rem, 4vh, 3rem);
+}
+
+.contact-form form input, 
+.contact-form form textarea {
     border-radius: 1em;
-    border: 0.06em solid var(--secondary-color);
+    border: 1px solid var(--secondary-color);
     padding-left: 0.8em;
-    font-size: 1em;
+    font-size: clamp(1.2rem, 1vh, 3rem);
     color: var(--secondary-color);
+    width: 90%;
 }
 
 .contact-form form textarea {
     resize: none;
-    font-size: 1.2em;
+    height: 6.25em;
+    flex: 1;
 }
 
 .contact-form form textarea::-webkit-scrollbar {
     display: none;
-}
-
-.contact-form form {
-    gap: 0.8em;
-    margin-bottom: 1.3em;
-}
-
-.contact-form form input, textarea {
-    width: 16.8em;
-    height: 2.5em;
-}
-
-.contact-form form textarea {
-    height: 6.25em;
-    margin-bottom: 0.5em;
 }
 
 .contact-form form button {
@@ -89,26 +86,21 @@
 
 @media screen and (max-width: 600px) {
     .contact-form {    
-        min-width: 22.5em;
-        max-width: 22.5em;
+        height: 30rem;
+        max-height: 70vh;
     } 
-
-    .contact-form h2 {
-        font-size: 2em;
-    }
 }
 
 @media screen and (min-width: 600px) {
     .contact-form {    
-        width: 80%;
+        width: 40rem;
+        max-width: 80%;
+        height: 40rem;
+        max-height: 70vh;
     }
 
     .contact-form h2 {
-        font-size: 2em;
-    }
-
-    .contact-form form input, textarea {
-        width: 24em;
+        font-size: 2.2em;
     }
     
     .contact-form form textarea {
@@ -117,51 +109,78 @@
 }
 
 @media screen and (max-width: 1000px) and (orientation: landscape) {
+    .contact-form {    
+        width: 60rem;
+        max-width: 90%;
+        height: 60vh;
+    }
+    
     .contact-form h2 {
-        font-size: 1.5em;
+        font-size: clamp(1.2rem, 5vh, 1.5em);
+        margin: clamp(0.1rem, 1vh, 0.2rem);
+    }
+    .contact-form form input,
+    .contact-form form textarea {
+        font-size: clamp(0.5rem, 3vh, 1.2rem);
     }
 
-    .contact-form form input, textarea {
-        height: 1.8em;
+    .contact-form form input {
+        height: clamp(1rem, 5vh, 3rem);
     }
 
     .contact-form form textarea {
-        height: 2em;
+        height: clamp(1rem, 10vh, 5rem);
     }
 
     .contact-form form button {
-        font-size: 0.7em;
+        font-size: clamp(0.6rem, 2vh, 2rem);
     }
 }
 
 @media screen and (min-width: 1024px) {
     .contact-form {
-        max-width: 55em;
-    }
-    .contact-form form input, textarea {
-        width: 30em;        
+        max-height: 65vh;
     }
 
+    .contact-form h2 {
+        font-size: clamp(1.7rem, 2vh, 2.5rem);
+        margin: 0.2em 0;
+    }
+
+    .contact-form form input, 
     .contact-form form textarea {
-        height: 10em;
+        font-size: clamp(1rem, 1vh, 2rem);
+    }
+
+    .contact-form form input {
+        height: clamp(2rem, 2vh, 2.5rem);
+    }
+    
+    .contact-form form textarea {
+        height: clamp(2rem, 8vh, 20rem)
+    }
+
+    .contact-form form button {
+        font-size: clamp(0.8rem, 2vh, 1.2rem);
     }
 }
 
 @media screen and (min-width: 1440px) {
-    .contact-form {
-        width: 60%;
+    .contact-form h2 {
+        font-size: clamp(1.5rem, 2vh, 2.5rem);
+        margin: 0.2em 0;
     }
 
-    .contact-form form input, textarea {
-        height: 3em;        
+    .contact-form form input {
+        height: clamp(2rem, 2vh, 2.5rem);
     }
-
+    
     .contact-form form textarea {
-        height: 12em;
+        height: clamp(1.2rem, 12vh, 15rem);
     }
 
     .contact-form form button {
-        padding: 0.7em 7em;
-        font-size: 1.1em;
+        font-size: clamp(1rem, 1.5vh, 1rem);
     }
+
 }

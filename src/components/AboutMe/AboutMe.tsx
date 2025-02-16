@@ -13,7 +13,9 @@ export type AboutMeProps = {
 export const AboutMe = (({image, title, description}: AboutMeProps) => {
     return (
         <div className="about-me">
-            <img src={image.img} alt={image.alt} />
+            <div className="about-me__image">
+                <img src={image.img} alt={image.alt} />
+            </div>
             <div className="about-me__content">
                 <h2>{title}</h2>
                 <p>

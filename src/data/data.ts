@@ -25,8 +25,7 @@ export const AboutMeContent: AboutMeProps = {
   },
   title: "Renan Fellipe",
   description: [
-    "I am passionate about technology and gaming. I completed my technical high school in Electronics and am currently pursuing a degree in Computer Engineering, both at the Instituto Federal do Maranhão (IFMA - Federal Institute of Maranhão).",
-    "I have skills in Python, Java, Angular, SQL, and knowledge in REST APIs, microservices, NoSQL, C#, Docker, Kubernetes, and Cloud (AWS and Azure).",
+    "I am passionate about technology and gaming. I completed my technical high school in Electronics and am currently pursuing a degree in Computer Engineering, both at the Instituto Federal do Maranhão (IFMA - Federal Institute of Maranhão)."
   ],
 };
 

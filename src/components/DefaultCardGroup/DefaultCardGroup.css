@@ -7,7 +7,6 @@
     scroll-behavior: smooth;
     scrollbar-width: thin;
     scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
-    padding: 0 2vw;
 }
 
 .group-cards {
@@ -34,10 +33,15 @@
 
 @media screen and (max-width: 600px) {
     .group-cards {    
-        min-width: 100%;
-        max-width: 90vw;
-        min-height: 26.5em;
-        max-height: 26.5em;
+        min-width: 96vw;
+        max-width: 96vw;
+        min-height: 25em;
+        max-height: 75vh;
+    }
+
+    .group-cards > * {
+        min-width: 96vw;
+        flex: 0 0 auto;
     }
 }
 

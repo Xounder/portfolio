@@ -1,37 +1,38 @@
 .default-card {
     position: relative;
-    display: flex;
-    flex-direction: column;
+
     background-color: white;
     border-radius: 0.6em;
-    box-shadow: 0.06em 0.06em 0.3em 0 rgba(0, 0, 0, 0.25);
+    box-shadow: 2px 2px 8px 0 rgba(255, 255, 255, 0.3);
     transition: 0.3s ease;
 }
 
 .default-card:hover {
-    box-shadow: 0.06em 0.06em 0.3em 0 rgba(0, 0, 0, 0.7);
+    box-shadow: 1px 1px 8px 0 rgba(255, 255, 255, 0.8);
 }
 
 .default-card__content {
+    padding: 1.57em 0.6em 0.6em 0.6em;
+}
+
+.default-card__content__image {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 1.57em 0.6em 0.6em 0.6em;
+}
+
+.default-card__content__image img {
+    width: 15em;
+    height: 10em;
+    max-width: 60%;
+    max-height: 100%;
 }
 
 .default-card__content__ {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-
-
-.default-card__content__image img {
-    border-radius: 0.6em;
-    width: 15em;
-    height: 10em;
-    display: block;
+    flex: 1;
 }
 
 .default-card__content__text h3 {
@@ -63,10 +64,16 @@
 
 @media screen and (max-width: 600px) {
     .default-card {    
-        min-width: 22.5em;
-        max-width: 22.5em;
+        width: 22.5em;
+        max-width: 95vw;
         min-height: 25em;
-        max-height: 25em;
+        max-height: 75vh;
+    }
+
+    .default-card__content__image {
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
     }
 
     .default-card__content__component {
@@ -83,21 +90,24 @@
     }
 
     .default-card__content {
-        height: 9em;
+        display: flex;
         flex-direction: row;
         justify-content: space-around;
         padding: 1.25em 1.87em;
         transition: all 0.3s ease-in-out;
+        height: 9em;
     }
 
     .default-card__content__image {
         max-width: 20%;
+        min-width: 10%;
     }
 
     .default-card__content__image img {
+        max-width: 100%;
         width: 8em;
         height: 8em;
-        object-fit: cover;
+        object-fit: fill;
         display: block;
     }
 

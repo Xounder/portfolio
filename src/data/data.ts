@@ -64,7 +64,7 @@ export const RecognitionsCards: ExperienceCardsProps[] = [
         img: logoMarathonSBC,
         alt: "Logo of Marathon SBC",
       },
-      title: "Maratona SBC de programação - Terceiro lugar fase regional",
+      title: "Third place - Regional phase",
       description:
         "The SBC Programming Marathon, organized by the Brazilian Computer Society (SBC), challenges students to solve algorithmic problems under time constraints. In 2022, my team secured third place in the regional phase, qualifying for the national phase.",
       link: "https://santaines.ifma.edu.br/2022/11/30/alunos-destacam-se-em-maratona-de-programacao-da-sbc/",
@@ -82,7 +82,7 @@ export const RecognitionsCards: ExperienceCardsProps[] = [
         img: logoVoxy,
         alt: "Logo of Voxy",
       },
-      title: "Voxy Proficiency Achievement Certificate - Intermediate",
+      title: "English Proficiency - Intermediate",
       description:
         "The Voxy Proficiency Achievement Certificate - Intermediate was awarded after completing a proficiency test in English as part of the CI&T Next Gen recruitment process. This certification represents an intermediate level of English proficiency.",
       link: "https://app.voxy.com/certificates/proficiency-test/672913240ae424dd618603c2/",

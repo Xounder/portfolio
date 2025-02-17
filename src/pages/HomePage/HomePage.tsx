@@ -22,6 +22,8 @@ export const HomePage = () => {
   const [currentSection, setCurrentSection] = useState<string>(sections[0]);
   const [mainMotionValue, setMainMotionValue] = useState<number>(200);
   const [changeMotionOrientation, setChangeMotionOrientation] = useState(false);
+  const [isPageReady, setIsPageReady] = useState<boolean>(false);
+
 
   const MOTION_VALUE = 100;
 
@@ -29,7 +31,10 @@ export const HomePage = () => {
     setCurrentSection(sectionName);
     setMainMotionValue(MOTION_VALUE);
     setChangeMotionOrientation(true);
+    scrollToEndPage();
   };
+
+  const scrollToEndPage = () => window.scrollTo(0, document.body.scrollHeight);
 
   const componentsMap: Record<string, JSX.Element> = {
     "About Me": (
@@ -46,14 +51,25 @@ export const HomePage = () => {
   };
 
   useEffect(() => {
+    scrollToEndPage();
+
     document.body.style.overflow = "hidden";
     document.documentElement.style.overflow = "hidden";
+
+    const timer = setTimeout(() => {
+      setIsPageReady(true);
+    }, 100);
 
     return () => {
       document.body.style.overflow = "visible";
       document.documentElement.style.overflow = "auto";
+      clearTimeout(timer);
     };
   }, []);
+
+  if (!isPageReady) {
+    return null;
+  }
 
   return (
     <>
@@ -113,6 +129,7 @@ export const HomePage = () => {
                 setCurrentSection(sections[nextIndex]);
                 setMainMotionValue(-MOTION_VALUE);
                 setChangeMotionOrientation(false);
+                scrollToEndPage();
               }}
             />
           </aside>
@@ -136,6 +153,7 @@ export const HomePage = () => {
                 setCurrentSection(sections[nextIndex]);
                 setMainMotionValue(MOTION_VALUE);
                 setChangeMotionOrientation(false);
+                scrollToEndPage();
               }}
             />
           </aside>

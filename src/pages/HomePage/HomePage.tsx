@@ -100,7 +100,7 @@ export const HomePage = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 0 }}
           transition={{ duration: 0.5 }}
-          style={{width:"100%", display:"flex", justifyContent:"center"}}
+          style={{width:"100%", height:"100%", display:"flex", justifyContent:"center"}}
         >
           <aside className="section-buttons__left-arrow">
             <ArrowSectionButton

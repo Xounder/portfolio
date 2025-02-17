@@ -111,10 +111,14 @@
 @media screen and (max-width: 1000px) and (orientation: landscape) {
     .contact-form {    
         width: 60rem;
-        max-width: 90%;
+        max-width: 60%;
         height: 60vh;
     }
-    
+
+    .contact-form form {
+        width: 80%;
+    }
+
     .contact-form h2 {
         font-size: clamp(1.2rem, 5vh, 1.5em);
         margin: clamp(0.1rem, 1vh, 0.2rem);
@@ -139,6 +143,7 @@
 
 @media screen and (min-width: 1024px) {
     .contact-form {
+        max-width: 600px;
         max-height: 65vh;
     }
 

@@ -14,7 +14,7 @@
   flex-grow: 1;
   margin-bottom: 0;
   height: 100vh;
-  padding-top: 15px;
+  padding-top: 30px;
 }
 
 .home-main .content .group-cards {
@@ -65,7 +65,7 @@
   }
 
   .home-main {
-    padding-top: 20px;
+    padding-top: 40px;
   }
 
   .home-main .content .group-cards {

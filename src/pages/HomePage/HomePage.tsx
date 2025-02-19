@@ -34,13 +34,7 @@ export const HomePage = () => {
     scrollToEndPage();
   };
 
-  const scrollToEndPage = () => {
-    window.scrollTo(0, document.body.scrollHeight);
-    setTimeout(() => {
-        document.documentElement.style.height = `${window.visualViewport?.height}px`;
-        document.documentElement.style.overflow = "hidden"; 
-    }, 100);
-};
+  const scrollToEndPage = () => window.scrollTo(0, document.body.scrollHeight);
 
   const componentsMap: Record<string, JSX.Element> = {
     "About Me": (

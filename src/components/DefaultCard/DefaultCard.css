@@ -5,7 +5,7 @@
 
     width: 22.5em;
     max-width: 95vw;
-    height: clamp(30rem, 60vh, 42rem);
+    height: clamp(30rem, 60vh, 45rem);
     max-height: 70vh;
 
     background-color: white;

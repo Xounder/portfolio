@@ -16,6 +16,7 @@
 
 .default-card:hover {
     box-shadow: 1px 1px 8px 0 rgba(255, 255, 255, 0.8);
+    max-height: 75vh;
     height: clamp(35rem, 60vh, 52rem);
 }
 

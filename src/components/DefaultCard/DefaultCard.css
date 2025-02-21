@@ -1,31 +1,50 @@
 .default-card {
-    position: relative;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    width: 22.5em;
+    max-width: 95vw;
+    height: clamp(30rem, 60vh, 42rem);
+    max-height: 70vh;
 
     background-color: white;
     border-radius: 0.6em;
     box-shadow: 2px 2px 8px 0 rgba(255, 255, 255, 0.3);
-    transition: 0.3s ease;
+    transition: 0.2s ease-in-out;
 }
 
 .default-card:hover {
     box-shadow: 1px 1px 8px 0 rgba(255, 255, 255, 0.8);
+    height: clamp(35rem, 60vh, 52rem);
 }
 
 .default-card__content {
-    padding: 1.57em 0.6em 0.6em 0.6em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    height: 95%;
+    width: 100%;
+    margin: 0 clamp(0.6em, 3vw, 1em);
 }
 
 .default-card__content__image {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .default-card__content__image img {
-    width: 15em;
-    height: 10em;
+    width: clamp(15em, 30vh, 27rem);
+    height: clamp(10em, 25vh, 20rem);
     max-width: 60%;
-    max-height: 100%;
+    max-height: 80%;
 }
 
 .default-card__content__ {
@@ -33,112 +52,122 @@
     flex-direction: column;
     justify-content: space-between;
     flex: 1;
+    width: 100%;
+}
+
+.default-card__content__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    flex: 1;
 }
 
 .default-card__content__text h3 {
     color: black;
-    margin-top: 0.4em;
-    margin-bottom: 0.1em;
+    margin: 0;
     text-align: center;
+    font-size: clamp(1rem, 3vh, 2.4rem);
+}
+
+.default-card:hover .default-card__content__text h3 {
+    font-size: clamp(1.1rem, 3vh, 2.5rem);
 }
 
 .default-card__content__text p {    
     display: -webkit-box;
     display: box;
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
     -webkit-box-orient: vertical;
     box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: normal;
-    
+
     color: rgb(104, 99, 99);
     margin: 0.2em 0;
+    font-size: clamp(0.9rem, 2.5vh, 2rem);
+}
+
+.default-card:hover .default-card__content__text p {
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
 }
 
 .default-card__content__component {
+    width: 100%;
     border-top: 0.06em dashed rgba(0, 0, 0, 0.35);
-    padding-top: 0.5em
+    padding-top: 0.5em;
+    font-size: clamp(0.8rem, 3vh, 1.7rem);
 }
 
-@media screen and (max-width: 600px) {
-    .default-card {    
-        width: 22.5em;
-        max-width: 95vw;
-        min-height: 25em;
-        max-height: 75vh;
-    }
-
-    .default-card__content__image {
-        width: 100%;
-        max-width: 100%;
-        max-height: 100%;
-    }
-
-    .default-card__content__component {
-        position: absolute;
-        bottom: 15px;
-        left: 15px;
-        width: 90%;
-    }
+.default-card:hover .default-card__content__component {
+    font-size: clamp(0.9rem, 3vh, 1.8rem);
 }
 
-@media screen and (min-width: 600px) {
+ @media screen and (min-width: 600px) {
     .default-card {
+        height: clamp(10rem, 22vh, 22rem);
         width: 100%;
+    }
+
+    .default-card:hover {
+        height: clamp(12rem, 27vh, 25rem);
     }
 
     .default-card__content {
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
-        padding: 1.25em 1.87em;
-        transition: all 0.3s ease-in-out;
-        height: 9em;
+        height: clamp(9rem, 20vh, 20rem);
+        width: 100%;
+        margin: 0.2em clamp(0.6em, 3vw, 1em);
+        transition: 0.2s ease-in-out;
+    }
+
+    .default-card:hover .default-card__content {
+        height: clamp(11rem, 25vh, 23rem);
     }
 
     .default-card__content__image {
         max-width: 20%;
         min-width: 10%;
+        height: 100%;
     }
 
     .default-card__content__image img {
         max-width: 100%;
-        width: 8em;
-        height: 8em;
+        width: clamp(10em, 20vw, 15rem);
+        height: clamp(10em, 20vh, 15rem);
         object-fit: fill;
-        display: block;
-    }
-
-    .default-card__content__ {
-        width: 80%;
-    }
-
-    .default-card:hover .default-card__content {
-        height: 10em;
     }
 
     .default-card:hover .default-card__content__image img {
-        width: 9em;
-        height: 9em;
+        width: clamp(11em, 20vw, 18rem);
+        height: clamp(11em, 20vh, 18rem);
     }    
 
     .default-card__content__ {
         height: 100%;
-        margin-left: 1.5em;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        margin-left: 0.6em;
+    }
+
+    .default-card__content__text {
+        align-items: start;
     }
 
     .default-card__content__text h3 {
-        font-size: 1.1em;
-        margin-top: 0;
-        text-align: start;
+        font-size: clamp(1rem, 2vh, 2rem);
     }
+    
+    .default-card:hover .default-card__content__text h3 {
+        font-size: clamp(1.1rem, 2vh, 2.1rem);
+    }
+
     .default-card__content__text p {
-        font-size: 0.9em;
+        font-size: clamp(0.9rem, 2vh, 2rem);
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
     }
 
     .default-card:hover .default-card__content__text p {
@@ -146,79 +175,45 @@
         line-clamp: 4;
     }
 
-    .default-card:hover .default-card__content__text h3 {
-        font-size: 1.2em;
+    .default-card__content__component {
+        font-size: clamp(0.8rem, 2vh, 1.7rem);
     }
 
-    .default-card__content__component {
-        margin-top: 0;
-    }
+    .default-card:hover .default-card__content__component {
+        font-size: clamp(0.9rem, 2vh, 1.8rem);
+    } 
 }
 
 @media screen and (max-width: 1000px) and (orientation: landscape) {    
-
-}
-
-@media screen and (min-width: 1024px) {
-    .default-card__content {
-        height: 10em;
+    .default-card {
+        height: clamp(10rem, 25vh, 22rem);
     }
 
-    .default-card__content__image img {
-        width: 9em;
-        height: 9em;
+    .default-card__content {
+        height: clamp(9rem, 25vh, 20rem);
     }
 
     .default-card:hover .default-card__content {
-        height: 11em;
+        height: clamp(10rem, 30vh, 21rem);
     }
 
-    .default-card:hover .default-card__content__image img {
-        width: 10em;
-        height: 10em;
-    }    
-
     .default-card__content__text h3 {
-        font-size: 1.2em;
+        font-size: clamp(1rem, 3.5vh, 1.4rem)
+    }
+    
+    .default-card:hover .default-card__content__text h3 {
+        font-size: clamp(1.1rem, 3.5vh, 1.5rem);
     }
 
     .default-card__content__text p {
-        font-size: 1em;
+        font-size: clamp(0.9rem, 3vh, 2em);
+    }
+    
+    .default-card__content__component {
+        font-size: clamp(0.8rem, 3vh, 1.7rem);
     }
 
-    .default-card:hover .default-card__content__text h3 {
-        font-size: 1.3em;
-    }
-}
-
-@media screen and (min-width: 1440px) { 
-    .default-card__content {
-        height: 13em;
-    }
-
-    .default-card__content__image img {
-        width: 12em;
-        height: 12em;
-    }
-
-    .default-card:hover .default-card__content {
-        height: 14em;
-    }
-
-    .default-card:hover .default-card__content__image img {
-        width: 13em;
-        height: 13em;
-    }    
-
-    .default-card__content__text h3 {
-        font-size: 1.4em;
-    }
-
-    .default-card__content__text p {
-        font-size: 1.2em;
-    }
-
-    .default-card:hover .default-card__content__text h3 {
-        font-size: 1.5em;
-    }
+    .default-card:hover .default-card__content__component {
+        font-size: clamp(0.9rem, 3vh, 1.8rem);
+    } 
 }

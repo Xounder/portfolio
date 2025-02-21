@@ -55,7 +55,6 @@
 
     .about-me__image img {
         max-width: 90%;
-        max-height: 40%;
         width: clamp(12em, 90vw, 35rem);
         height: clamp(12em, 30vh, 30rem);
     }

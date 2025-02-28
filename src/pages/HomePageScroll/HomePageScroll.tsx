@@ -95,6 +95,7 @@ export const HomePageScroll = () => {
             sectionName={currentSection}
             icons={iconsData[sections.indexOf(currentSection)]}
             atualPage="/scroll"
+            menuSetCurrentSection={() => {}}
           />
         </motion.div>
       </header>

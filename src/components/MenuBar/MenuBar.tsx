@@ -9,6 +9,7 @@ type MenuBarProps = {
     sectionName: string;
     icons: Icon[];
     atualPage: string;
+    menuSetCurrentSection: (sectionName: string) => void;
 };
 
 export type Icon = {
@@ -18,7 +19,7 @@ export type Icon = {
 }
 
 
-export const MenuBar = ({sectionName, icons, atualPage}: MenuBarProps) => {
+export const MenuBar = ({sectionName, icons, atualPage, menuSetCurrentSection}: MenuBarProps) => {
     const [isVisible, setIsVisible] = useState(false);
 
     const renderIcons = () => {
@@ -35,6 +36,10 @@ export const MenuBar = ({sectionName, icons, atualPage}: MenuBarProps) => {
         });
     };
 
+    const navigateToStart = () => {
+        return atualPage === '/' ? menuSetCurrentSection("About Me") : window.scrollTo(0, 0);
+    };
+
     useEffect(() => {
         setIsVisible(false);
         setTimeout(() => setIsVisible(true), 200);
@@ -43,7 +48,7 @@ export const MenuBar = ({sectionName, icons, atualPage}: MenuBarProps) => {
     return (
         <>
             <div className='atual-section'>
-                <img src={logo} alt="" />
+                <img src={logo} alt="logo" onClick={() => { navigateToStart() }}/>
                 <div className='atual-section__content'>
                     <h2 className={isVisible ? 'visible' : ''}>{sectionName}</h2>
                     <ul className={`atual-section__content__icons ${isVisible ? 'visible' : ''}`}>

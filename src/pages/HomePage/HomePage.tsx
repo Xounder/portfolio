@@ -84,6 +84,7 @@ export const HomePage = () => {
             sectionName={currentSection}
             icons={iconsData[sections.indexOf(currentSection)]}
             atualPage="/"
+            menuSetCurrentSection={menuSetCurrentSection}
           />
         </motion.div>
       </header>

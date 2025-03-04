@@ -31,11 +31,27 @@ export const HomePage = () => {
     setCurrentSection(sectionName);
     setMainMotionValue(MOTION_VALUE);
     setChangeMotionOrientation(true);
-    scrollToEndPage();
   };
 
-  const scrollToEndPage = () => window.scrollTo(0, document.body.scrollHeight);
-
+  const scrollToEndPage = () => {
+    const fakeDiv = document.createElement("div");
+    fakeDiv.style.height = "200vh";
+    fakeDiv.style.position = "absolute";
+    fakeDiv.style.bottom = "0";
+    fakeDiv.style.width = "1px";
+  
+    document.body.appendChild(fakeDiv);
+  
+    window.scrollTo({
+      top: fakeDiv.offsetTop,
+      behavior: "smooth",
+    });
+  
+    setTimeout(() => {
+      document.body.removeChild(fakeDiv);
+    }, 500);
+  };
+  
   const componentsMap: Record<string, JSX.Element> = {
     "About Me": (
       <AboutMe
@@ -130,7 +146,6 @@ export const HomePage = () => {
                 setCurrentSection(sections[nextIndex]);
                 setMainMotionValue(-MOTION_VALUE);
                 setChangeMotionOrientation(false);
-                scrollToEndPage();
               }}
             />
           </aside>
@@ -154,7 +169,6 @@ export const HomePage = () => {
                 setCurrentSection(sections[nextIndex]);
                 setMainMotionValue(MOTION_VALUE);
                 setChangeMotionOrientation(false);
-                scrollToEndPage();
               }}
             />
           </aside>

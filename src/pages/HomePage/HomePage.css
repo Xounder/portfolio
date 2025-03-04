@@ -14,7 +14,7 @@
   flex-grow: 1;
   margin-bottom: 0;
   height: 100vh;
-  padding-top: 30px;
+  padding-top: 0;
 }
 
 .home-main .content .group-cards {
@@ -64,10 +64,6 @@
     height: 100px;
   }
 
-  .home-main {
-    padding-top: 40px;
-  }
-
   .home-main .content .group-cards {
     max-height: calc(100vh - 100px - 60px);
   }
@@ -76,10 +72,6 @@
 @media screen and (max-width: 1000px) and (orientation: landscape) {
   .home-header {
     height: 60px;
-  }
-
-  .home-main {
-    padding-top: 0;
   }
 }
 

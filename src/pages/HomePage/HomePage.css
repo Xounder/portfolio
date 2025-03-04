@@ -64,6 +64,10 @@
     height: 100px;
   }
 
+  .home-main {
+    padding-top: 40px;
+  }
+
   .home-main .content .group-cards {
     max-height: calc(100vh - 100px - 60px);
   }

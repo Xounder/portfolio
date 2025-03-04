@@ -50,7 +50,7 @@ export const ExperiencesCards: ExperienceCardsProps[] = [
     expInfo: {
       info: {
         type: "Research Project",
-        yearPeriod: "2022",
+        yearPeriod: "2021 - 2022",
       },
     },
   },

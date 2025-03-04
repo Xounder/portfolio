@@ -13,7 +13,7 @@
   justify-content: center;
   flex-grow: 1;
   margin-bottom: 0;
-  height: 100dvh;
+  height: 100vh;
   padding-top: 30px;
 }
 
@@ -69,7 +69,7 @@
   }
 
   .home-main .content .group-cards {
-    max-height: calc(100dvh - 100px - 60px);
+    max-height: calc(100vh - 100px - 60px);
   }
 }
 

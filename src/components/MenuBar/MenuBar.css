@@ -52,10 +52,9 @@
     transform: translateY(0);
 }
 
-.atual-section__content__icons li,
 .atual-section__content__icons li a:hover img  {  
-    width: 25px;
-    height: 25px;
+    transform: scale(1.2);
+    transition: 0.2s ease-in-out;
 }
 
 .atual-section__content__icons li img {  
@@ -104,12 +103,6 @@
     .atual-section__content h2 {
         font-size: 32px;
     }
-
-    .atual-section__content__icons li,
-    .atual-section__content__icons li a:hover img {  
-        width: 28px;
-        height: 28px;
-    }
  
     .atual-section__content__icons li img {  
         width: 24px;
@@ -155,18 +148,9 @@
         gap: 32px;
         padding-right: 160px;
     }
-
-    .atual-section__content__icons li,
-    .atual-section__content__icons li a:hover img {  
-        width: 36px;
-        height: 36px;
-    }
  
     .atual-section__content__icons li img {  
         width: 32px;
         height: 32px;
     }
-}
-
-@media screen and (min-width: 1440px) {
 }

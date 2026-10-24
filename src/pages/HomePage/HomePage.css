@@ -4,7 +4,7 @@
   left: 0;
   z-index: 100;
   width: 100%;
-  height: 90px;
+  height: var(--header-height);
 }
 
 .home-main {
@@ -42,9 +42,10 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 60px;
+  height: var(--footer-height);
   background-color: var(--secondary-color);
 }
+
 
 .section-buttons__left-arrow {
   height: 100%;
@@ -63,7 +64,7 @@
   
 @media screen and (min-width: 600px) {  
   .home-header {
-    height: 100px;
+    height: var(--header-height-wide);
   }
 
   .home-main {
@@ -71,13 +72,14 @@
   }
 
   .home-main .content .group-cards {
-    max-height: calc(100vh - 100px - 60px);
+    max-height: calc(100vh - var(--header-height-wide) - var(--footer-height));
   }
 }
 
-@media screen and (max-width: 1000px) and (orientation: landscape) {
+/* Legacy compact header: width <= 1000px and width > height, including narrow phones. */
+@media screen and (max-width: 1000px) and (aspect-ratio > 1/1) {
   .home-header {
-    height: 60px;
+    height: var(--header-height-short);
   }
 }
 

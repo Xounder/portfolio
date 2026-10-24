@@ -3,7 +3,7 @@
     justify-content: start;
     align-items: center;
 
-    width: 22.5em;
+    width: var(--card-width);
     max-width: 95vw;
     height: clamp(30rem, 60vh, 45rem);
     max-height: 70vh;
@@ -189,7 +189,7 @@
     } 
 }
 
-@media screen and (max-width: 1000px) and (orientation: landscape) {    
+@media screen and (max-width: 1000px) and (aspect-ratio > 1/1) {    
     .default-card {
         height: clamp(10rem, 25vh, 22rem);
     }

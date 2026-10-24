@@ -86,7 +86,8 @@
     cursor: pointer;
 }
 
-@media screen and (max-width: 600px) {
+/* Exclusive of the 600px wide-layout winner. */
+@media screen and (width < 600px) {
     .contact-form {    
         height: 30rem;
         max-height: 70vh;
@@ -111,7 +112,8 @@
     }
 }
 
-@media screen and (max-width: 1000px) and (orientation: landscape) {
+/* Legacy compact form: width <= 1000px and width > height, including narrow landscape phones. */
+@media screen and (max-width: 1000px) and (aspect-ratio > 1/1) {
     .contact-form {    
         width: 60rem;
         max-width: 60%;
@@ -195,3 +197,4 @@
     }
 
 }
+

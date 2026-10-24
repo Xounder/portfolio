@@ -1,9 +1,35 @@
 :root {
+  /* Canonical breakpoint values. Native @media cannot consume var(); keep query literals in sync.
+     sm 600px | md 768px | lg 1024px | xl 1440px | 2xl 1920px (no 2xl rule needed).
+     Legacy compact rules retain their 1000px cap below lg. MQ4 range syntax
+     (width < 600px, aspect-ratio > 1/1) expresses strict boundaries without gaps. */
+  --bp-sm: 600px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1440px;
+  --bp-2xl: 1920px;
+  --header-height: 90px;
+  --header-height-wide: 100px;
+  --header-height-short: 60px;
+  --footer-height: 60px;
+  --card-width: 22.5em;
+  --menu-toggle-top: 75px;
+  --menu-toggle-top-wide: 85px;
+  --menu-toggle-top-short: 45px;
+  --surface-radius: 0.6em;
+  --surface-radius-px: 10px;
+  --overlay-radius: 1em;
+  --text-neutral: rgb(104, 99, 99);
+  --surface-color: white;
+  --overlay-color: rgba(0, 0, 0, 0.4);
+  --page-background: #220751;
+  --header-surface: var(--primary-color);
+  --footer-surface: var(--secondary-color);
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  background-color: #220751;
+  background-color: var(--page-background);
   --primary-color: #1D0C3A;
   --secondary-color: #2E1656;
   --secondary-color-hover: #2C1552;

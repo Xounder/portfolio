@@ -18,4 +18,11 @@
     .info-card {
         width: 30%;
     }
-}    
+}
+
+/* Tablet portrait inherits the existing sm card width; no new visual treatment. */
+@media screen and (min-width: 768px) {
+    .info-card {
+        width: 30%;
+    }
+}

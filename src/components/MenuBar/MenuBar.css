@@ -7,7 +7,7 @@
     background-color: var(--primary-color);
     box-shadow: 0 2px 7px rgba(0, 0, 0, 0.55);
     width: 100%;
-    height: 90px;
+    height: var(--header-height);
 }
 
 .atual-section > img {
@@ -69,7 +69,7 @@
 .change-view button {
     position: fixed;
     z-index: 101;
-    top: 75px;
+    top: var(--menu-toggle-top);
     right: calc(50% - 80px);
     width: 160px;
     height: 32px;
@@ -97,7 +97,7 @@
 
 @media screen and (min-width: 600px) {
     .atual-section {
-        height: 100px;
+        height: var(--header-height-wide);
     }
 
     .atual-section__content h1 {
@@ -110,13 +110,14 @@
     }
 
     .change-view button {
-         top: 85px;
+         top: var(--menu-toggle-top-wide);
     }
 }
 
-@media screen and (max-width: 1000px) and (orientation: landscape) {
+/* Legacy compact header/toggle: width <= 1000px and width > height, including narrow phones. */
+@media screen and (max-width: 1000px) and (aspect-ratio > 1/1) {
     .atual-section {
-        height: 60px;
+        height: var(--header-height-short);
     }
 
     .atual-section > img {
@@ -129,7 +130,7 @@
     }
 
     .change-view button {
-        top: 45px;
+        top: var(--menu-toggle-top-short);
     }
 }
 

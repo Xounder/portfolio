@@ -12,6 +12,7 @@
     padding: 1em 0;
 }
 
+
 .group-cards::-webkit-scrollbar {
     width: 0.5em;
 }
@@ -29,8 +30,24 @@
     display: none;
 }
 
-@media screen and (max-width: 600px) {
+/* At 600px the later vertical-layout rule was already the winner. */
+@media screen and (width < 600px) {
     .group-cards {    
+        min-width: 96vw;
+        max-width: 96vw;
+        max-height: 78vh;
+    }
+
+    .group-cards > * {
+        min-width: 96vw;
+        flex: 0 0 auto;
+    }
+}
+
+/* Both original blocks applied at exactly 600px: keep the mobile width/height
+   constraints there while the following desktop layout still wins for flow. */
+@media screen and (min-width: 600px) and (max-width: 600px) {
+    .group-cards {
         min-width: 96vw;
         max-width: 96vw;
         max-height: 78vh;

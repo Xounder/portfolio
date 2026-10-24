@@ -76,7 +76,8 @@
     }
 }
 
-@media screen and (max-width: 1000px) and (orientation: landscape) {
+/* Legacy compact image/copy: width <= 1000px and width > height, including narrow phones. */
+@media screen and (max-width: 1000px) and (aspect-ratio > 1/1) {
     .about-me {
         max-height: 60vh;
     }

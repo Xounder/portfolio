@@ -1,23 +1,48 @@
 .default-card {
+    /* Hover changes only endpoint variables; transitions remain on the rendered properties. */
+    --card-height: clamp(30rem, 60vh, 45rem);
+    --card-height-hover: clamp(35rem, 65vh, 52rem);
+    --card-max-height: 70vh;
+    --card-max-height-hover: 75vh;
+    --card-heading-size: clamp(1rem, 3vh, 2.4rem);
+    --card-heading-size-hover: clamp(1.1rem, 3vh, 2.5rem);
+    --card-clamp: 4;
+    --card-clamp-hover: 5;
+    --card-component-size: clamp(0.8rem, 3vh, 1.7rem);
+    --card-component-size-hover: clamp(0.9rem, 3vh, 1.8rem);
+    --card-content-height: clamp(9rem, 20vh, 20rem);
+    --card-content-height-hover: clamp(11rem, 25vh, 23rem);
+    --card-image-width: clamp(10em, 20vw, 15rem);
+    --card-image-width-hover: clamp(11em, 20vw, 18rem);
+    --card-image-height: clamp(10em, 20vh, 15rem);
+    --card-image-height-hover: clamp(11em, 20vh, 18rem);
+    --card-shadow-current: var(--card-shadow);
     display: flex;
     justify-content: start;
     align-items: center;
 
     width: var(--card-width);
     max-width: 95vw;
-    height: clamp(30rem, 60vh, 45rem);
-    max-height: 70vh;
+    height: var(--card-height);
+    max-height: var(--card-max-height);
 
-    background-color: white;
+    background-color: var(--surface-color);
     border-radius: 0.6em;
-    box-shadow: 2px 2px 8px 0 rgba(255, 255, 255, 0.3);
+    box-shadow: 2px 2px 8px 0 var(--card-shadow-current);
     transition: 0.2s ease-in-out;
 }
 
 .default-card:hover {
-    box-shadow: 1px 1px 8px 0 rgba(255, 255, 255, 0.8);
-    max-height: 75vh;
-    height: clamp(35rem, 65vh, 52rem);
+    --card-height: var(--card-height-hover);
+    --card-max-height: var(--card-max-height-hover);
+    --card-heading-size: var(--card-heading-size-hover);
+    --card-clamp: var(--card-clamp-hover);
+    --card-component-size: var(--card-component-size-hover);
+    --card-content-height: var(--card-content-height-hover);
+    --card-image-width: var(--card-image-width-hover);
+    --card-image-height: var(--card-image-height-hover);
+    --card-shadow-current: var(--card-shadow-hover);
+    box-shadow: 1px 1px 8px 0 var(--card-shadow-current);
 }
 
 .default-card__content {
@@ -66,70 +91,53 @@
 
 .default-card__content__text h2,
 .default-card__content__text h3 {
-    color: black;
+    color: var(--text-strong);
     margin: 0;
     text-align: center;
-    font-size: clamp(1rem, 3vh, 2.4rem);
-}
-
-.default-card:hover .default-card__content__text h2,
-.default-card:hover .default-card__content__text h3 {
-    font-size: clamp(1.1rem, 3vh, 2.5rem);
+    font-size: var(--card-heading-size);
 }
 
 .default-card__content__text p {    
     display: -webkit-box;
-    display: box;
-    -webkit-line-clamp: 4;
-    line-clamp: 4;
     -webkit-box-orient: vertical;
-    box-orient: vertical;
+    -webkit-line-clamp: var(--card-clamp);
+    line-clamp: var(--card-clamp);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: normal;
 
-    color: rgb(104, 99, 99);
+    color: var(--text-neutral);
     margin: 0.2em 0;
     font-size: clamp(0.9rem, 2.5vh, 2rem);
 }
 
-.default-card:hover .default-card__content__text p {
-    -webkit-line-clamp: 5;
-    line-clamp: 5;
-}
-
 .default-card__content__component {
     width: 100%;
-    border-top: 0.06em dashed rgba(0, 0, 0, 0.35);
+    border-top: 0.06em dashed var(--card-divider);
     padding-top: 0.5em;
-    font-size: clamp(0.8rem, 3vh, 1.7rem);
-}
-
-.default-card:hover .default-card__content__component {
-    font-size: clamp(0.9rem, 3vh, 1.8rem);
+    font-size: var(--card-component-size);
 }
 
  @media screen and (min-width: 600px) {
     .default-card {
-        height: clamp(10rem, 22vh, 22rem);
+        --card-height: clamp(10rem, 22vh, 22rem);
+        --card-height-hover: clamp(12rem, 27vh, 25rem);
+        --card-heading-size: clamp(1rem, 2vh, 2rem);
+        --card-heading-size-hover: clamp(1.1rem, 2vh, 2.1rem);
+        --card-clamp: 3;
+        --card-clamp-hover: 4;
+        --card-component-size: clamp(0.8rem, 2vh, 1.7rem);
+        --card-component-size-hover: clamp(0.9rem, 2vh, 1.8rem);
         width: 100%;
-    }
-
-    .default-card:hover {
-        height: clamp(12rem, 27vh, 25rem);
     }
 
     .default-card__content {
         display: flex;
         flex-direction: row;
-        height: clamp(9rem, 20vh, 20rem);
+        height: var(--card-content-height);
         width: 100%;
         margin: 0.2em clamp(0.6em, 3vw, 1em);
         transition: 0.2s ease-in-out;
-    }
-
-    .default-card:hover .default-card__content {
-        height: clamp(11rem, 25vh, 23rem);
     }
 
     .default-card__content__image {
@@ -140,15 +148,10 @@
 
     .default-card__content__image img {
         max-width: 100%;
-        width: clamp(10em, 20vw, 15rem);
-        height: clamp(10em, 20vh, 15rem);
+        width: var(--card-image-width);
+        height: var(--card-image-height);
         object-fit: fill;
     }
-
-    .default-card:hover .default-card__content__image img {
-        width: clamp(11em, 20vw, 18rem);
-        height: clamp(11em, 20vh, 18rem);
-    }    
 
     .default-card__content__ {
         height: 100%;
@@ -159,68 +162,29 @@
         align-items: start;
     }
 
-    .default-card__content__text h2,
-        .default-card__content__text h3 {
-        font-size: clamp(1rem, 2vh, 2rem);
-    }
-    
-    .default-card:hover .default-card__content__text h2,
-        .default-card:hover .default-card__content__text h3 {
-        font-size: clamp(1.1rem, 2vh, 2.1rem);
-    }
-
     .default-card__content__text p {
         font-size: clamp(0.9rem, 2vh, 2rem);
-        -webkit-line-clamp: 3;
-        line-clamp: 3;
     }
-
-    .default-card:hover .default-card__content__text p {
-        -webkit-line-clamp: 4;
-        line-clamp: 4;
-    }
-
-    .default-card__content__component {
-        font-size: clamp(0.8rem, 2vh, 1.7rem);
-    }
-
-    .default-card:hover .default-card__content__component {
-        font-size: clamp(0.9rem, 2vh, 1.8rem);
-    } 
 }
 
-@media screen and (max-width: 1000px) and (aspect-ratio > 1/1) {    
+/* Legacy compact card/type: width <= 1000px and width > height, including narrow phones. */
+@media screen and (max-width: 1000px) and (aspect-ratio > 1/1) {
     .default-card {
-        height: clamp(10rem, 25vh, 22rem);
+        --card-height: clamp(10rem, 25vh, 22rem);
+        --card-content-height: clamp(9rem, 25vh, 20rem);
+        --card-content-height-hover: clamp(10rem, 30vh, 21rem);
+        --card-heading-size: clamp(1rem, 3.5vh, 1.4rem);
+        --card-heading-size-hover: clamp(1.1rem, 3.5vh, 1.5rem);
+        --card-component-size: clamp(0.8rem, 3vh, 1.7rem);
+        --card-component-size-hover: clamp(0.9rem, 3vh, 1.8rem);
     }
 
     .default-card__content {
-        height: clamp(9rem, 25vh, 20rem);
-    }
-
-    .default-card:hover .default-card__content {
-        height: clamp(10rem, 30vh, 21rem);
-    }
-
-    .default-card__content__text h2,
-        .default-card__content__text h3 {
-        font-size: clamp(1rem, 3.5vh, 1.4rem)
-    }
-    
-    .default-card:hover .default-card__content__text h2,
-        .default-card:hover .default-card__content__text h3 {
-        font-size: clamp(1.1rem, 3.5vh, 1.5rem);
+        height: var(--card-content-height);
     }
 
     .default-card__content__text p {
         font-size: clamp(0.9rem, 3vh, 2em);
     }
     
-    .default-card__content__component {
-        font-size: clamp(0.8rem, 3vh, 1.7rem);
-    }
-
-    .default-card:hover .default-card__content__component {
-        font-size: clamp(0.9rem, 3vh, 1.8rem);
-    } 
 }

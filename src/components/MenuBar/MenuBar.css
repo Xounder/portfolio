@@ -5,7 +5,7 @@
     align-items: center;
     gap: 8px;
     background-color: var(--primary-color);
-    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.55);
+    box-shadow: 0 2px 7px var(--menu-header-shadow);
     width: 100%;
     height: var(--header-height);
 }
@@ -24,7 +24,7 @@
     gap: 16px;
     width: 70%;
     padding-left: 8px;
-    color: white;
+    color: var(--surface-color);
 }
 
 .atual-section__content h1 {
@@ -70,16 +70,18 @@
     position: fixed;
     z-index: 101;
     top: var(--menu-toggle-top);
-    right: calc(50% - 80px);
+    left: 50%;
+    transform: translateX(-50%);
     width: 160px;
+    box-sizing: border-box;
     height: 32px;
 
     background-color: var(--primary-color);
     border: 5px solid var(--primary-color);
-    box-shadow: 2px 5px 8px rgba(255, 255, 255, 0.04);
+    box-shadow: 2px 5px 8px var(--menu-toggle-shadow);
     border-radius: 0 0 60px 60px;
 
-    color: white;
+    color: var(--surface-color);
     font-size: 12px;
     font-weight: 600;
     transition: 0.1s ease;
@@ -87,11 +89,11 @@
 
 .change-view button:hover {
     background-color: var(--secondary-color-hover);
-    color: white;
+    color: var(--surface-color);
 }
 
 .change-view button:hover:active {
-    background-color: white;
+    background-color: var(--surface-color);
     color: var(--primary-color);
 }
 

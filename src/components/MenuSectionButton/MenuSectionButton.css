@@ -19,7 +19,8 @@
     margin: 0;
 
     width: 28rem;
-    max-width: 350px;
+    /* The offset parent is one third of the footer, not the viewport. */
+    max-width: min(350px, calc(100vw - 16px));
 
     background-color: var(--secondary-color);
 }
@@ -35,31 +36,31 @@
     justify-content: center;
 
     text-decoration: none;
-    color: white;
+    color: var(--surface-color);
     font-size: 1.1rem;
     font-weight: 600;
     cursor: pointer;
 
-    border: 1px solid rgba(255, 255, 255, 0.35);
+    border: 1px solid var(--menu-border);
     border-radius: 10px;
     width: 21.85rem;
-    max-width: 290px;
+    max-width: min(290px, calc(100vw - 32px));
     height: 50px;
 }
 
 .menu-section__items li button:focus-visible {
-    outline: 2px solid white;
+    outline: 2px solid var(--surface-color);
     outline-offset: 2px;
 }
 
 .menu-section__items li button:hover {
-    border: 1px solid rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--menu-border-hover);
     background-color: var(--secondary-color-hover);
     transition: 0.1s;
 }
 
 .menu-section__items li button:active {
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--menu-border-active);
 }
 
 .menu-section__items li:not(:last-child)::after {
@@ -68,11 +69,11 @@
     left: 50%;
     transform: translateX(-50%);
     width: 20.85rem;
-    max-width: 270px;
+    max-width: min(270px, calc(100vw - 52px));
     height: 0.01em;
 
-    background-color: rgba(255, 255, 255, 0.15);
-    content: ' ';
+    background-color: var(--menu-divider);
+    content: '';
 }
 
 .menu-section__button {

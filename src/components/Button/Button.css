@@ -8,14 +8,20 @@
     border-radius: 1.2em;
     cursor: pointer;
     transition: border-color 0.25s;
-    color: white;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);}
+    color: var(--surface-color);
+    box-shadow: 2px 2px 8px var(--button-shadow);}
 
 .button:hover {
-    border-color: #646cff;
+    border-color: var(--button-hover-border);
 }
 
 .button:focus-visible {
-    outline: 2px solid white;
+    outline: 2px solid var(--surface-color);
     outline-offset: 2px;
+}
+
+@media screen and (width < 600px) {
+    .button {
+        padding-inline: min(96px, 8vw);
+    }
 }

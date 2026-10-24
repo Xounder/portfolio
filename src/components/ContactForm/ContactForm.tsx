@@ -1,9 +1,15 @@
 import { useRef } from 'react';
 import './ContactForm.css';
 import { Button } from '../Button/Button';
+import type { HeadingLevel } from '../../types/heading';
 
-export const ContactForm = () => {
+type ContactFormProps = {
+    headingLevel: HeadingLevel;
+};
+
+export const ContactForm = ({ headingLevel }: ContactFormProps) => {
     const dialogRef = useRef<HTMLDialogElement | null>(null);
+    const HeadingTag = headingLevel;
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
@@ -16,7 +22,7 @@ export const ContactForm = () => {
 
     return (
         <div className='contact-form'>
-            <h2>Contact <span>Me</span></h2>
+            <HeadingTag>Contact <span>Me</span></HeadingTag>
             <form onSubmit={handleSubmit}>
                 <input type="text" id="name" name="name" placeholder='Name*' required />
                 <input type="email" id="email" name="email" placeholder='Email*' required />

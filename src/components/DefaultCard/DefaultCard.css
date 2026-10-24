@@ -64,6 +64,7 @@
     flex: 1;
 }
 
+.default-card__content__text h2,
 .default-card__content__text h3 {
     color: black;
     margin: 0;
@@ -71,6 +72,7 @@
     font-size: clamp(1rem, 3vh, 2.4rem);
 }
 
+.default-card:hover .default-card__content__text h2,
 .default-card:hover .default-card__content__text h3 {
     font-size: clamp(1.1rem, 3vh, 2.5rem);
 }
@@ -157,11 +159,13 @@
         align-items: start;
     }
 
-    .default-card__content__text h3 {
+    .default-card__content__text h2,
+        .default-card__content__text h3 {
         font-size: clamp(1rem, 2vh, 2rem);
     }
     
-    .default-card:hover .default-card__content__text h3 {
+    .default-card:hover .default-card__content__text h2,
+        .default-card:hover .default-card__content__text h3 {
         font-size: clamp(1.1rem, 2vh, 2.1rem);
     }
 
@@ -198,11 +202,13 @@
         height: clamp(10rem, 30vh, 21rem);
     }
 
-    .default-card__content__text h3 {
+    .default-card__content__text h2,
+        .default-card__content__text h3 {
         font-size: clamp(1rem, 3.5vh, 1.4rem)
     }
     
-    .default-card:hover .default-card__content__text h3 {
+    .default-card:hover .default-card__content__text h2,
+        .default-card:hover .default-card__content__text h3 {
         font-size: clamp(1.1rem, 3.5vh, 1.5rem);
     }
 

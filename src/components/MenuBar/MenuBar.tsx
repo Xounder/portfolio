@@ -48,7 +48,7 @@ export const MenuBar = ({sectionName, icons, atualPage, menuSetCurrentSection}: 
             <div className='atual-section'>
                 <img src={logo} alt="logo" onClick={() => { navigateToStart() }}/>
                 <div className='atual-section__content'>
-                    <h2 className={isVisible ? 'visible' : ''}>{sectionName}</h2>
+                    <h1 className={isVisible ? 'visible' : ''}>{sectionName}</h1>
                     <ul className={`atual-section__content__icons ${isVisible ? 'visible' : ''}`}>
                         {renderIcons()}
                     </ul>

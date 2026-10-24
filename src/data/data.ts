@@ -18,7 +18,7 @@ import buzzFeedImage from "../assets/images/buzzfeed.webp";
 import shoesEcommerceImage from "../assets/images/shoes-ecommerce.webp";
 
 // About Me
-export const AboutMeContent: AboutMeProps = {
+export const AboutMeContent: Omit<AboutMeProps, "headingLevel"> = {
   image: {
     img: myPhoto,
     alt: "Renan Fellipe, Computer Engineering student and technology enthusiast",
@@ -30,7 +30,7 @@ export const AboutMeContent: AboutMeProps = {
 };
 
 interface ExperienceCardsProps {
-  cardInfo: DefaultCardProps;
+  cardInfo: Omit<DefaultCardProps, "headingLevel">;
   expInfo: ExperienceCardInfoProps;
 }
 
@@ -169,7 +169,7 @@ export const RecognitionsCards: ExperienceCardsProps[] = [
 ];
 
 interface ProjectCardsProps {
-  cardInfo: DefaultCardProps;
+  cardInfo: Omit<DefaultCardProps, "headingLevel">;
   projectInfo: ProjectCardInfoProps;
 }
 

@@ -1,4 +1,5 @@
 import "./DefaultCardGroup.css";
+import type { HeadingLevel } from "../../types/heading";
 
 import { DefaultCard } from "../DefaultCard/DefaultCard";
 import { ProjectCardInfo } from "../ProjectCardInfo/ProjectCardInfo";
@@ -32,7 +33,7 @@ const cardDataMap = {
 type CardType = keyof typeof cardDataMap;
 const isValidCardType = (value: string): value is CardType => value in cardDataMap;
 
-export const DefaultCardGroup = ({ cardType }: { cardType: string }) => {
+export const DefaultCardGroup = ({ cardType, headingLevel }: { cardType: string; headingLevel: HeadingLevel }) => {
   if (!isValidCardType(cardType)) return null;
   const selectedData = cardDataMap[cardType];
 
@@ -49,6 +50,7 @@ export const DefaultCardGroup = ({ cardType }: { cardType: string }) => {
             description={card.cardInfo.description}
             link={card.cardInfo.link}
             component={selectedData.component(index)}
+            headingLevel={headingLevel}
           />
         ))}
     </div>

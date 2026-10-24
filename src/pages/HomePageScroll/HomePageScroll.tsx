@@ -111,6 +111,7 @@ export const HomePageScroll = () => {
             <Suspense fallback={<p>Carregando...</p>}>
               {visibleSections.has(key) && 
                 <Component 
+                  headingLevel="h3"
                   cardType={key} 
                   image={{
                     img: AboutMeContent.image.img,

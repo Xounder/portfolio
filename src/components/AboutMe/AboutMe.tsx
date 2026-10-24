@@ -1,3 +1,4 @@
+import type { HeadingLevel } from '../../types/heading';
 import React from "react";
 import "./AboutMe.css";
 
@@ -7,17 +8,19 @@ export type AboutMeProps = {
         alt: string
     },
     title: string,
+    headingLevel: HeadingLevel;
     description: string[]
 }
 
-export const AboutMe = (({image, title, description}: AboutMeProps) => {
+export const AboutMe = (({image, title, description, headingLevel}: AboutMeProps) => {
+    const HeadingTag = headingLevel;
     return (
         <div className="about-me">
             <div className="about-me__image">
                 <img src={image.img} alt={image.alt} />
             </div>
             <div className="about-me__content">
-                <h2>{title}</h2>
+                <HeadingTag>{title}</HeadingTag>
                 <p>
                     {description.map((text, index) => (
                         <React.Fragment key={index}>

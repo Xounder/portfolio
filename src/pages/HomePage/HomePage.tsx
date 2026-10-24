@@ -57,12 +57,13 @@ export const HomePage = () => {
         image={AboutMeContent.image}
         title={AboutMeContent.title}
         description={AboutMeContent.description}
+        headingLevel="h2"
       />
     ),
-    Projects: <DefaultCardGroup cardType="Projects" />,
-    Experiences: <DefaultCardGroup cardType="Experiences" />,
-    Recognitions: <DefaultCardGroup cardType="Recognitions" />,
-    Contact: <ContactForm />,
+    Projects: <DefaultCardGroup cardType="Projects" headingLevel="h2" />,
+    Experiences: <DefaultCardGroup cardType="Experiences" headingLevel="h2" />,
+    Recognitions: <DefaultCardGroup cardType="Recognitions" headingLevel="h2" />,
+    Contact: <ContactForm headingLevel="h2" />,
   };
 
   useEffect(() => {

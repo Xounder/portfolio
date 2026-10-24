@@ -1,7 +1,8 @@
-import { AboutMeProps } from "../components/AboutMe/AboutMe";
-import { ExperienceCardInfoProps } from "../components/ExperienceCardInfo/ExperienceCardInfo";
-import { ProjectCardInfoProps } from "../components/ProjectCardInfo/ProjectCardInfo";
-import { DefaultCardProps } from "../components/DefaultCard/DefaultCard";
+import type {
+  AboutMeProps,
+  ExperienceCardData,
+  ProjectCardData,
+} from "./types";
 
 import myPhoto from "../assets/images/me.webp";
 import logoIfma from "../assets/images/ifma.webp";
@@ -29,14 +30,10 @@ export const AboutMeContent: Omit<AboutMeProps, "headingLevel"> = {
   ],
 };
 
-interface ExperienceCardsProps {
-  cardInfo: Omit<DefaultCardProps, "headingLevel">;
-  expInfo: ExperienceCardInfoProps;
-}
-
 // Experiences
-export const ExperiencesCards: ExperienceCardsProps[] = [
+export const ExperiencesCards: ExperienceCardData[] = [
   {
+    kind: "experience",
     cardInfo: {
       image: {
         img: logoIfma,
@@ -57,8 +54,9 @@ export const ExperiencesCards: ExperienceCardsProps[] = [
 ];
 
 //Recognitions
-export const RecognitionsCards: ExperienceCardsProps[] = [
+export const RecognitionsCards: ExperienceCardData[] = [
   {
+    kind: "experience",
     cardInfo: {
       image: {
         img: logoMarathonSBC,
@@ -77,6 +75,7 @@ export const RecognitionsCards: ExperienceCardsProps[] = [
     },
   },
   {
+    kind: "experience",
     cardInfo: {
       image: {
         img: logoVoxy,
@@ -95,6 +94,7 @@ export const RecognitionsCards: ExperienceCardsProps[] = [
     },
   },
   {
+    kind: "experience",
     cardInfo: {
       image: {
         img: logoDio,
@@ -113,6 +113,7 @@ export const RecognitionsCards: ExperienceCardsProps[] = [
     },
   },
   {
+    kind: "experience",
     cardInfo: {
       image: {
         img: logoDio,
@@ -131,6 +132,7 @@ export const RecognitionsCards: ExperienceCardsProps[] = [
     },
   },
   {
+    kind: "experience",
     cardInfo: {
       image: {
         img: logoDio,
@@ -149,6 +151,7 @@ export const RecognitionsCards: ExperienceCardsProps[] = [
     },
   },
   {
+    kind: "experience",
     cardInfo: {
       image: {
         img: logoSolyd,
@@ -168,14 +171,10 @@ export const RecognitionsCards: ExperienceCardsProps[] = [
   },
 ];
 
-interface ProjectCardsProps {
-  cardInfo: Omit<DefaultCardProps, "headingLevel">;
-  projectInfo: ProjectCardInfoProps;
-}
-
 // Projects
-export const ProjectsCards: ProjectCardsProps[] = [
+export const ProjectsCards: ProjectCardData[] = [
   {
+    kind: "project",
     cardInfo: {
       image: {
         img: logoAPI,
@@ -189,6 +188,7 @@ export const ProjectsCards: ProjectCardsProps[] = [
     projectInfo: { technologies: ["Java", "Spring Boot"] },
   },
   {
+    kind: "project",
     cardInfo: {
       image: {
         img: logoAPI,
@@ -202,6 +202,7 @@ export const ProjectsCards: ProjectCardsProps[] = [
     projectInfo: { technologies: ["C#", ".NET", "Minimal API"] },
   },
   {
+    kind: "project",
     cardInfo: {
       image: {
         img: logoAPI,
@@ -215,6 +216,7 @@ export const ProjectsCards: ProjectCardsProps[] = [
     projectInfo: { technologies: ["C#", ".NET"] },
   },
   {
+    kind: "project",
     cardInfo: {
       image: {
         img: buletinBlogImage,
@@ -227,6 +229,7 @@ export const ProjectsCards: ProjectCardsProps[] = [
     projectInfo: { technologies: ["Angular", "TypeScript", "HTML", "CSS"] },
   },
   {
+    kind: "project",
     cardInfo: {
       image: {
         img: buzzFeedImage,
@@ -239,6 +242,7 @@ export const ProjectsCards: ProjectCardsProps[] = [
     projectInfo: { technologies: ["Angular", "TypeScript", "HTML", "CSS"] },
   },
   {
+    kind: "project",
     cardInfo: {
       image: {
         img: angularPstoreImage,
@@ -251,6 +255,7 @@ export const ProjectsCards: ProjectCardsProps[] = [
     projectInfo: { technologies: ["Angular", "TypeScript", "HTML", "CSS"] },
   },
   {
+    kind: "project",
     cardInfo: {
       image: {
         img: bokumonImage,
@@ -263,6 +268,7 @@ export const ProjectsCards: ProjectCardsProps[] = [
     projectInfo: { technologies: ["Python"] },
   },
   {
+    kind: "project",
     cardInfo: {
       image: {
         img: shoesEcommerceImage,

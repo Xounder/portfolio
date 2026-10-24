@@ -12,11 +12,6 @@
     padding: 1em 0;
 }
 
-.group-cards {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
-}
-
 .group-cards::-webkit-scrollbar {
     width: 0.5em;
 }

@@ -2,9 +2,7 @@ import './ProjectCardInfo.css';
 
 import { Button } from '../Button/Button';
 
-export type ProjectCardInfoProps = {
-    technologies: string[];
-}
+import type { ProjectCardInfoProps } from "../../data/types";
 
 export const ProjectCardInfo = ({ technologies }: ProjectCardInfoProps) => {
     const VISIBLE_LIMIT = 5;

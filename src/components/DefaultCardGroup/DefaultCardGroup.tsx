@@ -1,5 +1,6 @@
 import "./DefaultCardGroup.css";
-import type { HeadingLevel } from "../../types/heading";
+
+import type { ReactElement } from "react";
 
 import { DefaultCard } from "../DefaultCard/DefaultCard";
 import { ProjectCardInfo } from "../ProjectCardInfo/ProjectCardInfo";
@@ -8,8 +9,18 @@ import { ExperienceCardInfo } from "../ExperienceCardInfo/ExperienceCardInfo";
 import { ProjectsCards } from "../../data/data";
 import { ExperiencesCards } from "../../data/data";
 import { RecognitionsCards } from "../../data/data";
+import type { CardData } from "../../data/types";
+import type { HeadingLevel } from "../../types/heading";
 
-const cardDataMap = {
+/** The card groups this component can render. About Me / Contact are page-level. */
+type CardGroupName = "Projects" | "Experiences" | "Recognitions";
+
+type CardDataMap = Record<
+  CardGroupName,
+  { cards: readonly CardData[]; component: (index: number) => ReactElement }
+>;
+
+const cardDataMap: CardDataMap = {
   Projects: {
     cards: ProjectsCards,
     component: (index: number) => (
@@ -30,29 +41,29 @@ const cardDataMap = {
   },
 };
 
-type CardType = keyof typeof cardDataMap;
-const isValidCardType = (value: string): value is CardType => value in cardDataMap;
+type DefaultCardGroupProps = {
+  cardType: CardGroupName;
+  headingLevel: HeadingLevel;
+};
 
-export const DefaultCardGroup = ({ cardType, headingLevel }: { cardType: string; headingLevel: HeadingLevel }) => {
-  if (!isValidCardType(cardType)) return null;
+export const DefaultCardGroup = ({ cardType, headingLevel }: DefaultCardGroupProps) => {
   const selectedData = cardDataMap[cardType];
 
   const justifyContent = selectedData.cards.length === 1 ? "center" : "start";
 
   return (
     <div className="group-cards" style={{ justifyContent: justifyContent }}>
-      {selectedData &&
-        selectedData.cards.map((card, index) => (
-          <DefaultCard
-            key={index}
-            image={card.cardInfo.image}
-            title={card.cardInfo.title}
-            description={card.cardInfo.description}
-            link={card.cardInfo.link}
-            component={selectedData.component(index)}
-            headingLevel={headingLevel}
-          />
-        ))}
+      {selectedData.cards.map((card, index) => (
+        <DefaultCard
+          key={index}
+          image={card.cardInfo.image}
+          title={card.cardInfo.title}
+          description={card.cardInfo.description}
+          link={card.cardInfo.link}
+          component={selectedData.component(index)}
+          headingLevel={headingLevel}
+        />
+      ))}
     </div>
   );
 };

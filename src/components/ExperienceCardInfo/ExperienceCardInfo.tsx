@@ -2,9 +2,7 @@ import './ExperienceCardInfo.css';
 
 import { Button } from '../Button/Button';
 
-export interface ExperienceCardInfoProps {
-    info: { type: string, yearPeriod: string };
-}
+import type { ExperienceCardInfoProps } from "../../data/types";
 
 export const ExperienceCardInfo = ({ info }: ExperienceCardInfoProps) => {
     return (

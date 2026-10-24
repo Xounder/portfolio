@@ -1,16 +1,8 @@
-import type { HeadingLevel } from '../../types/heading';
+import type { AboutMeProps } from "../../data/types";
 import React from "react";
 import "./AboutMe.css";
 
-export type AboutMeProps = {
-    image: {
-        img: string, 
-        alt: string
-    },
-    title: string,
-    headingLevel: HeadingLevel;
-    description: string[]
-}
+
 
 export const AboutMe = (({image, title, description, headingLevel}: AboutMeProps) => {
     const HeadingTag = headingLevel;

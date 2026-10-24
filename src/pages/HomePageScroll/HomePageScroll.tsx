@@ -91,13 +91,13 @@ export const HomePageScroll = () => {
       </header>
 
       <main className="home-scroll-main">
-        {[ 
-          { key: "About Me", Component: AboutMe },
-          { key: "Projects", Component: DefaultCardGroup },
-          { key: "Experiences", Component: DefaultCardGroup },
-          { key: "Recognitions", Component: DefaultCardGroup },
-          { key: "Contact", Component: ContactForm },
-        ].map(({ key, Component }) => (
+        {([
+          { key: "About Me", render: () => <AboutMe image={AboutMeContent.image} title={AboutMeContent.title} description={AboutMeContent.description} headingLevel="h3" /> },
+          { key: "Projects", render: () => <DefaultCardGroup cardType="Projects" headingLevel="h3" /> },
+          { key: "Experiences", render: () => <DefaultCardGroup cardType="Experiences" headingLevel="h3" /> },
+          { key: "Recognitions", render: () => <DefaultCardGroup cardType="Recognitions" headingLevel="h3" /> },
+          { key: "Contact", render: () => <ContactForm headingLevel="h3" /> },
+        ] as const).map(({ key, render }) => (
           <motion.section
             key={key}
             data-section={key}
@@ -109,17 +109,7 @@ export const HomePageScroll = () => {
           >
             <InfoCard info={key} />
             <Suspense fallback={<p>Carregando...</p>}>
-              {visibleSections.has(key) && 
-                <Component 
-                  headingLevel="h3"
-                  cardType={key} 
-                  image={{
-                    img: AboutMeContent.image.img,
-                    alt: AboutMeContent.image.alt
-                  }} 
-                  title={ AboutMeContent.title } 
-                  description={ AboutMeContent.description } 
-                />
+              {visibleSections.has(key) && render()
               }
             </Suspense>
           </motion.section>

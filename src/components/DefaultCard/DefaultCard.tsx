@@ -1,19 +1,10 @@
-import type { HeadingLevel } from '../../types/heading';
 import './DefaultCard.css';
 
-import { ReactElement } from 'react';
+import type { DefaultCardProps } from '../../data/types';
 
-export interface DefaultCardProps {
-    image: { img:string, alt:string }
-    title: string;
-    description: string;
-    link?: string;
-    headingLevel: HeadingLevel;
-    component?: ReactElement
-}
-export const DefaultCard = ({ image, title, description, link, component, headingLevel}: DefaultCardProps) => {
-    
+export const DefaultCard = ({ image, title, description, link, component, headingLevel }: DefaultCardProps) => {
     const HeadingTag = headingLevel;
+    
     return (
         <a className="default-card" href={link} target="_blank" rel="noopener noreferrer">
             <div className='default-card__content'>

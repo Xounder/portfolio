@@ -9,6 +9,7 @@ import { getSectionIcons, sections, sectionRegistry, type SectionId, type Sectio
 import { AboutMeContent } from "../../data/data.ts";
 
 import { motion } from "framer-motion";
+import { scrollFooterVariants, scrollHeaderTransition, scrollHeaderVariants, scrollRevealTransition, scrollSectionVariants } from "../../data/motion.ts";
 
 const AboutMe = lazy(() =>
   import("../../components/AboutMe/AboutMe.tsx").then((module) => ({
@@ -113,10 +114,11 @@ export const HomePageScroll = () => {
     <>
       <header className="home-scroll-header">
         <motion.div
-          initial={{ opacity: 0, x: 100 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -100 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          variants={scrollHeaderVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          transition={scrollHeaderTransition}
         >
           <MenuBar
             sectionName={currentSection}
@@ -131,9 +133,10 @@ export const HomePageScroll = () => {
             key={entry.name}
             data-section={entry.name}
             className={entry.name.toLowerCase()}
-            initial={{ opacity: 0, y: 300 }}
-            animate={visibleSections.has(entry.name) ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            variants={scrollSectionVariants}
+            initial="initial"
+            animate={visibleSections.has(entry.name) ? "visible" : {}}
+            transition={scrollRevealTransition}
             ref={entry.id === "contact" ? lastSectionRef : null}
           >
             <InfoCard info={entry.name} />
@@ -147,9 +150,10 @@ export const HomePageScroll = () => {
       {isFooterVisible && (
         <footer className="home-scroll-footer">
           <motion.div
-            initial={{ opacity: 0, y: 500 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            variants={scrollFooterVariants}
+            initial="initial"
+            animate="animate"
+            transition={scrollRevealTransition}
           >
             <h4>Desenvolvido por Renan Fellipe</h4>
             <p>© 2025</p>

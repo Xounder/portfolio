@@ -46,6 +46,12 @@
   background-color: var(--secondary-color);
 }
 
+.section-buttons__navigation {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
 
 .section-buttons__left-arrow {
   height: 100%;

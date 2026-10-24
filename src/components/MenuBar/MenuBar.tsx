@@ -1,3 +1,4 @@
+import { MENU_FADE_DELAY_MS } from '../../data/motion';
 import './MenuBar.css';
 
 import logo from '../../assets/logo.webp';
@@ -46,7 +47,7 @@ export const MenuBar = ({sectionName, icons, menuSetCurrentSection}: MenuBarProp
 
     useEffect(() => {
         setIsVisible(false);
-        const timerId = setTimeout(() => setIsVisible(true), 200);
+        const timerId = setTimeout(() => setIsVisible(true), MENU_FADE_DELAY_MS);
         return () => clearTimeout(timerId);
     }, [sectionName]);
 

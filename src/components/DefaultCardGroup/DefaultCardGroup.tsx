@@ -49,10 +49,8 @@ type DefaultCardGroupProps = {
 export const DefaultCardGroup = ({ cardType, headingLevel }: DefaultCardGroupProps) => {
   const selectedData = cardDataMap[cardType];
 
-  const justifyContent = selectedData.cards.length === 1 ? "center" : "start";
-
   return (
-    <div className="group-cards" style={{ justifyContent: justifyContent }}>
+    <div className={`group-cards${selectedData.cards.length === 1 ? "" : " group-cards--multiple"}`}>
       {selectedData.cards.map((card, index) => (
         <DefaultCard
           key={`${card.cardInfo.link}:${card.cardInfo.title}`}

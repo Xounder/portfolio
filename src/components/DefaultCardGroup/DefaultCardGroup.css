@@ -12,6 +12,9 @@
     padding: 1em 0;
 }
 
+.group-cards--multiple {
+    justify-content: start;
+}
 
 .group-cards::-webkit-scrollbar {
     width: 0.5em;

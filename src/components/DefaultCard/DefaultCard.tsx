@@ -7,7 +7,9 @@ export const DefaultCard = ({ image, title, description, link, component, headin
     
     return (
         <a className="default-card" href={link} target="_blank" rel="noopener noreferrer">
-            <div className='default-card__content'>
+            {/* HTML5 anchors permit flow content: keep the existing anchor and its
+                direct child/class, including the OOS-4 nested buttons, unchanged. */}
+            <article className='default-card__content'>
                 <div className='default-card__content__image'>
                     <img src={image.img} alt={image.alt} />
                 </div>
@@ -20,7 +22,7 @@ export const DefaultCard = ({ image, title, description, link, component, headin
                         {component}
                     </div>
                 </div>
-            </div>
+            </article>
             
         </a>
     );

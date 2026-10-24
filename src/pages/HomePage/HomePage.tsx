@@ -8,8 +8,8 @@ import { DefaultCardGroup } from "../../components/DefaultCardGroup/DefaultCardG
 import { MenuSectionButton } from "../../components/MenuSectionButton/MenuSectionButton.tsx";
 import { DefaultSectionButton } from "../../components/DefaultSectionButton/DefaultSectionButton.tsx";
 // TASK-11 / W2.4 — ArrowSectionButton component removed; its only contribution
-// was the <nav className="arrow-section"> wrapper, now inlined below. The
-// stylesheet stays at its original path (TASK-15 / W3.2 target) and is imported
+// was the arrow-section wrapper, now inlined below. TASK-17 changes that
+// single-button nav to a div; the stylesheet stays at its original path and is imported
 // here at the same cascade position the old component import occupied.
 import "../../components/ArrowSectionButton/ArrowSectionButton.css";
 
@@ -19,6 +19,7 @@ import menuIcon from "../../assets/icons/menu-hamburguer.svg";
 import leftArrow from "../../assets/icons/seta-pequena-esquerda.svg";
 import rightArrow from "../../assets/icons/seta-pequena-direita.svg";
 import { sections, getSectionEntry, getSectionIcons, getSectionIndex, type SectionId, type SectionName } from "../../data/sections.ts";
+import { homeFooterVariants, homeHeaderVariants, homeTransition, PAGE_READY_DELAY_MS, SCROLL_RESTORATION_CLEANUP_MS, SCROLL_RESTORATION_SPACER_HEIGHT } from "../../data/motion.ts";
 
 import { motion } from "framer-motion";
 
@@ -81,7 +82,7 @@ export const HomePage = () => {
 
   const scrollToEndPage = () => {
     const fakeDiv = document.createElement("div");
-    fakeDiv.style.height = "200vh";
+    fakeDiv.style.height = SCROLL_RESTORATION_SPACER_HEIGHT;
     fakeDiv.style.position = "absolute";
     fakeDiv.style.bottom = "0";
     fakeDiv.style.width = "1px";
@@ -95,7 +96,7 @@ export const HomePage = () => {
   
     setTimeout(() => {
       document.body.removeChild(fakeDiv);
-    }, 500);
+    }, SCROLL_RESTORATION_CLEANUP_MS);
   };
   
   useEffect(() => {
@@ -110,7 +111,7 @@ export const HomePage = () => {
 
     const timer = setTimeout(() => {
       setIsPageReady(true);
-    }, 100);
+    }, PAGE_READY_DELAY_MS);
 
     return () => {
       // Restore exactly the captured inline values; empty string removes the inline declaration
@@ -128,10 +129,11 @@ export const HomePage = () => {
     <>
       <header className="home-header">
         <motion.div
-          initial={{ opacity: 0, x: -100 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: 100 }}
-          transition={{ duration: 0.5 }}
+          variants={homeHeaderVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          transition={homeTransition}
         >
           <MenuBar
             sectionName={currentSection}
@@ -157,22 +159,24 @@ export const HomePage = () => {
               ? { y: mainMotionValue * -1 }
               : { x: mainMotionValue }),
           }}
-          transition={{ duration: 0.5 }}
+          transition={homeTransition}
         >
           <div className="content">{sectionRenderTargets[getSectionEntry(currentSection).id]}</div>
         </motion.div>
       </main>
 
       <footer className="section-buttons">
-        <motion.div
-          initial={{ opacity: 0, y: 0 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 0 }}
-          transition={{ duration: 0.5 }}
-          style={{width:"100%", height:"100%", display:"flex", justifyContent:"center"}}
+        <motion.nav
+          className="section-buttons__navigation"
+          aria-label="Navegação entre seções"
+          variants={homeFooterVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          transition={homeTransition}
         >
-          <aside className="section-buttons__left-arrow">
-            <nav className="arrow-section">
+          <div className="section-buttons__left-arrow">
+            <div className="arrow-section">
               <DefaultSectionButton
                 icon={leftArrow}
                 alt=""
@@ -185,8 +189,8 @@ export const HomePage = () => {
                   setChangeMotionOrientation(false);
                 }}
               />
-            </nav>
-          </aside>
+            </div>
+          </div>
 
           <div className="section-buttons__menu">
             <MenuSectionButton
@@ -196,8 +200,8 @@ export const HomePage = () => {
             />
           </div>
 
-          <aside className="section-buttons__right-arrow">
-            <nav className="arrow-section">
+          <div className="section-buttons__right-arrow">
+            <div className="arrow-section">
               <DefaultSectionButton
                 icon={rightArrow}
                 alt=""
@@ -210,9 +214,9 @@ export const HomePage = () => {
                   setChangeMotionOrientation(false);
                 }}
               />
-            </nav>
-          </aside>
-        </motion.div>
+            </div>
+          </div>
+        </motion.nav>
       </footer>
     </>
   );

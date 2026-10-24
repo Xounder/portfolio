@@ -23,7 +23,7 @@ export const MenuBar = ({sectionName, icons, menuSetCurrentSection}: MenuBarProp
     const isHomeRoute = location.pathname === '/';
 
     const renderIcons = () => {
-      return icons.map((icon, index) => {
+      return icons.map((icon) => {
         const content = icon.link ? (
           <a href={icon.link} target="_blank" rel="noopener noreferrer">
             <img src={icon.icon} alt={icon.alt} />
@@ -32,12 +32,16 @@ export const MenuBar = ({sectionName, icons, menuSetCurrentSection}: MenuBarProp
           <img src={icon.icon} alt={icon.alt} />
         );
 
-        return <li key={index}>{content}</li>;
+        return <li key={icon.alt}>{content}</li>;
       });
     };
 
     const navigateToStart = () => {
-        return isHomeRoute ? menuSetCurrentSection?.("About Me") : window.scrollTo(0, 0);
+      if (isHomeRoute) {
+        menuSetCurrentSection?.("About Me");
+      } else {
+        window.scrollTo(0, 0);
+      }
     };
 
     useEffect(() => {
@@ -59,7 +63,7 @@ export const MenuBar = ({sectionName, icons, menuSetCurrentSection}: MenuBarProp
             </div>
 
             <aside className='change-view'>
-                <Link to={isHomeRoute ? "/scroll" : "/"}><button type="button">Change View</button></Link>;
+                <Link to={isHomeRoute ? "/scroll" : "/"}><button type="button">Change View</button></Link>
             </aside>
         </>
     )

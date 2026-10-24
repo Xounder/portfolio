@@ -11,8 +11,8 @@ export const ProjectCardInfo = ({ technologies }: ProjectCardInfoProps) => {
     return (
         <div className="project-card">
             <ul className="project-card__technologies">
-                {visibletechnologies.map((tecnology, index) => (
-                    <li key={index}>
+                {visibletechnologies.map((tecnology) => (
+                    <li key={tecnology}>
                         <Button
                             text={tecnology}
                             type="button"

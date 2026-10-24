@@ -48,6 +48,8 @@
     font-size: clamp(0.9rem, 2.5vh, 2rem);
     color: rgb(104, 99, 99);
     margin: 0;
+    /* The former text + <br><br> occupied one trailing empty line box. */
+    padding-bottom: 1lh;
 }
 
 @media screen and (min-width: 600px) {
@@ -88,7 +90,7 @@
     }
     
     .about-me__content h2,
-.about-me__content h3 {
+    .about-me__content h3 {
         font-size: clamp(1.1em, 5vh, 2.4em);
     }
     

@@ -55,7 +55,7 @@ export const DefaultCardGroup = ({ cardType, headingLevel }: DefaultCardGroupPro
     <div className="group-cards" style={{ justifyContent: justifyContent }}>
       {selectedData.cards.map((card, index) => (
         <DefaultCard
-          key={index}
+          key={`${card.cardInfo.link}:${card.cardInfo.title}`}
           image={card.cardInfo.image}
           title={card.cardInfo.title}
           description={card.cardInfo.description}

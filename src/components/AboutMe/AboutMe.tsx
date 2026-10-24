@@ -1,11 +1,9 @@
-import type { AboutMeProps } from "../../data/types";
-import React from "react";
 import "./AboutMe.css";
-
-
+import type { AboutMeProps } from "../../data/types";
 
 export const AboutMe = (({image, title, description, headingLevel}: AboutMeProps) => {
     const HeadingTag = headingLevel;
+
     return (
         <div className="about-me">
             <div className="about-me__image">
@@ -13,15 +11,9 @@ export const AboutMe = (({image, title, description, headingLevel}: AboutMeProps
             </div>
             <div className="about-me__content">
                 <HeadingTag>{title}</HeadingTag>
-                <p>
-                    {description.map((text, index) => (
-                        <React.Fragment key={index}>
-                            {text}
-                            <br />
-                            <br />
-                        </React.Fragment>
-                    ))}    
-                </p>
+                {description.map((text) => (
+                    <p key={text}>{text}</p>
+                ))}
             </div>
         </div>
     );

@@ -24,6 +24,10 @@
     background-color: var(--secondary-color);
 }
 
+.menu-section__items li {
+    position: relative;
+}
+
 .menu-section__items li button {
     all: unset;
     display: flex;
@@ -43,6 +47,11 @@
     height: 50px;
 }
 
+.menu-section__items li button:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 2px;
+}
+
 .menu-section__items li button:hover {
     border: 1px solid rgba(255, 255, 255, 0.9);
     background-color: var(--secondary-color-hover);
@@ -53,7 +62,7 @@
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.menu-section__items li::after {
+.menu-section__items li:not(:last-child)::after {
     position: absolute;
     bottom: 0px;
     left: 50%;

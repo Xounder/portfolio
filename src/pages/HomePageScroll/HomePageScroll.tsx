@@ -55,17 +55,6 @@ export const HomePageScroll = () => {
               return newSections;
             });
 
-            const menuTitle = document.querySelector(
-              "header .atual-section__name h2"
-            );
-            const menuIcon = document.querySelector(
-              "header .atual-section__icons"
-            );
-
-            if (menuTitle && menuIcon) {
-              menuTitle.classList.add("visible");
-              menuIcon.classList.add("visible");
-            }
           }
 
           if (entry.target === lastSectionRef.current && entry.isIntersecting) {
@@ -80,7 +69,7 @@ export const HomePageScroll = () => {
     sectionElements.forEach((section) => observer.observe(section));
 
     return () => observer.disconnect();
-  }, [currentSection]);
+  }, []);
 
   return (
     <>
@@ -142,10 +131,8 @@ export const HomePageScroll = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <Suspense fallback={<p>Carregando...</p>}>
-              <h4>Desenvolvido por Renan Fellipe</h4>
-              <p>© 2025</p>
-            </Suspense>
+            <h4>Desenvolvido por Renan Fellipe</h4>
+            <p>© 2025</p>
           </motion.div>
         </footer>
       )}

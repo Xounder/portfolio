@@ -3,20 +3,17 @@ import './MenuBar.css';
 import logo from '../../assets/logo.webp';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import type { SectionName } from '../../data/sections';
+import type { Icon } from '../../types/icons';
 
 
 type MenuBarProps = {
     sectionName: string;
     icons: Icon[];
     atualPage: string;
-    menuSetCurrentSection: (sectionName: string) => void;
+    menuSetCurrentSection: (sectionName: SectionName) => void;
 };
 
-export type Icon = {
-    icon:string;
-    alt:string;
-    link?:string;
-}
 
 
 export const MenuBar = ({sectionName, icons, atualPage, menuSetCurrentSection}: MenuBarProps) => {

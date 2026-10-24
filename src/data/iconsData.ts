@@ -1,4 +1,6 @@
-import { Icon } from '../components/MenuBar/MenuBar';
+import type { Icon } from '../types/icons';
+
+export type { Icon };
 
 import basketBallIcon from '../assets/icons/basquetebol.svg';
 import houseIcon from '../assets/icons/casa.svg';

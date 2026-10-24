@@ -13,13 +13,12 @@ import { AboutMeContent } from "../../data/data";
 import menuIcon from "../../assets/icons/menu-hamburguer.svg";
 import leftArrow from "../../assets/icons/seta-pequena-esquerda.svg";
 import rightArrow from "../../assets/icons/seta-pequena-direita.svg";
-import { iconsData } from "../../data/iconsData.ts";
-import { sections } from "../../data/sections.ts";
+import { sections, getSectionIcons, getSectionIndex, type SectionName } from "../../data/sections.ts";
 
 import { motion } from "framer-motion";
 
 export const HomePage = () => {
-  const [currentSection, setCurrentSection] = useState<string>(sections[0]);
+  const [currentSection, setCurrentSection] = useState<SectionName>(sections[0]);
   const [mainMotionValue, setMainMotionValue] = useState<number>(200);
   const [changeMotionOrientation, setChangeMotionOrientation] = useState(false);
   const [isPageReady, setIsPageReady] = useState<boolean>(false);
@@ -27,7 +26,7 @@ export const HomePage = () => {
 
   const MOTION_VALUE = 100;
 
-  const menuSetCurrentSection = (sectionName: string) => {
+  const menuSetCurrentSection = (sectionName: SectionName) => {
     setCurrentSection(sectionName);
     setMainMotionValue(MOTION_VALUE);
     setChangeMotionOrientation(true);
@@ -69,6 +68,9 @@ export const HomePage = () => {
   useEffect(() => {
     scrollToEndPage();
 
+    const prevBodyOverflow = document.body.style.overflow;
+    const prevDocumentElementOverflow = document.documentElement.style.overflow;
+
     document.body.style.overflow = "hidden";
     document.documentElement.style.overflow = "hidden";
 
@@ -77,8 +79,8 @@ export const HomePage = () => {
     }, 100);
 
     return () => {
-      document.body.style.overflow = "visible";
-      document.documentElement.style.overflow = "auto";
+      document.body.style.overflow = prevBodyOverflow;
+      document.documentElement.style.overflow = prevDocumentElementOverflow;
       clearTimeout(timer);
     };
   }, []);
@@ -98,7 +100,7 @@ export const HomePage = () => {
         >
           <MenuBar
             sectionName={currentSection}
-            icons={iconsData[sections.indexOf(currentSection)]}
+            icons={getSectionIcons(currentSection)}
             atualPage="/"
             menuSetCurrentSection={menuSetCurrentSection}
           />
@@ -138,9 +140,10 @@ export const HomePage = () => {
           <aside className="section-buttons__left-arrow">
             <ArrowSectionButton
               icon={leftArrow}
-              alt="Ícone de uma flecha para a esquerda"
+              alt=""
+              ariaHidden={true}
               onClick={() => {
-                const currentIndex = sections.indexOf(currentSection);
+                const currentIndex = getSectionIndex(currentSection);
                 let nextIndex = currentIndex - 1;
                 if (nextIndex < 0) nextIndex = sections.length - 1;
                 setCurrentSection(sections[nextIndex]);
@@ -153,7 +156,7 @@ export const HomePage = () => {
           <div className="section-buttons__menu">
             <MenuSectionButton
               icon={menuIcon}
-              alt="Ícone de um fone de ouvido"
+              alt="Ícone de menu hambúrguer"
               menuSetCurrentSection={menuSetCurrentSection}
             />
           </div>
@@ -161,9 +164,10 @@ export const HomePage = () => {
           <aside className="section-buttons__right-arrow">
             <ArrowSectionButton
               icon={rightArrow}
-              alt="Ícone de uma flecha para a direita"
+              alt=""
+              ariaHidden={true}
               onClick={() => {
-                const currentIndex = sections.indexOf(currentSection);
+                const currentIndex = getSectionIndex(currentSection);
                 let nextIndex = currentIndex + 1;
                 if (nextIndex === sections.length) nextIndex = 0;
                 setCurrentSection(sections[nextIndex]);

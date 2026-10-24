@@ -2,22 +2,24 @@ import "./MenuSectionButton.css";
 
 import { DefaultSectionButton } from "../DefaultSectionButton/DefaultSectionButton";
 import { useState } from "react";
-import { sections } from "../../data/sections";
+import { sections, type SectionName } from "../../data/sections";
 
 type MenuSectionButtonProps = {
   icon: string;
   alt: string;
-  menuSetCurrentSection: (sectionName: string) => void;
+  menuSetCurrentSection: (sectionName: SectionName) => void;
+  ariaHidden?: boolean;
 };
 
 export const MenuSectionButton = ({
   icon,
   alt,
   menuSetCurrentSection,
+  ariaHidden,
 }: MenuSectionButtonProps) => {
   const [isActive, setIsActive] = useState(false);
 
-  const changeCurrentSection = (sectionName: string) => {
+  const changeCurrentSection = (sectionName: SectionName) => {
     menuSetCurrentSection(sectionName);
     setIsActive(false);
   };
@@ -43,6 +45,7 @@ export const MenuSectionButton = ({
         <DefaultSectionButton
           icon={icon}
           alt={alt}
+          ariaHidden={ariaHidden}
           onClick={() => setIsActive(!isActive)}
         />
       </div>

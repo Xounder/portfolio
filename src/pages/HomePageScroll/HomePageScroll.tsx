@@ -4,8 +4,7 @@ import "./HomePageScroll.css";
 import { MenuBar } from "../../components/MenuBar/MenuBar";
 import { InfoCard } from "../../components/InfoCard/InfoCard.tsx";
 
-import { iconsData } from "../../data/iconsData.ts";
-import { sections } from "../../data/sections.ts";
+import { sections, getSectionIcons, type SectionName } from "../../data/sections.ts";
 
 import { AboutMeContent } from "../../data/data.ts";
 
@@ -30,7 +29,7 @@ const DefaultCardGroup = lazy(() =>
 );
 
 export const HomePageScroll = () => {
-  const [currentSection, setCurrentSection] = useState<string>("About Me");
+  const [currentSection, setCurrentSection] = useState<SectionName>("About Me");
   const [visibleSections, setVisibleSections] = useState(new Set<string>());
   const [isFooterVisible, setIsFooterVisible] = useState(false);
 
@@ -46,12 +45,14 @@ export const HomePageScroll = () => {
         entries.forEach((entry) => {
           const sectionElement = entry.target as HTMLElement;
           const sectionName = sectionElement.dataset.section || "About Me";
+          if (!sections.includes(sectionName as SectionName)) return;
+          const validSectionName = sectionName as SectionName;
 
           if (entry.isIntersecting) {
-            setCurrentSection(sectionName);
+            setCurrentSection(validSectionName);
             setVisibleSections((prevSections) => {
               const newSections = new Set(prevSections);
-              newSections.add(sectionName);
+              newSections.add(validSectionName);
               return newSections;
             });
 
@@ -82,7 +83,7 @@ export const HomePageScroll = () => {
         >
           <MenuBar
             sectionName={currentSection}
-            icons={iconsData[sections.indexOf(currentSection)]}
+            icons={getSectionIcons(currentSection)}
             atualPage="/scroll"
             menuSetCurrentSection={() => {}}
           />

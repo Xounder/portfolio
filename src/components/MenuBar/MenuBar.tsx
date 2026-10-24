@@ -42,7 +42,8 @@ export const MenuBar = ({sectionName, icons, atualPage, menuSetCurrentSection}: 
 
     useEffect(() => {
         setIsVisible(false);
-        setTimeout(() => setIsVisible(true), 200);
+        const timerId = setTimeout(() => setIsVisible(true), 200);
+        return () => clearTimeout(timerId);
     }, [sectionName]);
 
     return (
@@ -58,7 +59,7 @@ export const MenuBar = ({sectionName, icons, atualPage, menuSetCurrentSection}: 
             </div>
 
             <aside className='change-view'>
-                <Link to={atualPage == '/' ? "/scroll" : "/"}><button>Change View</button></Link>;
+                <Link to={atualPage == '/' ? "/scroll" : "/"}><button type="button">Change View</button></Link>;
             </aside>
         </>
     )

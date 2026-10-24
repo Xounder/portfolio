@@ -8,7 +8,7 @@ export type DefaultSectionButtonProps = {
 
 export const DefaultSectionButton = ({ icon, alt, onClick }: DefaultSectionButtonProps) => {
     return (
-        <button className='default-section-button' onClick={onClick}>
+        <button type="button" className='default-section-button' onClick={onClick}>
             <img src={icon} alt={alt} />
         </button>
     );

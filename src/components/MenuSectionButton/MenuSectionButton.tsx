@@ -30,7 +30,7 @@ export const MenuSectionButton = ({
             {sections.map((section) => {
               return (
                 <li key={section}>
-                  <button onClick={() => changeCurrentSection(section)}>
+                  <button type="button" onClick={() => changeCurrentSection(section)}>
                     {section}
                   </button>
                 </li>

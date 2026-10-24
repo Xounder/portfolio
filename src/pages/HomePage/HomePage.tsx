@@ -13,9 +13,53 @@ import { AboutMeContent } from "../../data/data";
 import menuIcon from "../../assets/icons/menu-hamburguer.svg";
 import leftArrow from "../../assets/icons/seta-pequena-esquerda.svg";
 import rightArrow from "../../assets/icons/seta-pequena-direita.svg";
-import { sections, getSectionIcons, getSectionIndex, type SectionName } from "../../data/sections.ts";
+import { sections, getSectionEntry, getSectionIcons, getSectionIndex, type SectionId, type SectionName } from "../../data/sections.ts";
 
 import { motion } from "framer-motion";
+
+/**
+ * TASK-10 / W2.10 / risks.md R15 — `MOTION_VALUE` hoisted to module scope.
+ * UNRESOLVED DECISION (feasibility.md Open Question 2): `mainMotionValue`'s
+ * initial state inside the component below is `200`, while this constant is
+ * `100`. Reconciling the two would change the first-render animation, which
+ * R15 forbids doing silently, and Open Question 2 has not been answered.
+ * Both values are therefore preserved exactly as before — do NOT "clean up"
+ * one into the other until that question is explicitly resolved.
+ */
+const MOTION_VALUE = 100;
+
+/**
+ * TASK-10 / W2.5 — shared wrap-around arithmetic for both arrow blocks.
+ * `((index + delta) % length + length) % length` normalises JavaScript's
+ * negative modulo (`-1 % 5 === -1`, not `4`), so leftward navigation from
+ * index 0 wraps to the last section and rightward navigation from the last
+ * section wraps to 0. Byte-identical to the two hand-rolled `if` guards it
+ * replaces, for all 5 sections in both directions.
+ */
+function getWrappedSectionIndex(currentIndex: number, delta: number): number {
+  const length = sections.length;
+  return ((currentIndex + delta) % length + length) % length;
+}
+
+/**
+ * TASK-10 / W2.13 — eager render targets, created once at module scope
+ * (previously rebuilt on every render) and keyed by the registry's
+ * `SectionId` so the 5 display-name strings exist only in `sections.ts`.
+ */
+const sectionRenderTargets: Record<SectionId, JSX.Element> = {
+  about: (
+    <AboutMe
+      image={AboutMeContent.image}
+      title={AboutMeContent.title}
+      description={AboutMeContent.description}
+      headingLevel="h2"
+    />
+  ),
+  projects: <DefaultCardGroup cardType="Projects" headingLevel="h2" />,
+  experiences: <DefaultCardGroup cardType="Experiences" headingLevel="h2" />,
+  recognitions: <DefaultCardGroup cardType="Recognitions" headingLevel="h2" />,
+  contact: <ContactForm headingLevel="h2" />,
+};
 
 export const HomePage = () => {
   const [currentSection, setCurrentSection] = useState<SectionName>(sections[0]);
@@ -23,8 +67,6 @@ export const HomePage = () => {
   const [changeMotionOrientation, setChangeMotionOrientation] = useState(false);
   const [isPageReady, setIsPageReady] = useState<boolean>(false);
 
-
-  const MOTION_VALUE = 100;
 
   const menuSetCurrentSection = (sectionName: SectionName) => {
     setCurrentSection(sectionName);
@@ -51,24 +93,10 @@ export const HomePage = () => {
     }, 500);
   };
   
-  const componentsMap: Record<string, JSX.Element> = {
-    "About Me": (
-      <AboutMe
-        image={AboutMeContent.image}
-        title={AboutMeContent.title}
-        description={AboutMeContent.description}
-        headingLevel="h2"
-      />
-    ),
-    Projects: <DefaultCardGroup cardType="Projects" headingLevel="h2" />,
-    Experiences: <DefaultCardGroup cardType="Experiences" headingLevel="h2" />,
-    Recognitions: <DefaultCardGroup cardType="Recognitions" headingLevel="h2" />,
-    Contact: <ContactForm headingLevel="h2" />,
-  };
-
   useEffect(() => {
     scrollToEndPage();
 
+    // Capture the actual prior inline values (may be "" if set via stylesheet)
     const prevBodyOverflow = document.body.style.overflow;
     const prevDocumentElementOverflow = document.documentElement.style.overflow;
 
@@ -80,6 +108,7 @@ export const HomePage = () => {
     }, 100);
 
     return () => {
+      // Restore exactly the captured inline values; empty string removes the inline declaration
       document.body.style.overflow = prevBodyOverflow;
       document.documentElement.style.overflow = prevDocumentElementOverflow;
       clearTimeout(timer);
@@ -102,7 +131,6 @@ export const HomePage = () => {
           <MenuBar
             sectionName={currentSection}
             icons={getSectionIcons(currentSection)}
-            atualPage="/"
             menuSetCurrentSection={menuSetCurrentSection}
           />
         </motion.div>
@@ -126,7 +154,7 @@ export const HomePage = () => {
           }}
           transition={{ duration: 0.5 }}
         >
-          <div className="content">{componentsMap[currentSection] || null}</div>
+          <div className="content">{sectionRenderTargets[getSectionEntry(currentSection).id]}</div>
         </motion.div>
       </main>
 
@@ -140,17 +168,16 @@ export const HomePage = () => {
         >
           <aside className="section-buttons__left-arrow">
             <ArrowSectionButton
-              icon={leftArrow}
-              alt=""
-              ariaHidden={true}
-              onClick={() => {
-                const currentIndex = getSectionIndex(currentSection);
-                let nextIndex = currentIndex - 1;
-                if (nextIndex < 0) nextIndex = sections.length - 1;
-                setCurrentSection(sections[nextIndex]);
-                setMainMotionValue(-MOTION_VALUE);
-                setChangeMotionOrientation(false);
-              }}
+                icon={leftArrow}
+                alt=""
+                ariaHidden={true}
+                onClick={() => {
+                  setCurrentSection(
+                    sections[getWrappedSectionIndex(getSectionIndex(currentSection), -1)],
+                  );
+                  setMainMotionValue(-MOTION_VALUE);
+                  setChangeMotionOrientation(false);
+                }}
             />
           </aside>
 
@@ -164,17 +191,16 @@ export const HomePage = () => {
 
           <aside className="section-buttons__right-arrow">
             <ArrowSectionButton
-              icon={rightArrow}
-              alt=""
-              ariaHidden={true}
-              onClick={() => {
-                const currentIndex = getSectionIndex(currentSection);
-                let nextIndex = currentIndex + 1;
-                if (nextIndex === sections.length) nextIndex = 0;
-                setCurrentSection(sections[nextIndex]);
-                setMainMotionValue(MOTION_VALUE);
-                setChangeMotionOrientation(false);
-              }}
+                icon={rightArrow}
+                alt=""
+                ariaHidden={true}
+                onClick={() => {
+                  setCurrentSection(
+                    sections[getWrappedSectionIndex(getSectionIndex(currentSection), 1)],
+                  );
+                  setMainMotionValue(MOTION_VALUE);
+                  setChangeMotionOrientation(false);
+                }}
             />
           </aside>
         </motion.div>

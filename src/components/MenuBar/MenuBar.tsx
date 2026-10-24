@@ -2,39 +2,42 @@ import './MenuBar.css';
 
 import logo from '../../assets/logo.webp';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import type { SectionName } from '../../data/sections';
-import type { Icon } from '../../types/icons';
-
+import type { Icon } from '../../data/iconsData';
 
 type MenuBarProps = {
     sectionName: string;
     icons: Icon[];
-    atualPage: string;
-    menuSetCurrentSection: (sectionName: SectionName) => void;
+    /** Optional: only the home page needs to reset the section; the scroll page has no section state to reset. */
+    menuSetCurrentSection?: (sectionName: SectionName) => void;
 };
 
 
-
-export const MenuBar = ({sectionName, icons, atualPage, menuSetCurrentSection}: MenuBarProps) => {
+export const MenuBar = ({sectionName, icons, menuSetCurrentSection}: MenuBarProps) => {
     const [isVisible, setIsVisible] = useState(false);
+    // TASK-10 / W2.11 — destination derived from the router instead of a
+    // stringly-typed route prop compared with mixed strict/loose equality.
+    // MenuBar only ever renders on `/` and `/scroll` (main.tsx routes).
+    const location = useLocation();
+    const isHomeRoute = location.pathname === '/';
 
     const renderIcons = () => {
-        return icons.map((icon, index) => {
-            const content = icon.link ? (
-                <a href={icon.link} target="_blank" rel="noopener noreferrer">
-                    <img src={icon.icon} alt={icon.alt} />
-                </a>
-            ) : (
-                <img src={icon.icon} alt={icon.alt} />
-            );
-    
-            return <li key={index}>{content}</li>;
-        });
+      return icons.map((icon, index) => {
+        const content = icon.link ? (
+          <a href={icon.link} target="_blank" rel="noopener noreferrer">
+            <img src={icon.icon} alt={icon.alt} />
+          </a>
+        ) : (
+          <img src={icon.icon} alt={icon.alt} />
+        );
+
+        return <li key={index}>{content}</li>;
+      });
     };
 
     const navigateToStart = () => {
-        return atualPage === '/' ? menuSetCurrentSection("About Me") : window.scrollTo(0, 0);
+        return isHomeRoute ? menuSetCurrentSection?.("About Me") : window.scrollTo(0, 0);
     };
 
     useEffect(() => {
@@ -56,7 +59,7 @@ export const MenuBar = ({sectionName, icons, atualPage, menuSetCurrentSection}: 
             </div>
 
             <aside className='change-view'>
-                <Link to={atualPage == '/' ? "/scroll" : "/"}><button type="button">Change View</button></Link>;
+                <Link to={isHomeRoute ? "/scroll" : "/"}><button type="button">Change View</button></Link>;
             </aside>
         </>
     )

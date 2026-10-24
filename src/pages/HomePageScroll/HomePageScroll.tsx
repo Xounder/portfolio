@@ -4,7 +4,7 @@ import "./HomePageScroll.css";
 import { MenuBar } from "../../components/MenuBar/MenuBar";
 import { InfoCard } from "../../components/InfoCard/InfoCard.tsx";
 
-import { sections, getSectionIcons, type SectionName } from "../../data/sections.ts";
+import { getSectionIcons, sections, sectionRegistry, type SectionId, type SectionName } from "../../data/sections.ts";
 
 import { AboutMeContent } from "../../data/data.ts";
 
@@ -28,12 +28,45 @@ const DefaultCardGroup = lazy(() =>
   }))
 );
 
+/**
+ * TASK-10 / W2.2 + W2.13 — lazy render targets keyed by the registry's
+ * `SectionId`, created once at module scope. The ordered sections rendered by
+ * this page derive from `sectionRegistry` (single source of truth for the 5
+ * section names); these targets supply only the page-specific rendering
+ * (lazy + heading level h3). The `lazy()` wrappers are module-stable, so the
+ * dynamic-import trigger timing is unchanged.
+ */
+const sectionRenderTargets: Record<SectionId, () => JSX.Element> = {
+  about: () => (
+    <AboutMe
+      image={AboutMeContent.image}
+      title={AboutMeContent.title}
+      description={AboutMeContent.description}
+      headingLevel="h3"
+    />
+  ),
+  projects: () => <DefaultCardGroup cardType="Projects" headingLevel="h3" />,
+  experiences: () => <DefaultCardGroup cardType="Experiences" headingLevel="h3" />,
+  recognitions: () => <DefaultCardGroup cardType="Recognitions" headingLevel="h3" />,
+  contact: () => <ContactForm headingLevel="h3" />,
+};
+
+/** Narrowing guard: validates a string is a real SectionName using the registry. */
+function isSectionName(value: string): value is SectionName {
+  return sections.includes(value as SectionName);
+}
+
 export const HomePageScroll = () => {
   const [currentSection, setCurrentSection] = useState<SectionName>("About Me");
-  const [visibleSections, setVisibleSections] = useState(new Set<string>());
+  const [visibleSections, setVisibleSections] = useState(new Set<SectionName>());
   const [isFooterVisible, setIsFooterVisible] = useState(false);
 
   const lastSectionRef = useRef<HTMLDivElement | null>(null);
+  // TASK-10 / W2.12 — scopes the IntersectionObserver to this page's own
+  // sections. Attached to the existing `<main>` element (no new DOM wrapper),
+  // and populated before this mount effect runs, so the query below is
+  // correctly scoped on first execution.
+  const scrollContainerRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -44,18 +77,17 @@ export const HomePageScroll = () => {
       (entries) => {
         entries.forEach((entry) => {
           const sectionElement = entry.target as HTMLElement;
-          const sectionName = sectionElement.dataset.section || "About Me";
-          if (!sections.includes(sectionName as SectionName)) return;
-          const validSectionName = sectionName as SectionName;
+          const rawSectionName = sectionElement.dataset.section || "About Me";
+
+          if (!isSectionName(rawSectionName)) return;
 
           if (entry.isIntersecting) {
-            setCurrentSection(validSectionName);
+            setCurrentSection(rawSectionName);
             setVisibleSections((prevSections) => {
               const newSections = new Set(prevSections);
-              newSections.add(validSectionName);
+              newSections.add(rawSectionName);
               return newSections;
             });
-
           }
 
           if (entry.target === lastSectionRef.current && entry.isIntersecting) {
@@ -66,7 +98,12 @@ export const HomePageScroll = () => {
       { threshold: 0.5 }
     );
 
-    const sectionElements = document.querySelectorAll("section");
+    // TASK-10 / W2.12 — observe only <section> elements inside this page's
+    // container (scoped query), never foreign sections elsewhere in the
+    // document. The observer's root stays the viewport (unchanged), so the
+    // intersection geometry — and thus the progressive reveal — is identical.
+    const sectionElements =
+      scrollContainerRef.current?.querySelectorAll("section") ?? [];
     sectionElements.forEach((section) => observer.observe(section));
 
     return () => observer.disconnect();
@@ -84,33 +121,24 @@ export const HomePageScroll = () => {
           <MenuBar
             sectionName={currentSection}
             icons={getSectionIcons(currentSection)}
-            atualPage="/scroll"
-            menuSetCurrentSection={() => {}}
           />
         </motion.div>
       </header>
 
-      <main className="home-scroll-main">
-        {([
-          { key: "About Me", render: () => <AboutMe image={AboutMeContent.image} title={AboutMeContent.title} description={AboutMeContent.description} headingLevel="h3" /> },
-          { key: "Projects", render: () => <DefaultCardGroup cardType="Projects" headingLevel="h3" /> },
-          { key: "Experiences", render: () => <DefaultCardGroup cardType="Experiences" headingLevel="h3" /> },
-          { key: "Recognitions", render: () => <DefaultCardGroup cardType="Recognitions" headingLevel="h3" /> },
-          { key: "Contact", render: () => <ContactForm headingLevel="h3" /> },
-        ] as const).map(({ key, render }) => (
+      <main className="home-scroll-main" ref={scrollContainerRef}>
+        {sectionRegistry.map((entry) => (
           <motion.section
-            key={key}
-            data-section={key}
-            className={key.toLowerCase()}
+            key={entry.name}
+            data-section={entry.name}
+            className={entry.name.toLowerCase()}
             initial={{ opacity: 0, y: 300 }}
-            animate={visibleSections.has(key) ? { opacity: 1, y: 0 } : {}}
+            animate={visibleSections.has(entry.name) ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            ref={key === "Contact" ? lastSectionRef : null}
+            ref={entry.id === "contact" ? lastSectionRef : null}
           >
-            <InfoCard info={key} />
+            <InfoCard info={entry.name} />
             <Suspense fallback={<p>Carregando...</p>}>
-              {visibleSections.has(key) && render()
-              }
+              {visibleSections.has(entry.name) && sectionRenderTargets[entry.id]()}
             </Suspense>
           </motion.section>
         ))}

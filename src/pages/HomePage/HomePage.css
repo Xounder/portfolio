@@ -16,6 +16,7 @@
   height: 100vh;
   height: 100dvh;
   padding-top: 0;
+  box-sizing: border-box;
 }
 
 .home-main .content .group-cards {

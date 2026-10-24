@@ -29,8 +29,12 @@ const cardDataMap = {
   },
 };
 
+type CardType = keyof typeof cardDataMap;
+const isValidCardType = (value: string): value is CardType => value in cardDataMap;
+
 export const DefaultCardGroup = ({ cardType }: { cardType: string }) => {
-  const selectedData = cardDataMap[cardType as keyof typeof cardDataMap];
+  if (!isValidCardType(cardType)) return null;
+  const selectedData = cardDataMap[cardType];
 
   const justifyContent = selectedData.cards.length === 1 ? "center" : "start";
 

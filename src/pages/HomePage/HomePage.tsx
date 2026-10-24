@@ -6,7 +6,12 @@ import { AboutMe } from "../../components/AboutMe/AboutMe.tsx";
 import { ContactForm } from "../../components/ContactForm/ContactForm.tsx";
 import { DefaultCardGroup } from "../../components/DefaultCardGroup/DefaultCardGroup.tsx";
 import { MenuSectionButton } from "../../components/MenuSectionButton/MenuSectionButton.tsx";
-import { ArrowSectionButton } from "../../components/ArrowSectionButton/ArrowSectionButton.tsx";
+import { DefaultSectionButton } from "../../components/DefaultSectionButton/DefaultSectionButton.tsx";
+// TASK-11 / W2.4 — ArrowSectionButton component removed; its only contribution
+// was the <nav className="arrow-section"> wrapper, now inlined below. The
+// stylesheet stays at its original path (TASK-15 / W3.2 target) and is imported
+// here at the same cascade position the old component import occupied.
+import "../../components/ArrowSectionButton/ArrowSectionButton.css";
 
 import { AboutMeContent } from "../../data/data";
 
@@ -167,7 +172,8 @@ export const HomePage = () => {
           style={{width:"100%", height:"100%", display:"flex", justifyContent:"center"}}
         >
           <aside className="section-buttons__left-arrow">
-            <ArrowSectionButton
+            <nav className="arrow-section">
+              <DefaultSectionButton
                 icon={leftArrow}
                 alt=""
                 ariaHidden={true}
@@ -178,7 +184,8 @@ export const HomePage = () => {
                   setMainMotionValue(-MOTION_VALUE);
                   setChangeMotionOrientation(false);
                 }}
-            />
+              />
+            </nav>
           </aside>
 
           <div className="section-buttons__menu">
@@ -190,7 +197,8 @@ export const HomePage = () => {
           </div>
 
           <aside className="section-buttons__right-arrow">
-            <ArrowSectionButton
+            <nav className="arrow-section">
+              <DefaultSectionButton
                 icon={rightArrow}
                 alt=""
                 ariaHidden={true}
@@ -201,7 +209,8 @@ export const HomePage = () => {
                   setMainMotionValue(MOTION_VALUE);
                   setChangeMotionOrientation(false);
                 }}
-            />
+              />
+            </nav>
           </aside>
         </motion.div>
       </footer>

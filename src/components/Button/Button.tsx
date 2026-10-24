@@ -3,7 +3,7 @@ import './Button.css';
 type ButtonProps = {
     text: string;
     type: 'button' | 'submit';
-    onClick: () => void;
+    onClick?: () => void;
 }
 
 export const Button = ({ text, type,  onClick }: ButtonProps) => {

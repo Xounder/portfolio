@@ -1,8 +1,7 @@
 import './ProjectCardInfo.css';
 
 import { Button } from '../Button/Button';
-
-import type { ProjectCardInfoProps } from "../../data/types";
+import type { ProjectCardInfoProps } from '../../data/types';
 
 export const ProjectCardInfo = ({ technologies }: ProjectCardInfoProps) => {
     const VISIBLE_LIMIT = 5;
@@ -17,16 +16,15 @@ export const ProjectCardInfo = ({ technologies }: ProjectCardInfoProps) => {
                         <Button
                             text={tecnology}
                             type="button"
-                            onClick={() => {}}
                         />
                     </li>
                 ))}
                 {hiddentechnologies.length > 0 && (
                     <li>
+                        {/* Mostrar todas as tecnologias */}
                         <Button
                             text={`More ${hiddentechnologies.length}`}
                             type="button"
-                            onClick={() => {}} // Mostrar todas as tecnologias
                         />
                     </li>
                 )}

@@ -31,7 +31,7 @@ export const ContactForm = ({ headingLevel }: ContactFormProps) => {
                     pattern="^(\+?55\s?)?(\(\d{2}\)|\d{2})\s?\d{4,5}-?\d{4}$" 
                     inputMode="tel" required />
                 <textarea id="message" name="message" placeholder='Message*' required></textarea>
-                <Button text="Submit" type="submit" onClick={() => {}}/>
+                <Button text="Submit" type="submit"/>
             </form>
 
             <dialog ref={dialogRef} className="modal">

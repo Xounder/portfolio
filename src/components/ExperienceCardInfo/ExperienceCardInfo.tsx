@@ -1,8 +1,7 @@
 import './ExperienceCardInfo.css';
 
 import { Button } from '../Button/Button';
-
-import type { ExperienceCardInfoProps } from "../../data/types";
+import type { ExperienceCardInfoProps } from '../../data/types';
 
 export const ExperienceCardInfo = ({ info }: ExperienceCardInfoProps) => {
     return (
@@ -11,7 +10,6 @@ export const ExperienceCardInfo = ({ info }: ExperienceCardInfoProps) => {
             <Button 
                 text={info.yearPeriod} 
                 type="button"
-                onClick={() => {}}
             />
         </div>
     );

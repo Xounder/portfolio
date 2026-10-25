@@ -74,6 +74,9 @@ export const HomePageScroll = () => {
   }, []);
 
   useEffect(() => {
+    // W4.17 / R7: The planned 600px contain-intrinsic-size for content-visibility
+    // is not present in current source. Do not introduce or tune it here; R7
+    // considers threshold changes low-priority. Keep the observer at 0.5.
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

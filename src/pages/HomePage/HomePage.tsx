@@ -21,7 +21,7 @@ import rightArrow from "../../assets/icons/seta-pequena-direita.svg";
 import { sections, getSectionEntry, getSectionIcons, getSectionIndex, type SectionId, type SectionName } from "../../data/sections.ts";
 import { homeFooterVariants, homeHeaderVariants, homeTransition, PAGE_READY_DELAY_MS, SCROLL_RESTORATION_CLEANUP_MS, SCROLL_RESTORATION_SPACER_HEIGHT } from "../../data/motion.ts";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 /**
  * TASK-10 / W2.10 / risks.md R15 — `MOTION_VALUE` hoisted to module scope.
@@ -128,7 +128,7 @@ export const HomePage = () => {
   return (
     <>
       <header className="home-header">
-        <motion.div
+        <m.div
           variants={homeHeaderVariants}
           initial="initial"
           animate="animate"
@@ -140,11 +140,11 @@ export const HomePage = () => {
             icons={getSectionIcons(currentSection)}
             menuSetCurrentSection={menuSetCurrentSection}
           />
-        </motion.div>
+        </m.div>
       </header>
 
       <main className="home-main">
-        <motion.div
+        <m.div
           key={currentSection}
           initial={{
             opacity: 0,
@@ -162,11 +162,11 @@ export const HomePage = () => {
           transition={homeTransition}
         >
           <div className="content">{sectionRenderTargets[getSectionEntry(currentSection).id]}</div>
-        </motion.div>
+        </m.div>
       </main>
 
       <footer className="section-buttons">
-        <motion.nav
+        <m.nav
           className="section-buttons__navigation"
           aria-label="Navegação entre seções"
           variants={homeFooterVariants}
@@ -216,7 +216,7 @@ export const HomePage = () => {
               />
             </div>
           </div>
-        </motion.nav>
+        </m.nav>
       </footer>
     </>
   );

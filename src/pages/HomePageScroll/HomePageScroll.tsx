@@ -8,7 +8,7 @@ import { getSectionIcons, sections, sectionRegistry, type SectionId, type Sectio
 
 import { AboutMeContent } from "../../data/data.ts";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { scrollFooterVariants, scrollHeaderTransition, scrollHeaderVariants, scrollRevealTransition, scrollSectionVariants } from "../../data/motion.ts";
 
 const AboutMe = lazy(() =>
@@ -116,7 +116,7 @@ export const HomePageScroll = () => {
   return (
     <>
       <header className="home-scroll-header">
-        <motion.div
+        <m.div
           variants={scrollHeaderVariants}
           initial="initial"
           animate="animate"
@@ -127,12 +127,12 @@ export const HomePageScroll = () => {
             sectionName={currentSection}
             icons={getSectionIcons(currentSection)}
           />
-        </motion.div>
+        </m.div>
       </header>
 
       <main className="home-scroll-main" ref={scrollContainerRef}>
         {sectionRegistry.map((entry) => (
-          <motion.section
+          <m.section
             key={entry.name}
             data-section={entry.name}
             className={entry.name.toLowerCase()}
@@ -146,13 +146,13 @@ export const HomePageScroll = () => {
             <Suspense fallback={<p>Carregando...</p>}>
               {visibleSections.has(entry.name) && sectionRenderTargets[entry.id]()}
             </Suspense>
-          </motion.section>
+          </m.section>
         ))}
       </main>
 
       {isFooterVisible && (
         <footer className="home-scroll-footer">
-          <motion.div
+          <m.div
             variants={scrollFooterVariants}
             initial="initial"
             animate="animate"
@@ -160,7 +160,7 @@ export const HomePageScroll = () => {
           >
             <h4>Desenvolvido por Renan Fellipe</h4>
             <p>© 2025</p>
-          </motion.div>
+          </m.div>
         </footer>
       )}
     </>

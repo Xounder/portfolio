@@ -24,6 +24,8 @@ export const AboutMeContent: Omit<AboutMeProps, "headingLevel"> = {
   image: {
     img: myPhoto,
     alt: "Renan Fellipe, Computer Engineering student and technology enthusiast",
+    width: 400,
+    height: 402,
   },
   title: seo.title,
   description: [
@@ -39,6 +41,8 @@ export const ExperiencesCards: ExperienceCardData[] = [
       image: {
         img: logoIfma,
         alt: "Logo of Instituto Federal do Maranhão (IFMA - Federal Institute of Maranhão).",
+        width: 242,
+        height: 208,
       },
       title: "Criação de Mapas em Robótica Móvel",
       description:
@@ -62,6 +66,8 @@ export const RecognitionsCards: ExperienceCardData[] = [
       image: {
         img: logoMarathonSBC,
         alt: "Logo of Marathon SBC",
+        width: 250,
+        height: 225,
       },
       title: "Third place - Regional phase",
       description:
@@ -81,6 +87,8 @@ export const RecognitionsCards: ExperienceCardData[] = [
       image: {
         img: logoVoxy,
         alt: "Logo of Voxy",
+        width: 250,
+        height: 250,
       },
       title: "English Proficiency - Intermediate",
       description:
@@ -100,6 +108,8 @@ export const RecognitionsCards: ExperienceCardData[] = [
       image: {
         img: logoDio,
         alt: "Logo of Dio - Digital Innovation One",
+        width: 250,
+        height: 250,
       },
       title: "DIO Campus Expert",
       description:
@@ -119,6 +129,8 @@ export const RecognitionsCards: ExperienceCardData[] = [
       image: {
         img: logoDio,
         alt: "Logo of Dio - Digital Innovation One",
+        width: 250,
+        height: 250,
       },
       title: "Randstad - Backend with .NET",
       description:
@@ -138,6 +150,8 @@ export const RecognitionsCards: ExperienceCardData[] = [
       image: {
         img: logoDio,
         alt: "Logo of Dio - Digital Innovation One",
+        width: 250,
+        height: 250,
       },
       title: "Java, Spring Boot, Angular & Cloud",
       description:
@@ -157,6 +171,8 @@ export const RecognitionsCards: ExperienceCardData[] = [
       image: {
         img: logoSolyd,
         alt: "Logo of Solyd Offensive Security",
+        width: 200,
+        height: 200,
       },
       title: "Python - Basic",
       description:
@@ -180,6 +196,8 @@ export const ProjectsCards: ProjectCardData[] = [
       image: {
         img: logoAPI,
         alt: "Logo API",
+        width: 250,
+        height: 250,
       },
       title: "Restful Nubank API",
       description:
@@ -194,6 +212,8 @@ export const ProjectsCards: ProjectCardData[] = [
       image: {
         img: logoAPI,
         alt: "Logo API",
+        width: 250,
+        height: 250,
       },
       title: "Vehicle Management API",
       description:
@@ -208,6 +228,8 @@ export const ProjectsCards: ProjectCardData[] = [
       image: {
         img: logoAPI,
         alt: "Logo API",
+        width: 250,
+        height: 250,
       },
       title: "Task Management API",
       description:
@@ -222,6 +244,8 @@ export const ProjectsCards: ProjectCardData[] = [
       image: {
         img: buletinBlogImage,
         alt: "Buletin Blog - Home Page",
+        width: 500,
+        height: 314,
       },
       title: "Buletin Blog",
       description: "Buletin Blog – a blog with diverse content.",
@@ -235,6 +259,8 @@ export const ProjectsCards: ProjectCardData[] = [
       image: {
         img: buzzFeedImage,
         alt: "BuzzFeed Clone - Quizz",
+        width: 500,
+        height: 244,
       },
       title: "Buzzfeed Clone",
       description: "A BuzzFeed Clone themed around villains and superheroes",
@@ -248,6 +274,8 @@ export const ProjectsCards: ProjectCardData[] = [
       image: {
         img: angularPstoreImage,
         alt: "Angular Store - Home Page",
+        width: 500,
+        height: 249,
       },
       title: "Angular Store",
       description: "Recreating the Playstation Store layout.",
@@ -261,6 +289,8 @@ export const ProjectsCards: ProjectCardData[] = [
       image: {
         img: bokumonImage,
         alt: "Bokumon Fight Scene",
+        width: 992,
+        height: 737,
       },
       title: "Bokumon",
       description: "A fanmade game of Pokémon.",
@@ -274,6 +304,8 @@ export const ProjectsCards: ProjectCardData[] = [
       image: {
         img: shoesEcommerceImage,
         alt: "Shoes Ecommerce - Home Page",
+        width: 500,
+        height: 246,
       },
       title: "ShoesEcommerce",
       description: "A responsive ShoesEcommerce.",

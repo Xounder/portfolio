@@ -28,10 +28,10 @@ export const MenuBar = ({sectionName, icons, menuSetCurrentSection}: MenuBarProp
       return icons.map((icon) => {
         const content = icon.link ? (
           <a href={icon.link} target="_blank" rel="noopener noreferrer">
-            <img src={icon.icon} alt={icon.alt} />
+            <img src={icon.icon} alt={icon.alt} width={20} height={20} loading="eager" decoding="async" />
           </a>
         ) : (
-          <img src={icon.icon} alt="" aria-hidden="true" />
+          <img src={icon.icon} alt="" aria-hidden="true" width={20} height={20} loading="eager" decoding="async" />
         );
 
         return <li key={icon.alt}>{content}</li>;
@@ -55,7 +55,7 @@ export const MenuBar = ({sectionName, icons, menuSetCurrentSection}: MenuBarProp
     return (
         <>
             <div className='atual-section'>
-                <img src={logo} alt={seo.title} onClick={() => { navigateToStart() }}/>
+                <img src={logo} alt={seo.title} width={70} height={70} loading="eager" decoding="async" onClick={() => { navigateToStart() }}/>
                 <div className='atual-section__content'>
                     <h1 className={isVisible ? 'visible' : ''}>{sectionName}</h1>
                     <ul className={`atual-section__content__icons ${isVisible ? 'visible' : ''}`}>

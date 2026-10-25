@@ -7,7 +7,7 @@ export const AboutMe = (({image, title, description, headingLevel}: AboutMeProps
     return (
         <div className="about-me">
             <div className="about-me__image">
-                <img src={image.img} alt={image.alt} />
+                <img src={image.img} alt={image.alt} width={image.width} height={image.height} loading="eager" decoding="async" fetchPriority="high" />
             </div>
             <div className="about-me__content">
                 <HeadingTag>{title}</HeadingTag>

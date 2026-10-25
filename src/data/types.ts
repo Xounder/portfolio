@@ -16,6 +16,8 @@ export type AboutMeProps = {
   image: {
     img: string;
     alt: string;
+    width: number;
+    height: number;
   };
   title: string;
   description: string[];
@@ -24,7 +26,7 @@ export type AboutMeProps = {
 
 /** `DefaultCard` props. `headingLevel` is presentation, supplied by the route. */
 export interface DefaultCardProps {
-  image: { img: string; alt: string };
+  image: { img: string; alt: string; width: number; height: number };
   title: string;
   description: string;
   link?: string;

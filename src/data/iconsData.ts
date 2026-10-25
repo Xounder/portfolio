@@ -1,6 +1,13 @@
 import type { Icon } from '../types/icons';
+import { socialProfiles } from './seo';
 
 export type { Icon };
+
+// D/B convention is per usage, not per asset: repeated card imagery is decorative
+// when the adjacent card title already names it; a profile photo in AboutMe is
+// content-bearing. Contact icons inside icon-only links MUST keep meaningful alt
+// text to name their links. Optional follow-up: audit other repeated icons before
+// marking individual unlinked instances decorative; never hide a link's only name.
 
 import basketBallIcon from '../assets/icons/basquetebol.svg';
 import houseIcon from '../assets/icons/casa.svg';
@@ -50,9 +57,9 @@ export const iconsData: Icon[][] = [
   ],
   // Contact
   [
-    { icon: githubIcon, alt: 'Ícone de github', link: 'https://github.com/Xounder' },
-    { icon: linkedinIcon, alt: 'Ícone de linkedin', link: 'https://www.linkedin.com/in/renan-fellipe/' },
-    { icon: youtubeIcon, alt: 'Ícone de youtube', link: 'https://www.youtube.com/@Xounder_Tech' },
-    { icon: instagramIcon, alt: 'Ícone de instagram', link: 'https://www.instagram.com/renan.llipe/' },
+    { icon: githubIcon, alt: 'GitHub', link: socialProfiles.github },
+    { icon: linkedinIcon, alt: 'LinkedIn', link: socialProfiles.linkedin },
+    { icon: youtubeIcon, alt: 'YouTube', link: socialProfiles.youtube },
+    { icon: instagramIcon, alt: 'Instagram', link: socialProfiles.instagram },
   ],
 ];

@@ -3,6 +3,7 @@ import type {
   ExperienceCardData,
   ProjectCardData,
 } from "./types";
+import { seo } from './seo';
 
 import myPhoto from "../assets/images/me.webp";
 import logoIfma from "../assets/images/ifma.webp";
@@ -24,9 +25,9 @@ export const AboutMeContent: Omit<AboutMeProps, "headingLevel"> = {
     img: myPhoto,
     alt: "Renan Fellipe, Computer Engineering student and technology enthusiast",
   },
-  title: "Renan Fellipe",
+  title: seo.title,
   description: [
-    "I am passionate about technology and gaming. I completed my technical high school in Electronics and am currently pursuing a degree in Computer Engineering, both at the Instituto Federal do Maranhão (IFMA - Federal Institute of Maranhão)."
+    seo.description
   ],
 };
 

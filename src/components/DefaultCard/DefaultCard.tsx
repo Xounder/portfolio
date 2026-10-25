@@ -11,7 +11,7 @@ export const DefaultCard = ({ image, title, description, link, component, headin
                 direct child/class, including the OOS-4 nested buttons, unchanged. */}
             <article className='default-card__content'>
                 <div className='default-card__content__image'>
-                    <img src={image.img} alt={image.alt} />
+                    <img src={image.img} alt="" aria-hidden="true" />
                 </div>
                 <div className='default-card__content__'>
                     <div className='default-card__content__text'>

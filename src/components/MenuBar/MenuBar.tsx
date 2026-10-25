@@ -1,4 +1,3 @@
-import { MENU_FADE_DELAY_MS } from '../../data/motion';
 import './MenuBar.css';
 
 import logo from '../../assets/logo.webp';
@@ -6,6 +5,8 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import type { SectionName } from '../../data/sections';
 import type { Icon } from '../../data/iconsData';
+import { MENU_FADE_DELAY_MS } from '../../data/motion';
+import { seo } from '../../data/seo';
 
 type MenuBarProps = {
     sectionName: string;
@@ -30,7 +31,7 @@ export const MenuBar = ({sectionName, icons, menuSetCurrentSection}: MenuBarProp
             <img src={icon.icon} alt={icon.alt} />
           </a>
         ) : (
-          <img src={icon.icon} alt={icon.alt} />
+          <img src={icon.icon} alt="" aria-hidden="true" />
         );
 
         return <li key={icon.alt}>{content}</li>;
@@ -54,7 +55,7 @@ export const MenuBar = ({sectionName, icons, menuSetCurrentSection}: MenuBarProp
     return (
         <>
             <div className='atual-section'>
-                <img src={logo} alt="logo" onClick={() => { navigateToStart() }}/>
+                <img src={logo} alt={seo.title} onClick={() => { navigateToStart() }}/>
                 <div className='atual-section__content'>
                     <h1 className={isVisible ? 'visible' : ''}>{sectionName}</h1>
                     <ul className={`atual-section__content__icons ${isVisible ? 'visible' : ''}`}>

@@ -6,7 +6,6 @@ import { DefaultCard } from "../DefaultCard/DefaultCard";
 import { ProjectCardInfo } from "../ProjectCardInfo/ProjectCardInfo";
 import { ExperienceCardInfo } from "../ExperienceCardInfo/ExperienceCardInfo";
 
-import { ProjectsCards } from "../../data/data";
 import { ExperiencesCards } from "../../data/data";
 import { RecognitionsCards } from "../../data/data";
 import type { CardData } from "../../data/types";
@@ -34,7 +33,7 @@ type CardDataMap = Record<
 
 const cardDataMap: CardDataMap = {
   Projects: {
-    cards: ProjectsCards,
+    cards: [],
     renderInfo,
   },
   Experiences: {

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 314" role="img" aria-label="Full-stack architecture illustration">
+  <rect width="500" height="314" rx="24" fill="#151c34"/>
+  <circle cx="412" cy="66" r="112" fill="#263958"/>
+  <path d="M250 99v116M187 156h126" stroke="#83d9c1" stroke-width="5" stroke-linecap="round"/>
+  <rect x="168" y="43" width="164" height="83" rx="12" fill="#344461" stroke="#7895c1" stroke-width="3"/>
+  <path d="M168 68h164" stroke="#7895c1" stroke-width="3"/>
+  <circle cx="184" cy="55" r="4" fill="#f5a888"/><circle cx="199" cy="55" r="4" fill="#f2d37c"/>
+  <rect x="186" y="82" width="59" height="29" rx="5" fill="#6b9fe0"/><path d="M260 87h50m-50 14h37" stroke="#d3e2f1" stroke-width="6" stroke-linecap="round"/>
+  <rect x="64" y="191" width="151" height="77" rx="12" fill="#344461" stroke="#7895c1" stroke-width="3"/>
+  <path d="M83 215h91m-91 16h111m-111 16h71" stroke="#96b5d0" stroke-width="7" stroke-linecap="round"/>
+  <rect x="285" y="191" width="151" height="77" rx="12" fill="#344461" stroke="#7895c1" stroke-width="3"/>
+  <ellipse cx="360" cy="210" rx="52" ry="11" fill="#6b9fe0"/>
+  <path d="M308 210v35c0 17 104 17 104 0v-35" fill="#6b9fe0"/>
+  <path d="M308 228c0 17 104 17 104 0" fill="none" stroke="#d3e2f1" stroke-width="3"/>
+</svg>

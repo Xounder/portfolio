@@ -2,6 +2,7 @@ export type GitHubRepositoryRecord = {
   id: number;
   name: string;
   full_name: string;
+  default_branch: string;
   description: string | null;
   topics: string[];
   language: string | null;
@@ -13,7 +14,7 @@ export type GitHubRepositoryRecord = {
 };
 
 export type GitHubCachePayload = {
-  version: 1;
+  version: 2;
   savedAt: number;
   records: GitHubRepositoryRecord[];
 };
@@ -28,21 +29,15 @@ export type CacheReadResult = {
   visibleRecords: GitHubRepositoryRecord[];
 };
 
+export type ProjectCategory = "games" | "fullstack" | "api" | "frontend" | "misc";
+
 export type ProjectImage = {
   img: string;
   alt: string;
   width: number;
   height: number;
+  fallbackImg?: string;
 };
-
-export type ProjectPresentationOverride = {
-  title?: string;
-  description?: string;
-  technologies?: string[];
-  image: ProjectImage;
-};
-
-export type ProjectPresentationMap = ReadonlyMap<string, ProjectPresentationOverride>;
 
 export type GitHubFailureKind = "rate-limited" | "retryable" | "terminal" | "aborted";
 

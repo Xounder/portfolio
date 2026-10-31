@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 314" role="img" aria-label="Game controller illustration">
+  <rect width="500" height="314" rx="24" fill="#151c34"/>
+  <circle cx="412" cy="66" r="112" fill="#263958"/>
+  <path d="M146 107h208c32 0 51 20 60 55l19 69c9 36-19 55-48 34l-55-42H170l-55 42c-29 21-57 2-48-34l19-69c9-35 28-55 60-55Z" fill="#344461" stroke="#7895c1" stroke-width="4"/>
+  <path d="M140 171h64m-32-32v64" stroke="#83d9c1" stroke-width="13" stroke-linecap="round"/>
+  <circle cx="337" cy="151" r="12" fill="#f5a888"/><circle cx="369" cy="177" r="12" fill="#f2d37c"/>
+  <circle cx="305" cy="177" r="12" fill="#6b9fe0"/><circle cx="337" cy="203" r="12" fill="#83d9c1"/>
+  <path d="M226 181h17m14 0h17" stroke="#d3e2f1" stroke-width="7" stroke-linecap="round"/>
+</svg>

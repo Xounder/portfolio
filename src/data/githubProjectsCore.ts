@@ -1,12 +1,11 @@
 import {
   BACKOFF_DELAYS_MS, CACHE_KEY, CACHE_TTL_MS, CACHE_VERSION,
-  courseExclusions, DEFAULT_RATE_LIMIT_BACKOFF_MS, GITHUB_USERNAME,
+  DEFAULT_RATE_LIMIT_BACKOFF_MS, GITHUB_USERNAME,
   MAX_PAGES, SELF_REPOSITORY_NAME,
 } from "./githubProjectsConfig.ts";
 import type {
   CacheReadResult, CacheState, CacheStorage, CacheStore, GitHubCachePayload,
-  GitHubFailure, GitHubRepositoryRecord, ProjectPresentationMap,
-  ProjectPresentationOverride,
+  GitHubFailure, GitHubRepositoryRecord, ProjectCategory, ProjectImage,
 } from "./githubTypes.ts";
 import type { ProjectCardData } from "./types.ts";
 
@@ -14,6 +13,38 @@ export type RepositoryEligibility = Pick<
   GitHubRepositoryRecord,
   "name" | "topics" | "description" | "fork" | "archived" | "visibility"
 >;
+
+function normalizeTopics(topics: readonly string[]): string[] {
+  const seen = new Set<string>();
+  return topics.map(topic => topic.trim()).filter(topic => {
+    const key = topic.toLowerCase();
+    if (!key || seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+// Git's ref rules, applied to branch names (slashes delimit valid ref components).
+// Never allow a branch to escape a Contents API path via dot segments or encoding.
+function isValidBranch(branch: unknown): branch is string {
+  return typeof branch === "string" && branch.length > 0 && branch !== "@" &&
+    !branch.startsWith("/") && !branch.endsWith("/") && !branch.endsWith(".") &&
+    ![...branch].some(char => char.charCodeAt(0) <= 32 || char.charCodeAt(0) === 127) &&
+    !/[~^:?*[\\%]/.test(branch) &&
+    !branch.includes("..") && !branch.includes("@{") &&
+    branch.split("/").every(part => part !== "" && !part.startsWith(".") && !part.endsWith(".lock"));
+}
+
+function isValidPushDate(value: unknown): value is string {
+  if (typeof value !== "string" ||
+    !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/.test(value)) return false;
+  const year = Number(value.slice(0, 4));
+  const month = Number(value.slice(5, 7));
+  const day = Number(value.slice(8, 10));
+  const calendarDay = new Date(Date.UTC(year, month - 1, day));
+  return calendarDay.getUTCFullYear() === year && calendarDay.getUTCMonth() + 1 === month &&
+    calendarDay.getUTCDate() === day && Number.isFinite(Date.parse(value)) && Date.parse(value) <= Date.now();
+}
 
 // Match the literal path, not URL-decoded segments: userinfo, ports, queries,
 // fragments, encoded separators and extra path segments must never become links.
@@ -38,11 +69,12 @@ function hasExpectedRepositoryIdentity(name: string, fullName: string, link: str
 function normalizeRepository(value: unknown): GitHubRepositoryRecord | null {
   if (typeof value !== "object" || value === null || Array.isArray(value)) return null;
   const item = value as Record<string, unknown>;
-  if (typeof item.id !== "number" || !Number.isFinite(item.id) ||
+  if (typeof item.id !== "number" || !Number.isSafeInteger(item.id) || item.id <= 0 ||
     typeof item.name !== "string" || !item.name.trim() ||
     typeof item.full_name !== "string" || !item.full_name.trim() ||
     typeof item.html_url !== "string" ||
     !hasExpectedRepositoryIdentity(item.name, item.full_name, item.html_url) ||
+    !isValidBranch(item.default_branch) ||
     typeof item.fork !== "boolean" || typeof item.archived !== "boolean" ||
     (item.private !== false && item.visibility !== "public") ||
     (item.visibility !== undefined && item.visibility !== "public") ||
@@ -51,11 +83,11 @@ function normalizeRepository(value: unknown): GitHubRepositoryRecord | null {
       !item.topics.every((topic: unknown) => typeof topic === "string"))) ||
     (item.description != null && typeof item.description !== "string") ||
     (item.language != null && typeof item.language !== "string") ||
-    typeof item.pushed_at !== "string" || !Number.isFinite(Date.parse(item.pushed_at))) return null;
+    !isValidPushDate(item.pushed_at)) return null;
   return {
-    id: item.id, name: item.name, full_name: item.full_name,
+    id: item.id, name: item.name, full_name: item.full_name, default_branch: item.default_branch,
     description: (item.description as string | null | undefined) ?? null,
-    topics: (item.topics as string[] | undefined) ?? [],
+    topics: normalizeTopics((item.topics as string[] | undefined) ?? []),
     language: (item.language as string | null | undefined) ?? null,
     html_url: item.html_url, pushed_at: item.pushed_at,
     fork: item.fork, archived: item.archived, visibility: "public",
@@ -65,21 +97,20 @@ function normalizeRepository(value: unknown): GitHubRepositoryRecord | null {
 export function parseGitHubRepositories(payload: unknown): GitHubRepositoryRecord[] | null {
   if (!Array.isArray(payload)) return null;
   const records = payload.map(normalizeRepository).filter((record): record is GitHubRepositoryRecord => record !== null);
-  return records.length ? records : null;
+  return payload.length && !records.length ? null : records;
 }
 
 export function isExcludedRepository(record: RepositoryEligibility): boolean {
   const name = record.name.toLowerCase();
-  return record.visibility !== "public" || record.fork || record.archived ||
+  const topics = normalizeTopics(record.topics);
+  return record.visibility !== "public" || record.fork || record.archived || !topics.length ||
     name === GITHUB_USERNAME.toLowerCase() || name === SELF_REPOSITORY_NAME ||
-    courseExclusions.excludedRepos.has(name) ||
-    courseExclusions.excludedNamePatterns.some(pattern => pattern.test(name)) ||
-    record.topics.some(topic => courseExclusions.excludedTopics.has(topic.toLowerCase())) ||
-    (record.description !== null && courseExclusions.excludedDescriptionPatterns.some(pattern => pattern.test(record.description!)));
+    topics.some(topic => ["about-me", "aboutme-github"].includes(topic.toLowerCase()));
 }
 
 export function filterVisibleRepositories(records: readonly GitHubRepositoryRecord[]): GitHubRepositoryRecord[] {
-  return records.filter(record => !isExcludedRepository(record));
+  return records.map(normalizeRepository).filter((record): record is GitHubRepositoryRecord =>
+    record !== null && !isExcludedRepository(record));
 }
 
 export function dedupeRepositories(records: readonly GitHubRepositoryRecord[]): GitHubRepositoryRecord[] {
@@ -96,7 +127,22 @@ export function dedupeRepositories(records: readonly GitHubRepositoryRecord[]): 
 
 export function sortNewRepositories(records: readonly GitHubRepositoryRecord[]): GitHubRepositoryRecord[] {
   return [...records].sort((a, b) => Date.parse(b.pushed_at) - Date.parse(a.pushed_at) ||
-    (a.full_name < b.full_name ? -1 : a.full_name > b.full_name ? 1 : 0));
+    a.full_name.toLowerCase().localeCompare(b.full_name.toLowerCase(), "en") || a.id - b.id);
+}
+
+export function selectVisibleRepositories(records: readonly GitHubRepositoryRecord[], limit: number): GitHubRepositoryRecord[] {
+  return dedupeRepositories(sortNewRepositories(filterVisibleRepositories(records)))
+    .slice(0, Number.isFinite(limit) ? Math.max(0, Math.floor(limit)) : 0);
+}
+
+export function classifyProject(topics: readonly string[]): ProjectCategory {
+  const normalized = new Set(normalizeTopics(topics).map(topic => topic.toLowerCase()));
+  if (["game", "games", "jogo", "jogos", "gamedev"].some(topic => normalized.has(topic))) return "games";
+  if (["fullstack", "full-stack"].some(topic => normalized.has(topic)) ||
+    (normalized.has("frontend") && normalized.has("backend"))) return "fullstack";
+  if (["api", "rest-api", "restful-api", "backend"].some(topic => normalized.has(topic))) return "api";
+  if (["frontend", "front-end", "html", "css", "react", "vue", "angular", "web-development"].some(topic => normalized.has(topic))) return "frontend";
+  return "misc";
 }
 
 export function getRepositorySlugFromLink(link: string): string | null {
@@ -113,40 +159,27 @@ export function humanizeRepositoryName(name: string): string {
 
 export function mapRepositoryToCard(
   record: GitHubRepositoryRecord,
-  override: ProjectPresentationOverride | undefined,
-  placeholder: ProjectPresentationOverride,
+  categoryImages: Readonly<Record<ProjectCategory, ProjectImage>>,
 ): ProjectCardData {
-  const seen = new Set<string>();
-  const technologies = [...record.topics, ...(record.language ? [record.language] : [])].filter(technology => {
-    const key = technology.toLowerCase();
-    if (seen.has(key)) return false;
-    seen.add(key);
-    return true;
-  });
+  const fallback = categoryImages[classifyProject(record.topics)];
   return {
     kind: "project",
     cardInfo: {
-      title: override?.title ?? humanizeRepositoryName(record.name),
-      description: override?.description ?? (record.description?.trim() || "Public GitHub project."),
-      image: override?.image ?? placeholder.image,
+      title: humanizeRepositoryName(record.name),
+      description: record.description?.trim() || "Public GitHub project.",
+      image: { ...fallback, fallbackImg: fallback.img },
       link: record.html_url,
     },
-    projectInfo: { technologies: override?.technologies ?? technologies },
+    projectInfo: { technologies: normalizeTopics(record.topics) },
   };
 }
 
 export function buildProjectCards(
   records: readonly GitHubRepositoryRecord[],
-  featuredCards: readonly ProjectCardData[],
-  overrides: ProjectPresentationMap,
-  placeholder: ProjectPresentationOverride,
+  categoryImages: Readonly<Record<ProjectCategory, ProjectImage>>,
   limit: number,
 ): ProjectCardData[] {
-  const featuredSlugs = new Set(featuredCards.map(card => getRepositorySlugFromLink(card.cardInfo.link ?? "")));
-  const newCards = sortNewRepositories(dedupeRepositories(filterVisibleRepositories(records)))
-    .filter(record => !featuredSlugs.has(record.name.toLowerCase()))
-    .map(record => mapRepositoryToCard(record, overrides.get(record.name.toLowerCase()), placeholder));
-  return [...featuredCards, ...newCards].slice(0, Math.max(0, limit));
+  return selectVisibleRepositories(records, limit).map(record => mapRepositoryToCard(record, categoryImages));
 }
 
 export function parseNextLink(linkHeader: string | null): string | null {
@@ -183,7 +216,6 @@ export function createCacheStore(storage: CacheStorage | null): CacheStore {
         const { version, savedAt, records } = payload as Record<string, unknown>;
         if (version !== CACHE_VERSION || typeof savedAt !== "number" || !Number.isFinite(savedAt) ||
           !Array.isArray(records)) throw new Error("Invalid cache");
-        if (records.length === 0) return { state: "missing", records: [], visibleRecords: [] };
         const parsed = parseGitHubRepositories(records);
         if (!parsed || parsed.length !== records.length) throw new Error("Invalid cache records");
         return {
@@ -193,8 +225,9 @@ export function createCacheStore(storage: CacheStorage | null): CacheStore {
       } catch { return { state: "invalid", records: [], visibleRecords: [] }; }
     },
     write(records: readonly GitHubRepositoryRecord[], now: number): void {
-      const valid = parseGitHubRepositories(records) ?? [];
-      const payload: GitHubCachePayload = { version: 1, savedAt: now, records: valid };
+      const valid = parseGitHubRepositories(records);
+      if (!valid || valid.length !== records.length || !Number.isFinite(now)) return;
+      const payload: GitHubCachePayload = { version: 2, savedAt: now, records: valid };
       memoryRaw = JSON.stringify(payload);
       preferMemory = true;
       try {

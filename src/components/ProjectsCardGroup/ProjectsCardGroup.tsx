@@ -1,7 +1,7 @@
 import "./ProjectsCardGroup.css";
 
 import { DefaultCardGroup } from "../DefaultCardGroup/DefaultCardGroup.tsx";
-import { PROJECT_PROFILE_URL } from "../../data/projectPresentation.ts";
+import { GITHUB_PROFILE_URL } from "../../data/githubProjectsConfig.ts";
 import { useGitHubProjects } from "../../hooks/useGitHubProjects.ts";
 import type { HeadingLevel } from "../../types/heading.ts";
 
@@ -17,7 +17,7 @@ export const ProjectsCardGroup = ({ headingLevel }: ProjectsCardGroupProps) => {
       )}
       {hasError ? (
         <p className="projects-card-group__status" role="status" aria-live="polite">
-          Unable to refresh projects. Showing the last available version.
+          {cards.length ? "Unable to refresh projects. Showing cached projects." : "Unable to load projects. Please try again later."}
         </p>
       ) : cards.length === 0 ? (
         isRefreshing ? (
@@ -28,7 +28,7 @@ export const ProjectsCardGroup = ({ headingLevel }: ProjectsCardGroupProps) => {
           </p>
         )
       ) : null}
-      <a className="projects-card-group__link" href={PROJECT_PROFILE_URL} target="_blank" rel="noopener noreferrer">
+      <a className="projects-card-group__link" href={GITHUB_PROFILE_URL} target="_blank" rel="noopener noreferrer">
         View all projects on GitHub
       </a>
     </div>

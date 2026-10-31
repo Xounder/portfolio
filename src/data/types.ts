@@ -1,5 +1,6 @@
 import type { ReactElement } from "react";
 import type { HeadingLevel } from "../types/heading";
+import type { ProjectImage } from "./githubTypes.ts";
 
 /**
  * Data-facing shapes shared by `data.ts` and the components that render them.
@@ -26,7 +27,7 @@ export type AboutMeProps = {
 
 /** `DefaultCard` props. `headingLevel` is presentation, supplied by the route. */
 export interface DefaultCardProps {
-  image: { img: string; alt: string; width: number; height: number };
+  image: ProjectImage;
   title: string;
   description: string;
   link?: string;

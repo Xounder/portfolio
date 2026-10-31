@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { readInitialProjects, refreshProjects } from "../data/githubProjects.ts";
+import { hydrateCachedProjects, readInitialProjects, refreshProjects } from "../data/githubProjects.ts";
 import { shouldRevalidate, shouldRevalidateOnVisibility } from "../data/githubProjectsCore.ts";
 import type { CacheState } from "../data/githubTypes.ts";
 import type { ProjectCardData } from "../data/types.ts";
@@ -33,7 +33,7 @@ export function useGitHubProjects(): UseGitHubProjectsResult {
       } else if (result.failure.kind === "aborted") {
         setHasError(false);
       } else {
-        setCards(previous => previous.length ? previous : result.cards);
+        setCards(result.cards);
         setHasError(true);
       }
     } catch {
@@ -47,7 +47,17 @@ export function useGitHubProjects(): UseGitHubProjectsResult {
   useEffect(() => {
     const requestIds = requestIdRef;
     mountedRef.current = true;
-    if (shouldRevalidate(cacheStateRef.current)) void refresh();
+    if (cacheStateRef.current === "fresh") {
+      const requestId = ++requestIdRef.current;
+      setIsRefreshing(true);
+      void hydrateCachedProjects(Date.now()).then((hydrated: ProjectCardData[]) => {
+        if (mountedRef.current && requestId === requestIdRef.current) setCards(hydrated);
+      }).catch(() => {
+        if (mountedRef.current && requestId === requestIdRef.current) setHasError(true);
+      }).finally(() => {
+        if (mountedRef.current && requestId === requestIdRef.current) setIsRefreshing(false);
+      });
+    } else if (shouldRevalidate(cacheStateRef.current)) void refresh();
 
     const onVisibilityChange = () => {
       if (document.visibilityState !== "visible") return;

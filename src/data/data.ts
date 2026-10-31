@@ -1,7 +1,6 @@
 import type {
   AboutMeProps,
   ExperienceCardData,
-  ProjectCardData,
 } from "./types";
 import { seo } from './seo';
 
@@ -12,12 +11,6 @@ import logoVoxy from "../assets/images/voxy-logo.webp";
 import logoDio from "../assets/images/dio.webp";
 import logoMarathonSBC from "../assets/images/maratona-logo.webp";
 
-import logoAPI from "../assets/images/api-logo.webp";
-import buletinBlogImage from "../assets/images/buletin-blog.webp";
-import angularPstoreImage from "../assets/images/angular-pstore.webp";
-import bokumonImage from "../assets/images/bokumon.webp";
-import buzzFeedImage from "../assets/images/buzzfeed.webp";
-import shoesEcommerceImage from "../assets/images/shoes-ecommerce.webp";
 
 // About Me
 export const AboutMeContent: Omit<AboutMeProps, "headingLevel"> = {
@@ -187,132 +180,4 @@ export const RecognitionsCards: ExperienceCardData[] = [
     },
   },
 ];
-
-// Projects
-export const ProjectsCards: ProjectCardData[] = [
-  {
-    kind: "project",
-    cardInfo: {
-      image: {
-        img: logoAPI,
-        alt: "Logo API",
-        width: 250,
-        height: 250,
-      },
-      title: "Restful Nubank API",
-      description:
-        "API that creates and stores the most specific data from the home page of the Nubank App in a database on Railway and returns it when requested.",
-      link: "https://github.com/Xounder/api-rest-spring",
-    },
-    projectInfo: { technologies: ["Java", "Spring Boot"] },
-  },
-  {
-    kind: "project",
-    cardInfo: {
-      image: {
-        img: logoAPI,
-        alt: "Logo API",
-        width: 250,
-        height: 250,
-      },
-      title: "Vehicle Management API",
-      description:
-        "A minimalist API for vehicle and administrator management using Authentication and Authorization. This project is built with .NET and uses the Minimal API architecture to provide a simple and effective interface.",
-      link: "https://github.com/Xounder/minimal-api",
-    },
-    projectInfo: { technologies: ["C#", ".NET", "Minimal API"] },
-  },
-  {
-    kind: "project",
-    cardInfo: {
-      image: {
-        img: logoAPI,
-        alt: "Logo API",
-        width: 250,
-        height: 250,
-      },
-      title: "Task Management API",
-      description:
-        "Task management system where you can register a list of tasks to better organize your routine.",
-      link: "https://github.com/Xounder/dotNET-Api",
-    },
-    projectInfo: { technologies: ["C#", ".NET"] },
-  },
-  {
-    kind: "project",
-    cardInfo: {
-      image: {
-        img: buletinBlogImage,
-        alt: "Buletin Blog - Home Page",
-        width: 500,
-        height: 314,
-      },
-      title: "Buletin Blog",
-      description: "Buletin Blog – a blog with diverse content.",
-      link: "https://github.com/Xounder/angular-blog",
-    },
-    projectInfo: { technologies: ["Angular", "TypeScript", "HTML", "CSS"] },
-  },
-  {
-    kind: "project",
-    cardInfo: {
-      image: {
-        img: buzzFeedImage,
-        alt: "BuzzFeed Clone - Quizz",
-        width: 500,
-        height: 244,
-      },
-      title: "Buzzfeed Clone",
-      description: "A BuzzFeed Clone themed around villains and superheroes",
-      link: "https://github.com/Xounder/angular-buzzfeed",
-    },
-    projectInfo: { technologies: ["Angular", "TypeScript", "HTML", "CSS"] },
-  },
-  {
-    kind: "project",
-    cardInfo: {
-      image: {
-        img: angularPstoreImage,
-        alt: "Angular Store - Home Page",
-        width: 500,
-        height: 249,
-      },
-      title: "Angular Store",
-      description: "Recreating the Playstation Store layout.",
-      link: "https://github.com/Xounder/angular-store",
-    },
-    projectInfo: { technologies: ["Angular", "TypeScript", "HTML", "CSS"] },
-  },
-  {
-    kind: "project",
-    cardInfo: {
-      image: {
-        img: bokumonImage,
-        alt: "Bokumon Fight Scene",
-        width: 992,
-        height: 737,
-      },
-      title: "Bokumon",
-      description: "A fanmade game of Pokémon.",
-      link: "https://github.com/Xounder/Bokumon",
-    },
-    projectInfo: { technologies: ["Python"] },
-  },
-  {
-    kind: "project",
-    cardInfo: {
-      image: {
-        img: shoesEcommerceImage,
-        alt: "Shoes Ecommerce - Home Page",
-        width: 500,
-        height: 246,
-      },
-      title: "ShoesEcommerce",
-      description: "A responsive ShoesEcommerce.",
-      link: "https://github.com/Xounder/ShoesEcommerce",
-    },
-    projectInfo: { technologies: ["JavaScript", "HTML", "CSS"] },
-  },
-];
-
 

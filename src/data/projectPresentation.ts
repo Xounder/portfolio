@@ -1,41 +1,14 @@
-import placeholderImage from "../assets/images/api-logo.webp";
-import { ProjectsCards } from "./data.ts";
-import { GITHUB_PROFILE_URL } from "./githubProjectsConfig.ts";
-import { getRepositorySlugFromLink, isExcludedRepository } from "./githubProjectsCore.ts";
-import type { ProjectPresentationMap, ProjectPresentationOverride } from "./githubTypes.ts";
-import type { ProjectCardData } from "./types.ts";
+import api from "../assets/images/api-logo.webp";
+import frontend from "../assets/images/project-frontend.svg";
+import fullstack from "../assets/images/project-fullstack.svg";
+import games from "../assets/images/project-games.svg";
+import misc from "../assets/images/project-misc.svg";
+import type { ProjectCategory, ProjectImage } from "./githubTypes.ts";
 
-export const PROJECT_PROFILE_URL = GITHUB_PROFILE_URL;
-
-export const projectPlaceholder: ProjectPresentationOverride = {
-  image: {
-    img: placeholderImage,
-    alt: "Project preview placeholder",
-    width: 250,
-    height: 250,
-  },
+export const projectCategoryImages: Readonly<Record<ProjectCategory, ProjectImage>> = {
+  frontend: { img: frontend, alt: "Frontend project illustration", width: 500, height: 314 },
+  fullstack: { img: fullstack, alt: "Full-stack project illustration", width: 500, height: 314 },
+  games: { img: games, alt: "Game project illustration", width: 500, height: 314 },
+  misc: { img: misc, alt: "Project illustration", width: 500, height: 314 },
+  api: { img: api, alt: "API project illustration", width: 250, height: 250 },
 };
-
-export const staticFeaturedCards: readonly ProjectCardData[] = ProjectsCards.filter(card => {
-  const name = getRepositorySlugFromLink(card.cardInfo.link ?? "");
-  return name !== null && !isExcludedRepository({
-    name,
-    topics: [],
-    description: card.cardInfo.description,
-    fork: false,
-    archived: false,
-    visibility: "public",
-  });
-});
-
-export const projectPresentationOverrides: ProjectPresentationMap = new Map(
-  staticFeaturedCards.map(card => [
-    getRepositorySlugFromLink(card.cardInfo.link ?? "")!,
-    {
-      title: card.cardInfo.title,
-      description: card.cardInfo.description,
-      technologies: card.projectInfo.technologies,
-      image: card.cardInfo.image,
-    },
-  ]),
-);

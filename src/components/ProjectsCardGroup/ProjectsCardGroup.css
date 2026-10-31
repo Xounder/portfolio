@@ -1,0 +1,32 @@
+.projects-card-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.projects-card-group__status,
+.projects-card-group__link {
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+
+.projects-card-group__status {
+  color: var(--text-neutral);
+  margin: 0.5em 0;
+}
+
+.projects-card-group__link {
+  color: var(--text-strong);
+  margin: 0.5em 0;
+}
+
+.projects-card-group__link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}

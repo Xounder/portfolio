@@ -29,6 +29,12 @@ const DefaultCardGroup = lazy(() =>
   }))
 );
 
+const ProjectsCardGroup = lazy(() =>
+  import("../../components/ProjectsCardGroup/ProjectsCardGroup.tsx").then((module) => ({
+    default: module.ProjectsCardGroup,
+  }))
+);
+
 /**
  * TASK-10 / W2.2 + W2.13 — lazy render targets keyed by the registry's
  * `SectionId`, created once at module scope. The ordered sections rendered by
@@ -46,7 +52,7 @@ const sectionRenderTargets: Record<SectionId, () => JSX.Element> = {
       headingLevel="h3"
     />
   ),
-  projects: () => <DefaultCardGroup cardType="Projects" headingLevel="h3" />,
+  projects: () => <ProjectsCardGroup headingLevel="h3" />,
   experiences: () => <DefaultCardGroup cardType="Experiences" headingLevel="h3" />,
   recognitions: () => <DefaultCardGroup cardType="Recognitions" headingLevel="h3" />,
   contact: () => <ContactForm headingLevel="h3" />,

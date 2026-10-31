@@ -15,50 +15,58 @@ import type { HeadingLevel } from "../../types/heading";
 /** The card groups this component can render. About Me / Contact are page-level. */
 type CardGroupName = "Projects" | "Experiences" | "Recognitions";
 
+const renderInfo = (card: CardData): ReactElement | null => {
+  switch (card.kind) {
+    case "project":
+      return <ProjectCardInfo technologies={card.projectInfo.technologies} />;
+    case "experience":
+      return <ExperienceCardInfo info={card.expInfo.info} />;
+    default:
+      // Malformed runtime data should leave the info slot empty.
+      return null;
+  }
+};
+
 type CardDataMap = Record<
   CardGroupName,
-  { cards: readonly CardData[]; component: (index: number) => ReactElement }
+  { cards: readonly CardData[]; renderInfo: (card: CardData) => ReactElement | null }
 >;
 
 const cardDataMap: CardDataMap = {
   Projects: {
     cards: ProjectsCards,
-    component: (index: number) => (
-      <ProjectCardInfo technologies={ProjectsCards[index].projectInfo.technologies} />
-    ),
+    renderInfo,
   },
   Experiences: {
     cards: ExperiencesCards,
-    component: (index: number) => (
-      <ExperienceCardInfo info={ExperiencesCards[index].expInfo.info} />
-    ),
+    renderInfo,
   },
   Recognitions: {
     cards: RecognitionsCards,
-    component: (index: number) => (
-      <ExperienceCardInfo info={RecognitionsCards[index].expInfo.info} />
-    ),
+    renderInfo,
   },
 };
 
-type DefaultCardGroupProps = {
+export type DefaultCardGroupProps = {
   cardType: CardGroupName;
+  cards?: readonly CardData[];
   headingLevel: HeadingLevel;
 };
 
-export const DefaultCardGroup = ({ cardType, headingLevel }: DefaultCardGroupProps) => {
+export const DefaultCardGroup = ({ cardType, cards, headingLevel }: DefaultCardGroupProps) => {
   const selectedData = cardDataMap[cardType];
+  const renderedCards = cards ?? selectedData.cards;
 
   return (
-    <div className={`group-cards${selectedData.cards.length === 1 ? "" : " group-cards--multiple"}`}>
-      {selectedData.cards.map((card, index) => (
+    <div className={`group-cards${renderedCards.length === 1 ? "" : " group-cards--multiple"}`}>
+      {renderedCards.map((card) => (
         <DefaultCard
           key={`${card.cardInfo.link}:${card.cardInfo.title}`}
           image={card.cardInfo.image}
           title={card.cardInfo.title}
           description={card.cardInfo.description}
           link={card.cardInfo.link}
-          component={selectedData.component(index)}
+          component={selectedData.renderInfo(card) ?? undefined}
           headingLevel={headingLevel}
         />
       ))}

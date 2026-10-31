@@ -5,6 +5,7 @@ import { MenuBar } from "../../components/MenuBar/MenuBar.tsx";
 import { AboutMe } from "../../components/AboutMe/AboutMe.tsx";
 import { ContactForm } from "../../components/ContactForm/ContactForm.tsx";
 import { DefaultCardGroup } from "../../components/DefaultCardGroup/DefaultCardGroup.tsx";
+import { ProjectsCardGroup } from "../../components/ProjectsCardGroup/ProjectsCardGroup.tsx";
 import { MenuSectionButton } from "../../components/MenuSectionButton/MenuSectionButton.tsx";
 import { DefaultSectionButton } from "../../components/DefaultSectionButton/DefaultSectionButton.tsx";
 // TASK-11 / W2.4 — ArrowSectionButton component removed; its only contribution
@@ -61,7 +62,7 @@ const sectionRenderTargets: Record<SectionId, JSX.Element> = {
       headingLevel="h2"
     />
   ),
-  projects: <DefaultCardGroup cardType="Projects" headingLevel="h2" />,
+  projects: <ProjectsCardGroup headingLevel="h2" />,
   experiences: <DefaultCardGroup cardType="Experiences" headingLevel="h2" />,
   recognitions: <DefaultCardGroup cardType="Recognitions" headingLevel="h2" />,
   contact: <ContactForm headingLevel="h2" />,

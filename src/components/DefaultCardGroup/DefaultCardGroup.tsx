@@ -50,14 +50,15 @@ export type DefaultCardGroupProps = {
   cardType: CardGroupName;
   cards?: readonly CardData[];
   headingLevel: HeadingLevel;
+  trailingContent?: ReactElement;
 };
 
-export const DefaultCardGroup = ({ cardType, cards, headingLevel }: DefaultCardGroupProps) => {
+export const DefaultCardGroup = ({ cardType, cards, headingLevel, trailingContent }: DefaultCardGroupProps) => {
   const selectedData = cardDataMap[cardType];
   const renderedCards = cards ?? selectedData.cards;
 
   return (
-    <div className={`group-cards${renderedCards.length === 1 ? "" : " group-cards--multiple"}`}>
+    <div className={`group-cards${renderedCards.length + (trailingContent ? 1 : 0) === 1 ? "" : " group-cards--multiple"}`}>
       {renderedCards.map((card) => (
         <DefaultCard
           key={`${card.cardInfo.link}:${card.cardInfo.title}`}
@@ -69,6 +70,7 @@ export const DefaultCardGroup = ({ cardType, cards, headingLevel }: DefaultCardG
           headingLevel={headingLevel}
         />
       ))}
+      {trailingContent}
     </div>
   );
 };

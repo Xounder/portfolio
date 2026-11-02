@@ -147,6 +147,7 @@ export const HomePage = () => {
       <main className="home-main">
         <m.div
           key={currentSection}
+          className={getSectionEntry(currentSection).id === "projects" ? "home-projects" : undefined}
           initial={{
             opacity: 0,
             ...(changeMotionOrientation

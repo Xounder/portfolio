@@ -39,7 +39,7 @@ const { DefaultCard } = byName('DefaultCard');
 const { DefaultCardGroup } = byName('DefaultCardGroup');
 const { ProjectsCardGroup } = byName('ProjectsCardGroup');
 const { useGitHubProjects } = byName('useGitHubProjects');
-const nodes = (node, type) => !node || typeof node !== 'object' ? [] : [ ...(node.type === type || (typeof type === 'function' && node.type?.name === type.name) ? [node] : []), ...Object.values(node.props ?? {}).flatMap(child => Array.isArray(child) ? child.flatMap(n => nodes(n, type)) : nodes(child, type)) ];
+const nodes = (node, type) => Array.isArray(node) ? node.flatMap(n => nodes(n, type)) : !node || typeof node !== 'object' ? [] : [ ...(node.type === type || (typeof type === 'function' && node.type?.name === type.name) ? [node] : []), ...Object.values(node.props ?? {}).flatMap(child => nodes(child, type)) ];
 const settle = async () => { await Promise.resolve(); await Promise.resolve(); await Promise.resolve(); };
 function card(src, fallbackImg, title = 'Project') { return { kind: 'project', cardInfo: { title, description: 'A project', link: 'https://github.com/Xounder/project', image: { img: src, fallbackImg, alt: '', width: 500, height: 314 } }, projectInfo: { technologies: [] } }; }
 function showCard(image, title = 'Project') { return rt.render(() => DefaultCard({ image, title, link: 'url', description: 'desc', headingLevel: 'h2' })); }
@@ -66,6 +66,36 @@ assert.equal(nodes(DefaultCardGroup({ cardType: 'Projects', headingLevel: 'h2' }
 assert.equal(nodes(DefaultCardGroup({ cardType: 'Projects', headingLevel: 'h2', cards: [card('remote', 'local')] }), DefaultCard).length, 1);
 assert.equal(nodes(DefaultCardGroup({ cardType: 'Experiences', headingLevel: 'h2' }), DefaultCard).length, 1);
 assert.equal(nodes(DefaultCardGroup({ cardType: 'Recognitions', headingLevel: 'h2' }), DefaultCard).length, 6);
+for (const [count, headingLevel] of [[0, 'h2'], [1, 'h3'], [12, 'h2']]) {
+  rt.reset();
+  mock.initial = { cards: Array.from({ length: count }, (_, i) => card('remote', 'local', `Project ${i}`)), cacheState: 'fresh' };
+  const projectTree = rt.render(() => ProjectsCardGroup({ headingLevel }));
+  const groupElement = nodes(projectTree, DefaultCardGroup)[0];
+  assert.equal(groupElement.props.headingLevel, headingLevel);
+  const list = DefaultCardGroup(groupElement.props);
+  const items = list.props.children.flat();
+  assert.equal(items.length, count + 1);
+  assert.equal(nodes(list, DefaultCard).length, count);
+  assert.ok(items.slice(0, -1).every(item => item.type?.name === 'DefaultCard' && item.props.headingLevel === headingLevel));
+  assert.equal(list.props.className.includes('group-cards--multiple'), count > 0);
+  const action = items.at(-1);
+  assert.equal(action.type, 'a');
+  assert.equal(action.props.href, 'https://github.com/Xounder');
+  assert.equal(action.props.target, '_blank');
+  assert.equal(action.props.rel, 'noopener noreferrer');
+  assert.equal(nodes(projectTree, 'a').length, 1);
+  assert.equal(nodes(action, 'img').length, 1);
+  assert.match(nodes(action, 'img')[0].props.src, /github\.svg$/);
+  assert.equal(nodes(action, 'img')[0].props.alt, '');
+  assert.equal(nodes(action, 'img')[0].props['aria-hidden'], 'true');
+  assert.equal(nodes(action, 'span')[0].props.children, 'View all projects on GitHub');
+  assert.equal(nodes(action, 'span')[1].props['aria-hidden'], 'true');
+  assert.equal(nodes(action, DefaultCard).length, 0);
+  assert.equal(nodes(projectTree, 'p').length, count === 0 ? 1 : 0);
+  rt.unmount();
+}
+assert.equal(nodes(DefaultCardGroup({ cardType: 'Experiences', headingLevel: 'h2' }), 'a').length, 0);
+assert.equal(nodes(DefaultCardGroup({ cardType: 'Recognitions', headingLevel: 'h3' }), 'a').length, 0);
 const listeners = new Map(); globalThis.document = { visibilityState: 'visible', addEventListener: (name, fn) => listeners.set(name, fn), removeEventListener: name => listeners.delete(name) };
 let resolveRefresh; mock.initial = { cards: [], cacheState: 'missing' }; mock.refresh = () => new Promise(resolve => { resolveRefresh = resolve; });
 rt.reset(); let hook = rt.render(useGitHubProjects); rt.flush(); hook = rt.render(useGitHubProjects); assert.equal(hook.isRefreshing, true);
@@ -108,4 +138,4 @@ mock.initial = { cards: [], cacheState: 'stale' }; listeners.get('visibilitychan
 resolveLaterRefresh({ ok: true, cards: [card('newer', 'local')], source: 'network' }); await settle();
 resolveHydrate([card('outdated', 'local')]); await settle();
 hook = rt.render(useGitHubProjects); assert.equal(hook.cards[0].cardInfo.image.img, 'newer'); rt.unmount();
-console.log('PASS project UI production card, category artwork, shared groups, hook hydration and error states');
+console.log('PASS project UI production card, category artwork, trailing GitHub action for 0/1/12 projects, shared groups, hook hydration and error states');
